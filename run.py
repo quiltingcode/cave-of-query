@@ -12,8 +12,16 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('indiana-diary')
 
-diary = SHEET.worksheet('diary')
+def game_intro():
+    """
+    Introduction to the game, giving the user a brief
+    description to set the scene, and ask for their 
+    name to store in the explorers google sheet page.
+    """
+    print("Welcome intrepid explorer to the Cave of Query\n")
+    print("What is your name?\n")
 
-data = diary.get_all_values()
+    explorer_name = input("Enter your name here: \n")
+    print(explorer_name)
 
-print(data)
+game_intro()
