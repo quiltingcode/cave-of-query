@@ -12,6 +12,7 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('indiana-diary')
 
+
 def game_intro():
     """
     Introduction to the game, giving the user a brief
@@ -27,12 +28,11 @@ def game_intro():
 
         if explorer_name.strip() != '':
             print(f"Welcome to the Cave of Query, {explorer_name}.")
-            entrance_chamber()
             break
         else:
             raise ValueError(
-            f"Please entera valid response, intrepid explorer!")
-    
+            f"Please entera valid response, intrepid explorer!")   
+    return explorer_name
 
 
 # def validate_data(values):
@@ -50,7 +50,19 @@ def game_intro():
 #                 )
 #         return False
 
-def entrance_chamber():
-    
+def update_explorer_list(data):
+    """
+    Update explorer worksheet, add a new row with the 
+    explorer name provided.
+    """
+    print("Updating explorer database...\n")
+    explorer_list_worksheet = SHEET.worksheet('explorers')
+    data = explorer_list_worksheet.get_all_values()
+    print(data)
+    # explorer_list_worksheet.append_row(data)
+    print("Explorer List updated successfully.\n")
 
-game_intro()
+
+explorer_data = game_intro()
+
+update_explorer_list(explorer_data)
