@@ -19,9 +19,38 @@ def game_intro():
     name to store in the explorers google sheet page.
     """
     print("Welcome intrepid explorer to the Cave of Query\n")
-    print("What is your name?\n")
 
-    explorer_name = input("Enter your name here: \n")
-    print(explorer_name)
+    while True:
+        print("What is your name?\n")
+
+        explorer_name = input("Enter your name here: \n")
+
+        if explorer_name.strip() != '':
+            print(f"Welcome to the Cave of Query, {explorer_name}.")
+            entrance_chamber()
+            break
+        else:
+            raise ValueError(
+            f"Please entera valid response, intrepid explorer!")
+    
+
+
+# def validate_data(values):
+#     """
+#     Inside the try, makes sure that the user doesn't
+#     press enter without entering any data, or simply
+#     leaves white space and then enter.
+#     """  
+#     if explorer_name.strip() != '':
+#         print(explorer_name.strip())
+#         return True
+#     else:
+#         raise ValueError(
+#             f"Please entera valid response, intrepid explorer!"
+#                 )
+#         return False
+
+def entrance_chamber():
+    
 
 game_intro()
