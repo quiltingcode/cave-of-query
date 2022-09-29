@@ -31,24 +31,10 @@ def game_intro():
             break
         else:
             raise ValueError(
-            f"Please entera valid response, intrepid explorer!")   
+            f"Please enter a valid response, intrepid explorer!")   
+    
     return explorer_name
 
-
-# def validate_data(values):
-#     """
-#     Inside the try, makes sure that the user doesn't
-#     press enter without entering any data, or simply
-#     leaves white space and then enter.
-#     """  
-#     if explorer_name.strip() != '':
-#         print(explorer_name.strip())
-#         return True
-#     else:
-#         raise ValueError(
-#             f"Please entera valid response, intrepid explorer!"
-#                 )
-#         return False
 
 def update_explorer_list(data):
     """
@@ -57,12 +43,17 @@ def update_explorer_list(data):
     """
     print("Updating explorer database...\n")
     explorer_list_worksheet = SHEET.worksheet('explorers')
-    data = explorer_list_worksheet.get_all_values()
-    print(data)
-    # explorer_list_worksheet.append_row(data)
+    explorer_list_worksheet.append_row([data])
     print("Explorer List updated successfully.\n")
 
 
-explorer_data = game_intro()
+def puzzle_room_one():
+    """
+    Explorer enters first puzzle room and has to
+    solve an algebraic equation to move on.
+    """
+    print("You have entered a large chamber")
 
+
+explorer_data = game_intro()
 update_explorer_list(explorer_data)
