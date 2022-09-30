@@ -33,17 +33,16 @@ def game_intro():
     return explorer_name
 
 
-def update_diary(data):
+def update_diary(data, worksheet):
     """
     Update explorer worksheet, add a new row with the 
     explorer name provided.
     """
-    explorer_list_worksheet = SHEET.worksheet('explorers')
+    explorer_list_worksheet = SHEET.worksheet(worksheet)
     explorer_list_worksheet.append_row([data])
     print("In his last will and testament, Indiana Jones left")
     print("you his explorer diary and a key. Now it is down to")
     print(f"you, {data.capitalize()}, to complete his final quest.\n")
-    puzzle_room_one()
 
 
 def puzzle_room_one():
@@ -52,22 +51,62 @@ def puzzle_room_one():
     solve an algebraic equation to move on.
     """
     print("You enter a large entrance chamber ")
-    print("surrounded by three locked doors. Above")
+    print("surrounded by two locked doors. Above")
     print("each doorway, you can see engraved in the stone an")
-    print("X, a Y, and a Z.\n")
-
-    while True:    
-        print("Solve the puzzle on the table to open the correct door.\n")
+    print("X, and a Y.\n")
+    print("Solve the puzzle on the table to open the correct door.\n")
+    while True:
         print(f"3(0.5x + 12) = 87")
 
         answer_one = int(input("What is the value of x? \n"))
         if answer_one == int(34):
-            print("correct")
+            print(f"You've got it.\n")
             break
         else:
-            print("That doesn't seem right to me. Try again")
+            print("That doesn't seem right to me. Try again.\n")
             continue
-    return answer_one
+
+    while True:
+        print(f"4x - 12 = 192")
+        
+        answer_two = int(input("What is the value of x? \n"))
+        if answer_two == int(51):
+            print(f"You've got it.\n")
+            break
+        else:
+            print("That doesn't seem right to me. Try again.\n")
+            continue
+
+    while True:
+        print(f"85/x + 5x - 19 = 71")
+        
+        answer_three = int(input("What is the value of x? \n"))
+        if answer_three == int(17):
+            print(f"You've got it.\n")
+            break
+        else:
+            print("That doesn't seem right to me. Try again.\n")
+            continue
+    print("All three puzzles complete but how do I open the door?\n")
+    print("As Grandpa Indy always used to say, X never, ever marks the spot so lets try door Y.")
+    print("It contains a combination lock with 6 digits...hmmmm")
+    print(f"If I use the answers from all the puzzles, the combination would be {answer_one}{answer_two}{answer_three}.")
+    print("It works! The door unlocks and on you go...")
+    
+    puzzle_one_letter = 'Y'
+    
+    print(f"But what's the significance of the letter {puzzle_one_letter} on the door? you ask yourself.")
+    print("Best to write it down in the diary just in case.\n")
+    update_diary(puzzle_one_letter, 'letters')
+
+    puzzle_room_two()
+
+    return puzzle_one_letter
+
+
+# def puzzle_room_two():
+
 
 explorer_data = game_intro()
-update_diary(explorer_data)
+update_diary(explorer_data, 'explorers')
+puzzle_room_one()
