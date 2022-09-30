@@ -22,29 +22,28 @@ def game_intro():
     print("Welcome intrepid explorer to the Cave of Query\n")
 
     while True:
-        print("What is your name?\n")
-
-        explorer_name = input("Enter your name here: \n")
-
+        explorer_name = input("What is your name? \n")
         if explorer_name.strip() != '':
-            print(f"Welcome to the Cave of Query, {explorer_name}.")
+            print(f"Welcome to the Cave of Query, {explorer_name.capitalize()}.")
             break
         else:
-            raise ValueError(
-            f"Please enter a valid response, intrepid explorer!")   
-    
+            print('wrong values')
+            continue
+
     return explorer_name
 
 
-def update_explorer_list(data):
+def update_diary(data):
     """
     Update explorer worksheet, add a new row with the 
     explorer name provided.
     """
-    print("Updating explorer database...\n")
     explorer_list_worksheet = SHEET.worksheet('explorers')
     explorer_list_worksheet.append_row([data])
-    print("Explorer List updated successfully.\n")
+    print("In his last will and testament, Indiana Jones left")
+    print("you his explorer diary and a key. Now it is down to")
+    print(f"you, {data.capitalize()}, to complete his final quest.\n")
+    puzzle_room_one()
 
 
 def puzzle_room_one():
@@ -52,8 +51,23 @@ def puzzle_room_one():
     Explorer enters first puzzle room and has to
     solve an algebraic equation to move on.
     """
-    print("You have entered a large chamber")
+    print("You enter a large entrance chamber ")
+    print("surrounded by three locked doors. Above")
+    print("each doorway, you can see engraved in the stone an")
+    print("X, a Y, and a Z.\n")
 
+    while True:    
+        print("Solve the puzzle on the table to open the correct door.\n")
+        print(f"3(0.5x + 12) = 87")
+
+        answer_one = int(input("What is the value of x? \n"))
+        if answer_one == int(34):
+            print("correct")
+            break
+        else:
+            print("That doesn't seem right to me. Try again")
+            continue
+    return answer_one
 
 explorer_data = game_intro()
-update_explorer_list(explorer_data)
+update_diary(explorer_data)
