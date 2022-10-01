@@ -50,7 +50,7 @@ def puzzle_room_one():
     Explorer enters first puzzle room and has to
     solve an algebraic equation to move on.
     """
-    print("You enter a large entrance chamber ")
+    print("You enter a large chamber")
     print("surrounded by two locked doors. Above")
     print("each doorway, you can see engraved in the stone an")
     print("X, and a Y.\n")
@@ -89,9 +89,17 @@ def puzzle_room_one():
             continue
     print("All three puzzles complete but how do I open the door?\n")
     print("As Grandpa Indy always used to say, X never, ever marks the spot.")
-    print("so let's try door Y. It contains a combination lock with 6 digits...hmmmm")
+    print("Door Y is locked with a 6 digit combination code...hmmmm")
     print(f"If I use the answers from all the puzzles, the combination would be {answer_one}{answer_two}{answer_three}.")
-    print("It works! The door unlocks and on you go...")
+    
+    while True:
+        combination_lock = int(input("Type the 6 digit combination: \n"))
+        if combination_lock == int(345117):
+            print(f"The door opens, and on you go...\n")
+            break
+        else:
+            print("The door doesn't budge. Try again.\n")
+            continue
     
     first_letter = 'Y'
     
@@ -99,7 +107,7 @@ def puzzle_room_one():
     print("Best to write it down in the diary just in case.\n")
 
     return first_letter
-    
+
 
 def display_collected_letters(letter):
     """
