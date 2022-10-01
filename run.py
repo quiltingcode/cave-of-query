@@ -25,9 +25,12 @@ def game_intro():
         explorer_name = input("What is your name? \n")
         if explorer_name.strip() != '':
             print(f"Welcome to the Cave of Query, {explorer_name.capitalize()}.")
+            print("In his last will and testament, Indiana Jones left")
+            print("you his explorer diary and a key. Now it is down to")
+            print(f"you, {explorer_name.capitalize()}, to complete his final quest.\n")
             break
         else:
-            print('wrong values')
+            print(f"That's not a name I know./n")
             continue
 
     return explorer_name
@@ -35,14 +38,11 @@ def game_intro():
 
 def update_diary(data, worksheet):
     """
-    Update explorer worksheet, add a new row with the 
-    explorer name provided.
+    Update worksheet specified in the parameter, add a new row with the 
+    data provided.
     """
     explorer_list_worksheet = SHEET.worksheet(worksheet)
     explorer_list_worksheet.append_row([data])
-    print("In his last will and testament, Indiana Jones left")
-    print("you his explorer diary and a key. Now it is down to")
-    print(f"you, {data.capitalize()}, to complete his final quest.\n")
 
 
 def puzzle_room_one():
@@ -88,25 +88,41 @@ def puzzle_room_one():
             print("That doesn't seem right to me. Try again.\n")
             continue
     print("All three puzzles complete but how do I open the door?\n")
-    print("As Grandpa Indy always used to say, X never, ever marks the spot so lets try door Y.")
-    print("It contains a combination lock with 6 digits...hmmmm")
+    print("As Grandpa Indy always used to say, X never, ever marks the spot.")
+    print("so let's try door Y. It contains a combination lock with 6 digits...hmmmm")
     print(f"If I use the answers from all the puzzles, the combination would be {answer_one}{answer_two}{answer_three}.")
     print("It works! The door unlocks and on you go...")
     
-    puzzle_one_letter = 'Y'
+    first_letter = 'Y'
     
-    print(f"But what's the significance of the letter {puzzle_one_letter} on the door? you ask yourself.")
+    print(f"But what's the significance of the letter {first_letter} on the door? you ask yourself.")
     print("Best to write it down in the diary just in case.\n")
-    update_diary(puzzle_one_letter, 'letters')
 
-    puzzle_room_two()
+    return first_letter
+    
 
-    return puzzle_one_letter
+def display_collected_letters(letter):
+    """
+    After solving each puzzle room, the explorer receives a letter. These are 
+    collected and displayed as the game goes along.
+    """
+    letters_worksheet = SHEET.worksheet('letters')
+    print(letters_worksheet.get_all_values())
 
 
-# def puzzle_room_two():
+def puzzle_room_two():
+    """
+    Explorer enters second puzzle room and has to
+    solve the substitution cypher to move on.
+    """
+
+
+    
 
 
 explorer_data = game_intro()
 update_diary(explorer_data, 'explorers')
-puzzle_room_one()
+puzzle_one_letter = puzzle_room_one()
+update_diary(puzzle_one_letter, 'letters')
+letter_list = display_collected_letters(puzzle_one_letter)
+puzzle_room_two()
