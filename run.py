@@ -89,9 +89,7 @@ def puzzle_room_one():
             continue
     print("All three puzzles complete but how do I open the door?\n")
     print("As Grandpa Indy always used to say, X never, ever marks the spot.")
-    print("Door Y is locked with a 6 digit combination code...hmmmm")
-    print(f"If I use the answers from all the puzzles, the combination would be {answer_one}{answer_two}{answer_three}.")
-    
+    print("Door Y is locked with a 6 digit combination code...hmmmm") 
     while True:
         combination_lock = int(input("Type the 6 digit combination: \n"))
         if combination_lock == int(345117):
@@ -123,9 +121,20 @@ def puzzle_room_two():
     Explorer enters second puzzle room and has to
     solve the substitution cypher to move on.
     """
-
-
-    
+    print("You move through to the second puzzle room.\n")
+    print("Decode this ancient language to retrieve the next letter and move on.\n")
+    while True:
+        print("OAFO EJZSCMW VC F RDWJDR\n")
+        decryption = (input("Type your decryption here:\n"))
+        if decryption == ("that belongs in a museum"):
+            print(f"You've got it.\n")
+            break
+        else:
+            print("That doesn't seem right to me. Try again.\n")
+            continue
+    second_letter = 'N'
+    print("You go through the next door marked with an 'N'.\n")
+    return second_letter
 
 
 explorer_data = game_intro()
@@ -133,4 +142,6 @@ update_diary(explorer_data, 'explorers')
 puzzle_one_letter = puzzle_room_one()
 update_diary(puzzle_one_letter, 'letters')
 letter_list = display_collected_letters(puzzle_one_letter)
-puzzle_room_two()
+puzzle_two_letter = puzzle_room_two()
+update_diary(puzzle_two_letter, 'letters')
+letter_list = display_collected_letters(puzzle_two_letter)
