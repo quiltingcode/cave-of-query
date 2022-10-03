@@ -134,14 +134,41 @@ def puzzle_room_two():
             continue
     second_letter = 'N'
     print("You go through the next door marked with an 'N'.\n")
+    
     return second_letter
 
 
+def puzzle_room_three():
+    """
+    Explorer enters third puzzle room and has to
+    complete the sequence to move on.
+    """
+    print("You move through to the third puzzle room.\n")
+    print("Complete this mysterious sequence to collect the next letter and move on.\n")
+    while True:
+        print("\n")
+        next_num = int(input("Type the next number in the sequence here:\n"))
+        if next_num == int(4):
+            print(f"You've got it.\n")
+            break
+        else:
+            print("That doesn't seem right to me. Try again.\n")
+            continue
+    third_letter = 'P'
+    print("You go through the next door marked with an 'P'.\n")
+    return third_letter
+
 explorer_data = game_intro()
 update_diary(explorer_data, 'explorers')
+
 puzzle_one_letter = puzzle_room_one()
 update_diary(puzzle_one_letter, 'letters')
 letter_list = display_collected_letters(puzzle_one_letter)
+
 puzzle_two_letter = puzzle_room_two()
 update_diary(puzzle_two_letter, 'letters')
-letter_list = display_collected_letters(puzzle_two_letter)
+display_collected_letters(puzzle_two_letter)
+
+puzzle_three_letter = puzzle_room_three()
+update_diary(puzzle_three_letter, 'letters')
+display_collected_letters(puzzle_three_letter)
