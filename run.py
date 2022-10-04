@@ -1,5 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
+from pprint import pprint
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -113,7 +114,12 @@ def display_collected_letters(letter):
     collected and displayed as the game goes along.
     """
     letters_worksheet = SHEET.worksheet('letters')
-    print(letters_worksheet.get_all_values())
+    letters = []
+    for ind in range(1, 2):
+        column = letters_worksheet.col_values(ind)
+        letters.append(column)
+    print(f"Letters Collected: ")
+    pprint(letters_worksheet.get_all_values())
 
 
 def puzzle_room_two():
@@ -164,25 +170,18 @@ def puzzle_room_four():
     choose the correct library book to move on.
     """
     print("You move through to the fourth puzzle room.\n")
-    print("  __ __ __ __")
-    print(" /           \ ")
-    print("/             \ ")
-    print("|             |")
-    print("|             |")
-    print("|             |")
     print("You enter a library with books shelves covering all the walls.")
     print("One book contains a button to open the hidden doorway, but which one...")
     print("Which book would Grandpa Indiana have chosen?\n")
     print("You start scanning the titles...\n")
 
     library = SHEET.worksheet('library_books')
-    # print(library.get_all_values())
     books = []
-    for ind in range(1, 7):
+    for ind in range(1,2):
         column = library.col_values(ind)
         books.append(column)
 
-    print(books)
+    pprint(books)
 
     while True:
         book = (input("Type the book title here:\n"))
@@ -208,10 +207,10 @@ def puzzle_room_four():
 # update_diary(puzzle_two_letter, 'letters')
 # display_collected_letters(puzzle_two_letter)
 
-# puzzle_three_letter = puzzle_room_three()
-# update_diary(puzzle_three_letter, 'letters')
-# display_collected_letters(puzzle_three_letter)
+puzzle_three_letter = puzzle_room_three()
+update_diary(puzzle_three_letter, 'letters')
+display_collected_letters(puzzle_three_letter)
 
-puzzle_four_letter = puzzle_room_four()
-update_diary(puzzle_four_letter, 'letters')
-display_collected_letters(puzzle_four_letter)
+# puzzle_four_letter = puzzle_room_four()
+# update_diary(puzzle_four_letter, 'letters')
+# display_collected_letters(puzzle_four_letter)
