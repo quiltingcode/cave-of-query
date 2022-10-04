@@ -164,11 +164,27 @@ def puzzle_room_four():
     choose the correct library book to move on.
     """
     print("You move through to the fourth puzzle room.\n")
+    print("  __ __ __ __")
+    print(" /           \ ")
+    print("/             \ ")
+    print("|             |")
+    print("|             |")
+    print("|             |")
     print("You enter a library with books shelves covering all the walls.")
-    print("One book contains the button to open the hidden doorway, but which one...")
-    print("Which book would Grandpa Indiana have chosen?")
+    print("One book contains a button to open the hidden doorway, but which one...")
+    print("Which book would Grandpa Indiana have chosen?\n")
+    print("You start scanning the titles...\n")
 
-     while True:
+    library = SHEET.worksheet('library_books')
+    # print(library.get_all_values())
+    books = []
+    for ind in range(1, 7):
+        column = library.col_values(ind)
+        books.append(column)
+
+    print(books)
+
+    while True:
         book = (input("Type the book title here:\n"))
         if book == ("Fortune and Glory Kid"):
             print(f"A hidden doorway opens with a creeeaaaaakkk.\n")
