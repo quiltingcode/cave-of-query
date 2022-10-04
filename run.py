@@ -146,7 +146,7 @@ def puzzle_room_three():
     print("You move through to the third puzzle room.\n")
     print("Complete this mysterious sequence to collect the next letter and move on.\n")
     while True:
-        print("\n")
+        print("1 2 3 6 9 8 7 __\n")
         next_num = int(input("Type the next number in the sequence here:\n"))
         if next_num == int(4):
             print(f"You've got it.\n")
@@ -158,17 +158,44 @@ def puzzle_room_three():
     print("You go through the next door marked with an 'P'.\n")
     return third_letter
 
-explorer_data = game_intro()
-update_diary(explorer_data, 'explorers')
+def puzzle_room_four():
+    """
+    Explorer enters fourth puzzle room and has to
+    choose the correct library book to move on.
+    """
+    print("You move through to the fourth puzzle room.\n")
+    print("You enter a library with books shelves covering all the walls.")
+    print("One book contains the button to open the hidden doorway, but which one...")
+    print("Which book would Grandpa Indiana have chosen?")
 
-puzzle_one_letter = puzzle_room_one()
-update_diary(puzzle_one_letter, 'letters')
-letter_list = display_collected_letters(puzzle_one_letter)
+     while True:
+        book = (input("Type the book title here:\n"))
+        if book == ("Fortune and Glory Kid"):
+            print(f"A hidden doorway opens with a creeeaaaaakkk.\n")
+            break
+        else:
+            print("Nothing happens. Try again.\n")
+            continue
+    fourth_letter = 'O'
+    print("You go through the next door marked with an 'O'.\n")
+    
+    return fourth_letter
 
-puzzle_two_letter = puzzle_room_two()
-update_diary(puzzle_two_letter, 'letters')
-display_collected_letters(puzzle_two_letter)
+# explorer_data = game_intro()
+# update_diary(explorer_data, 'explorers')
 
-puzzle_three_letter = puzzle_room_three()
-update_diary(puzzle_three_letter, 'letters')
-display_collected_letters(puzzle_three_letter)
+# puzzle_one_letter = puzzle_room_one()
+# update_diary(puzzle_one_letter, 'letters')
+# letter_list = display_collected_letters(puzzle_one_letter)
+
+# puzzle_two_letter = puzzle_room_two()
+# update_diary(puzzle_two_letter, 'letters')
+# display_collected_letters(puzzle_two_letter)
+
+# puzzle_three_letter = puzzle_room_three()
+# update_diary(puzzle_three_letter, 'letters')
+# display_collected_letters(puzzle_three_letter)
+
+puzzle_four_letter = puzzle_room_four()
+update_diary(puzzle_four_letter, 'letters')
+display_collected_letters(puzzle_four_letter)
