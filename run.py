@@ -25,8 +25,8 @@ def game_intro():
         if explorer_name.strip() != '':
             print(f"Welcome to the Cave of Query, {explorer_name.capitalize()}.")
             print("In his last will and testament, Indiana Jones left")
-            print("you his explorer diary and a key. Now it is down to")
-            print(f"you, {explorer_name.capitalize()}, to complete his final quest.\n")
+            print("you his famous 'quest' diary and a strange key. Now it is down to")
+            print(f"you, {explorer_name.capitalize()}, to complete his final quest, the Caves of Query.\n")
             break
         else:
             print(f"That's not a name I know./n")
@@ -39,9 +39,11 @@ def update_diary(data, worksheet):
     """
     Update worksheet specified in the parameter, add a new row with the 
     data provided.
+    Update explorer worksheet to record players, and use their name throughout the game
+    Update the letters worksheet after each puzzle when a letter clue is collected.
     """
-    explorer_list_worksheet = SHEET.worksheet(worksheet)
-    explorer_list_worksheet.append_row([data])
+    diary_worksheet = SHEET.worksheet(worksheet)
+    diary_worksheet.append_row([data])
 
 
 def puzzle_room_one():
@@ -50,14 +52,14 @@ def puzzle_room_one():
     solve an algebraic equation to move on.
     """
     print("You enter a large chamber")
-    print("surrounded by two locked doors. Above")
+    print("with two locked doors ahead. Above")
     print("each doorway, you can see engraved in the stone an")
     print("X, and a Y.\n")
-    print("Solve the puzzle on the table to open the correct door.\n")
+    print("Solve the puzzles etched on the table to open the correct door.\n")
     while True:
         print(f"3(0.5x + 12) = 87")
 
-        answer_one = int(input("What is the value of x? \n"))
+        answer_one = int(input("What is the value of X? \n"))
         if answer_one == int(34):
             print(f"You've got it.\n")
             break
@@ -68,7 +70,7 @@ def puzzle_room_one():
     while True:
         print(f"4x - 12 = 192")
         
-        answer_two = int(input("What is the value of x? \n"))
+        answer_two = int(input("What is the value of X? \n"))
         if answer_two == int(51):
             print(f"You've got it.\n")
             break
@@ -79,7 +81,7 @@ def puzzle_room_one():
     while True:
         print(f"85/x + 5x - 19 = 71")
         
-        answer_three = int(input("What is the value of x? \n"))
+        answer_three = int(input("What is the value of X? \n"))
         if answer_three == int(17):
             print(f"You've got it.\n")
             break
@@ -87,10 +89,10 @@ def puzzle_room_one():
             print("That doesn't seem right to me. Try again.\n")
             continue
     print("All three puzzles complete but how do I open the door?\n")
-    print("As Grandpa Indy always used to say, X never, ever marks the spot.")
+    print(f"As Grandpa Indy always used to say, 'X never, ever marks the spot.'")
     print("Door Y is locked with a 6 digit combination code...hmmmm") 
     while True:
-        combination_lock = int(input("Type the 6 digit combination: \n"))
+        combination_lock = int(input("Enter the 6 digit combination: \n"))
         if combination_lock == int(345117):
             print(f"The door opens, and on you go...\n")
             break
@@ -100,7 +102,7 @@ def puzzle_room_one():
     
     first_letter = 'Y'
     
-    print(f"But what's the significance of the letter {first_letter} on the door? you ask yourself.")
+    print(f"But what's the significance of the letter {first_letter} on the door?")
     print("Best to write it down in the diary just in case.\n")
 
     return first_letter
@@ -134,10 +136,10 @@ def puzzle_room_two():
             print(f"You've got it.\n")
             break
         else:
-            print("That doesn't seem right to me. Try again.\n")
+            print("Nothing happens. Try again.\n")
             continue
     second_letter = 'N'
-    print("You go through the next door marked with an 'N'.\n")
+    print("You go through a huge door marked with an 'N'.\n")
     
     return second_letter
 
@@ -148,7 +150,7 @@ def puzzle_room_three():
     complete the sequence to move on.
     """
     print("You move through to the third puzzle room.\n")
-    print("Complete this mysterious sequence to collect the next letter and move on.\n")
+    print("Complete this familiar sequence to collect the next letter and move on.\n")
     while True:
         print("1 2 3 6 9 8 7 __\n")
         next_num = int(input("Type the next number in the sequence here:\n"))
@@ -185,13 +187,13 @@ def puzzle_room_four():
     while True:
         book = (input("Type the book title here:\n"))
         if book == ("Fortune and Glory Kid"):
-            print(f"A hidden doorway opens with a creeeaaaaakkk.\n")
+            print(f"Of course! The bookshelf slides away and a hidden tunnel is revealed.\n")
             break
         else:
             print("Nothing happens. Try again.\n")
             continue
     fourth_letter = 'O'
-    print("You go through the next door marked with an 'O'.\n")
+    print(f"You go through the tunnel and notice 'O's all over the walls.\n")
     
     return fourth_letter
 
@@ -202,10 +204,10 @@ def puzzle_room_five():
     solve an anagram puzzle to move on. Answer inputted is passed
     through a data validation function.
     """
-    print("You move through to the fourth puzzle room.\n")
+    print("You arrive at another puzzle room.\n")
     print("You see a table in front of you with broken tiles all over it.")
     print("On closer inspection the tiles have letters on them.")
-    print("Reaarange the tiles to reveal a word and unlock the door to move on.\n")
+    print("Rearrange the tiles to reveal a word and unlock the door.\n")
     print("The letters you can see are:\n")
     print(" P I V S J T C A R A ")
 
@@ -213,7 +215,7 @@ def puzzle_room_five():
         anagram = input("Type the correct word here: \n")
         anagram_answer = str(anagram)
         if validate_data(anagram_answer):
-            print(f"That's the one! The door clicks open.")
+            print(f"That's the one! The door clicks open.\n")
             break
 
     fifth_letter = 'H'
@@ -255,7 +257,7 @@ def puzzle_room_six():
     while True:
         print(".. - ... / .- / .-.. . .- .--. / --- ..-. / ..-. .- .. - ....\n")
         decryption = (input("Type your decryption here:\n"))
-        if decryption == ("that belongs in a museum"):
+        if decryption == ("its a leap of faith"):
             print(f"You've got it.\n")
             break
         else:
@@ -271,28 +273,28 @@ def main():
     """
     Run all program functions
     """
-    # explorer_data = game_intro()
-    # update_diary(explorer_data, 'explorers')
+    explorer_data = game_intro()
+    update_diary(explorer_data, 'explorers')
 
-    # puzzle_one_letter = puzzle_room_one()
-    # update_diary(puzzle_one_letter, 'letters')
-    # letter_list = display_collected_letters(puzzle_one_letter)
+    puzzle_one_letter = puzzle_room_one()
+    update_diary(puzzle_one_letter, 'letters')
+    letter_list = display_collected_letters(puzzle_one_letter)
 
-    # puzzle_two_letter = puzzle_room_two()
-    # update_diary(puzzle_two_letter, 'letters')
-    # display_collected_letters(puzzle_two_letter)
+    puzzle_two_letter = puzzle_room_two()
+    update_diary(puzzle_two_letter, 'letters')
+    display_collected_letters(puzzle_two_letter)
 
-    # puzzle_three_letter = puzzle_room_three()
-    # update_diary(puzzle_three_letter, 'letters')
-    # display_collected_letters(puzzle_three_letter)
+    puzzle_three_letter = puzzle_room_three()
+    update_diary(puzzle_three_letter, 'letters')
+    display_collected_letters(puzzle_three_letter)
 
-    # puzzle_four_letter = puzzle_room_four()
-    # update_diary(puzzle_four_letter, 'letters')
-    # display_collected_letters(puzzle_four_letter)
+    puzzle_four_letter = puzzle_room_four()
+    update_diary(puzzle_four_letter, 'letters')
+    display_collected_letters(puzzle_four_letter)
 
-    # puzzle_five_letter = puzzle_room_five()
-    # update_diary(puzzle_five_letter, 'letters')
-    # display_collected_letters(puzzle_five_letter)
+    puzzle_five_letter = puzzle_room_five()
+    update_diary(puzzle_five_letter, 'letters')
+    display_collected_letters(puzzle_five_letter)
 
     puzzle_six_letter = puzzle_room_six()
     update_diary(puzzle_six_letter, 'letters')
