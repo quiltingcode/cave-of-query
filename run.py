@@ -199,7 +199,8 @@ def puzzle_room_four():
 def puzzle_room_five():
     """
     Explorer enters fifth puzzle room and has to
-    solve an anagram puzzle to move on.
+    solve an anagram puzzle to move on. Answer inputted is passed
+    through a data validation function.
     """
     print("You move through to the fourth puzzle room.\n")
     print("You see a table in front of you with broken tiles all over it.")
@@ -244,6 +245,28 @@ def validate_data(values):
     return False
 
 
+def puzzle_room_six():
+    """
+    Explorer enters sixth puzzle room and has to
+    solve the morse code word to move on.
+    """
+    print("You move through to the sixth puzzle room.\n")
+    print("Decode this ancient language to retrieve the next letter and move on.\n")
+    while True:
+        print(".. - ... / .- / .-.. . .- .--. / --- ..-. / ..-. .- .. - ....\n")
+        decryption = (input("Type your decryption here:\n"))
+        if decryption == ("that belongs in a museum"):
+            print(f"You've got it.\n")
+            break
+        else:
+            print("That doesn't seem right to me. Try again.\n")
+            continue
+    sixth_letter = 'T'
+    print("You go through the next door marked with a 'T'.\n")
+    
+    return sixth_letter
+
+
 def main():
     """
     Run all program functions
@@ -267,9 +290,13 @@ def main():
     # update_diary(puzzle_four_letter, 'letters')
     # display_collected_letters(puzzle_four_letter)
 
-    puzzle_five_letter = puzzle_room_five()
-    update_diary(puzzle_five_letter, 'letters')
-    display_collected_letters(puzzle_five_letter)
+    # puzzle_five_letter = puzzle_room_five()
+    # update_diary(puzzle_five_letter, 'letters')
+    # display_collected_letters(puzzle_five_letter)
+
+    puzzle_six_letter = puzzle_room_six()
+    update_diary(puzzle_six_letter, 'letters')
+    display_collected_letters(puzzle_six_letter)
 
 
 print("Welcome intrepid explorer to the Cave of Query\n")
