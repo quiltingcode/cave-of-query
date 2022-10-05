@@ -20,8 +20,6 @@ def game_intro():
     description to set the scene, and ask for their 
     name to store in the explorers google sheet page.
     """
-    print("Welcome intrepid explorer to the Cave of Query\n")
-
     while True:
         explorer_name = input("What is your name? \n")
         if explorer_name.strip() != '':
@@ -161,8 +159,9 @@ def puzzle_room_three():
             print("That doesn't seem right to me. Try again.\n")
             continue
     third_letter = 'P'
-    print("You go through the next door marked with an 'P'.\n")
+    print("You go through the next door marked with a 'P'.\n")
     return third_letter
+
 
 def puzzle_room_four():
     """
@@ -196,21 +195,30 @@ def puzzle_room_four():
     
     return fourth_letter
 
-# explorer_data = game_intro()
-# update_diary(explorer_data, 'explorers')
 
-# puzzle_one_letter = puzzle_room_one()
-# update_diary(puzzle_one_letter, 'letters')
-# letter_list = display_collected_letters(puzzle_one_letter)
+def main():
+    """
+    Run all program functions
+    """
+    explorer_data = game_intro()
+    update_diary(explorer_data, 'explorers')
 
-# puzzle_two_letter = puzzle_room_two()
-# update_diary(puzzle_two_letter, 'letters')
-# display_collected_letters(puzzle_two_letter)
+    puzzle_one_letter = puzzle_room_one()
+    update_diary(puzzle_one_letter, 'letters')
+    letter_list = display_collected_letters(puzzle_one_letter)
 
-puzzle_three_letter = puzzle_room_three()
-update_diary(puzzle_three_letter, 'letters')
-display_collected_letters(puzzle_three_letter)
+    puzzle_two_letter = puzzle_room_two()
+    update_diary(puzzle_two_letter, 'letters')
+    display_collected_letters(puzzle_two_letter)
 
-# puzzle_four_letter = puzzle_room_four()
-# update_diary(puzzle_four_letter, 'letters')
-# display_collected_letters(puzzle_four_letter)
+    puzzle_three_letter = puzzle_room_three()
+    update_diary(puzzle_three_letter, 'letters')
+    display_collected_letters(puzzle_three_letter)
+
+    puzzle_four_letter = puzzle_room_four()
+    update_diary(puzzle_four_letter, 'letters')
+    display_collected_letters(puzzle_four_letter)
+
+
+print("Welcome intrepid explorer to the Cave of Query\n")
+main()
