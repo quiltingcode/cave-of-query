@@ -196,28 +196,56 @@ def puzzle_room_four():
     return fourth_letter
 
 
+def puzzle_room_five():
+    """
+    Explorer enters fifth puzzle room and has to
+    solve an anagram puzzle to move on.
+    """
+    print("You move through to the fourth puzzle room.\n")
+    print("You see a table in front of you with broken tiles all over it.")
+    print("On closer inspection the tiles have letters on them.")
+    print("Reaarange the tiles to reveal a word and unlock the door to move on.\n")
+    print("The letters you can see are:\n")
+    print(" P I V S J T C A R A ")
+
+    while True:
+        anagram = input("Type the correct word here: \n")
+        anagram_answer = str(anagram.lower())
+        if validate_data(anagram_answer):
+            print(f"That's the one! The door clicks open.")
+            break
+
+    fifth_letter = 'H'
+    print("You go through the next door marked with an 'H'.\n")
+    
+    return fifth_letter
+
 def main():
     """
     Run all program functions
     """
-    explorer_data = game_intro()
-    update_diary(explorer_data, 'explorers')
+    # explorer_data = game_intro()
+    # update_diary(explorer_data, 'explorers')
 
-    puzzle_one_letter = puzzle_room_one()
-    update_diary(puzzle_one_letter, 'letters')
-    letter_list = display_collected_letters(puzzle_one_letter)
+    # puzzle_one_letter = puzzle_room_one()
+    # update_diary(puzzle_one_letter, 'letters')
+    # letter_list = display_collected_letters(puzzle_one_letter)
 
-    puzzle_two_letter = puzzle_room_two()
-    update_diary(puzzle_two_letter, 'letters')
-    display_collected_letters(puzzle_two_letter)
+    # puzzle_two_letter = puzzle_room_two()
+    # update_diary(puzzle_two_letter, 'letters')
+    # display_collected_letters(puzzle_two_letter)
 
-    puzzle_three_letter = puzzle_room_three()
-    update_diary(puzzle_three_letter, 'letters')
-    display_collected_letters(puzzle_three_letter)
+    # puzzle_three_letter = puzzle_room_three()
+    # update_diary(puzzle_three_letter, 'letters')
+    # display_collected_letters(puzzle_three_letter)
 
-    puzzle_four_letter = puzzle_room_four()
-    update_diary(puzzle_four_letter, 'letters')
-    display_collected_letters(puzzle_four_letter)
+    # puzzle_four_letter = puzzle_room_four()
+    # update_diary(puzzle_four_letter, 'letters')
+    # display_collected_letters(puzzle_four_letter)
+
+    puzzle_five_letter = puzzle_room_five()
+    update_diary(puzzle_five_letter, 'letters')
+    display_collected_letters(puzzle_five_letter)
 
 
 print("Welcome intrepid explorer to the Cave of Query\n")
