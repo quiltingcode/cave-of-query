@@ -227,18 +227,18 @@ def validate_data(values):
     Raises ValueError if string values are not entered,
     or if there aren't exactly 10 characters entered.
     """
-    print(values)
+    
     try:
-        [int(value) for value in values]
+        [str(value) for value in values]
         if len(values) != 10:
             raise ValueError(
                 f"Exactly 10 letters are required, you provided {len(values)}"
             )
     except ValueError as e:
-        print(f"Invalid data: {e}, please try again.\n")
+        print(f"That won't work: {e}, please try again.\n")
         
     else:
-        if lower(values) == "javascript":
+        if str(values.lower()) == "javascript":
             return True
 
     return False
