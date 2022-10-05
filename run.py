@@ -210,15 +210,39 @@ def puzzle_room_five():
 
     while True:
         anagram = input("Type the correct word here: \n")
-        anagram_answer = str(anagram.lower())
+        anagram_answer = str(anagram)
         if validate_data(anagram_answer):
             print(f"That's the one! The door clicks open.")
             break
 
     fifth_letter = 'H'
-    print("You go through the next door marked with an 'H'.\n")
+    print("You go through the next door marked with a 'H'.\n")
     
     return fifth_letter
+
+
+def validate_data(values):
+    """
+    Inside the try, converts all string values into lowercase.
+    Raises ValueError if string values are not entered,
+    or if there aren't exactly 10 characters entered.
+    """
+    print(values)
+    try:
+        [int(value) for value in values]
+        if len(values) != 10:
+            raise ValueError(
+                f"Exactly 10 letters are required, you provided {len(values)}"
+            )
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again.\n")
+        
+    else:
+        if lower(values) == "javascript":
+            return True
+
+    return False
+
 
 def main():
     """
