@@ -288,15 +288,39 @@ def treasure_room():
         if tile == ("Y"):
             print(f"you stand on the golden disk with a {tile} on it.\n")
             print("The disk sinks deeper into the floor and you hear a rumble.")
-
             break
+            treasure_chest()
         else:
             print(f"you stand on the golden disk with a {tile} on it.\n")
-            continue
+            game_over()
+        
     treasure_letter = 'Y'
     
     
     return treasure_letter
+
+
+def clear(): 
+    os.system('cls')
+
+
+def game_over():
+    clear()
+    print("You died a tragic death.")
+    print("Would you like to play again?\n")
+    while True:
+        replay = (input("Type Y / N: \n"))
+        if replay == ("Y"):
+            clear()
+            main()
+            break
+        elif replay == ("N"):
+            clear()
+            print("Good luck on your next adventure. Goodbye")
+            break
+        else:
+            print(f"I don't understand what {replay} means. Can you please repeat?\n")
+            continue
 
 
 def main():
