@@ -1,6 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 from pprint import pprint
+import os
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -264,41 +265,72 @@ def puzzle_room_six():
             print("That doesn't seem right to me. Try again.\n")
             continue
     sixth_letter = 'T'
-    print("You go through the next door marked with a 'T'.\n")
+    print("You go through the next door marked with a 'T' and head off down a long tunnel.\n")
     
     return sixth_letter
+
+
+def treasure_room():
+    """
+    Explorer reaches the treasure room and has to use their
+    key and the letters collected to get the treasure.
+    """
+    print("The tunnel widens and opens out into a great chamber with golden disks set into the floor.")
+    print("Each disk has a letter engraved on it.")
+    print("On the wall ahead, you can see another puzzle: \n")
+    print("1 1 1 1 = R")
+    print("2 2 2 2 = T")
+    print("3 3 3 3 = E")
+    print("4 4 4 4 = N")
+    print("5 5 5 5 = ?")
+    while True:
+        tile = (input("What is the missing letter? \n"))
+        if tile == ("Y"):
+            print(f"you stand on the golden disk with a {tile} on it.\n")
+            print("The disk sinks deeper into the floor and you hear a rumble.")
+
+            break
+        else:
+            print(f"you stand on the golden disk with a {tile} on it.\n")
+            continue
+    treasure_letter = 'Y'
+    
+    
+    return treasure_letter
 
 
 def main():
     """
     Run all program functions
     """
-    explorer_data = game_intro()
-    update_diary(explorer_data, 'explorers')
+    # explorer_data = game_intro()
+    # update_diary(explorer_data, 'explorers')
 
-    puzzle_one_letter = puzzle_room_one()
-    update_diary(puzzle_one_letter, 'letters')
-    letter_list = display_collected_letters(puzzle_one_letter)
+    # puzzle_one_letter = puzzle_room_one()
+    # update_diary(puzzle_one_letter, 'letters')
+    # letter_list = display_collected_letters(puzzle_one_letter)
 
-    puzzle_two_letter = puzzle_room_two()
-    update_diary(puzzle_two_letter, 'letters')
-    display_collected_letters(puzzle_two_letter)
+    # puzzle_two_letter = puzzle_room_two()
+    # update_diary(puzzle_two_letter, 'letters')
+    # display_collected_letters(puzzle_two_letter)
 
-    puzzle_three_letter = puzzle_room_three()
-    update_diary(puzzle_three_letter, 'letters')
-    display_collected_letters(puzzle_three_letter)
+    # puzzle_three_letter = puzzle_room_three()
+    # update_diary(puzzle_three_letter, 'letters')
+    # display_collected_letters(puzzle_three_letter)
 
-    puzzle_four_letter = puzzle_room_four()
-    update_diary(puzzle_four_letter, 'letters')
-    display_collected_letters(puzzle_four_letter)
+    # puzzle_four_letter = puzzle_room_four()
+    # update_diary(puzzle_four_letter, 'letters')
+    # display_collected_letters(puzzle_four_letter)
 
-    puzzle_five_letter = puzzle_room_five()
-    update_diary(puzzle_five_letter, 'letters')
-    display_collected_letters(puzzle_five_letter)
+    # puzzle_five_letter = puzzle_room_five()
+    # update_diary(puzzle_five_letter, 'letters')
+    # display_collected_letters(puzzle_five_letter)
 
-    puzzle_six_letter = puzzle_room_six()
-    update_diary(puzzle_six_letter, 'letters')
-    display_collected_letters(puzzle_six_letter)
+    # puzzle_six_letter = puzzle_room_six()
+    # update_diary(puzzle_six_letter, 'letters')
+    # display_collected_letters(puzzle_six_letter)
+
+    final_letter = treasure_room()
 
 
 print("Welcome intrepid explorer to the Cave of Query\n")
