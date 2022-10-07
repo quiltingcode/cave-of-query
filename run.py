@@ -112,20 +112,6 @@ def puzzle_room_one():
     return first_letter
 
 
-def display_collected_letters(letter):
-    """
-    After solving each puzzle room, the explorer receives a letter. These are 
-    collected and displayed as the game goes along.
-    """
-    letters_worksheet = SHEET.worksheet('letters')
-    letters = []
-    for ind in range(1, 2):
-        column = letters_worksheet.col_values(ind)
-        letters.append(column)
-    print(f"Letters Collected: ")
-    pprint(letters_worksheet.get_all_values())
-
-
 def puzzle_room_two():
     """
     Explorer enters second puzzle room and has to
@@ -140,13 +126,9 @@ def puzzle_room_two():
     decoder = {modern_alphabet[i]: ancient_alphabet[i] for i in range(len(modern_alphabet))}
     pprint(decoder)
     
-    
-
-
-    
     while True:
         print("OAFO EJZSCMW VC F RDWJDR\n")
-        decryption = (input("Type your decryption here:\n"))
+        decryption = (input("Type your decryption here:\n")).lower()
         if decryption == ("that belongs in a museum"):
             print(f"You've got it.\n")
             break
@@ -200,8 +182,8 @@ def puzzle_room_four():
     pprint(books)
 
     while True:
-        book = (input("Type the book title here:\n"))
-        if book == ("Fortune and Glory Kid"):
+        book = (input("Type the book title here:\n")).lower()
+        if book == ("fortune and glory kid"):
             print(f"Of course! The bookshelf slides away and a hidden tunnel is revealed.\n")
             break
         else:
@@ -302,6 +284,7 @@ def treasure_room():
         if tile == ("Y"):
             print(f"you stand on the golden disk with a {tile} on it.\n")
             print("The disk sinks deeper into the floor and you hear a rumble.")
+            treasure_chest()
             break
             
         else:
@@ -317,15 +300,53 @@ def treasure_chest():
     The treasure chest is revealed. The user must decode the letters
     collected and the key to open the chest
     """
-    print("The tunnel widens and opens out into a great chamber with golden disks set into the floor.")
-    print("Each disk has a letter engraved on it.")
+    print("A treasure chest rises out of the floor the floor but it won't open.")
+    print("embedded in the lid is a crpytex, with seven alphabet dials")
+    
+    while True:
+        cryptex = (input("Enter seven letters here: \n")).upper()
+        if cryptex == int(345117):
+            print(f"The door opens, and on you go...\n")
+            break
+        else:
+            print("The door doesn't budge. Try again.\n")
+            continue
+    
+    first_letter = 'Y'
+    
+    print(f"But what's the significance of the letter {first_letter} on the door?")
+    print("Best to write it down in the diary just in case.\n")
+
+    return first_letter
 
 
 def clear(): 
+    """
+    Clears all the previous text output in the user terminal 
+    """
     os.system("clear")
 
 
+def display_collected_letters(letter):
+    """
+    After solving each puzzle room, the explorer receives a letter. These are 
+    collected and displayed as the game goes along.
+    """
+    letters_worksheet = SHEET.worksheet('letters')
+    letters = []
+    for ind in range(1, 2):
+        column = letters_worksheet.col_values(ind)
+        letters.append(column)
+    print(f"Letters Collected: ")
+    pprint(letters_worksheet.get_all_values())
+
+
 def game_over():
+    """
+    If user makes a wrong choice in the treasure room, they die 
+    and the game over function is called.
+    User is asked if they would like to play again or not.
+    """
     clear()
     print("You died a tragic death.")
     print("Would you like to play again?\n")
