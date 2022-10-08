@@ -55,11 +55,8 @@ def puzzle_room_one():
     Explorer enters first puzzle room and has to
     solve an algebraic equation to move on.
     """
-    print("You enter a large chamber")
-    print("with two locked doors ahead. Above")
-    print("each doorway, you can see engraved in the stone an")
-    print("X, and a Y.\n")
-    print("Solve the puzzles etched on the table to open the correct door.\n")
+    print("You enter a large chamber with a locked door ahead.")
+    print("Solve the puzzles etched on the table to unlock the door.\n")
     while True:
         print(f"3(0.5x + 12) = 87")
 
@@ -93,8 +90,7 @@ def puzzle_room_one():
             print("That doesn't seem right to me. Try again.\n")
             continue
     print("All three puzzles complete but how do I open the door?\n")
-    print(f"As Grandpa Indy always used to say, 'X never, ever marks the spot.'")
-    print("Door Y is locked with a 6 digit combination code...hmmmm") 
+    print("On closer inspection, the door is locked with a 6 digit combination code...") 
     while True:
         combination_lock = int(input("Enter the 6 digit combination: \n"))
         if combination_lock == int(345117):
@@ -104,9 +100,10 @@ def puzzle_room_one():
             print("The door doesn't budge. Try again.\n")
             continue
     
-    first_letter = 'Y'
+    first_letter = 'H'
     
-    print(f"But what's the significance of the letter {first_letter} on the door?")
+    print(f"As you pass through, you notice a big {first_letter} on the door.")
+    print("But what does it mean?")
     print("Best to write it down in the diary just in case.\n")
 
     return first_letter
@@ -118,8 +115,14 @@ def puzzle_room_two():
     solve the substitution cypher to move on.
     """
     print("You move through to the second puzzle room.\n")
-    print("Decode this ancient language to retrieve the next letter and move on.\n")
+    print("Decode this ancient language on the wall to retrieve the next letter and move on.\n")
     
+    print("OAFO EJZSCMW VC F RDWJDR\n")
+
+    print("Wait a minute, I think I remember seeing a page in Granpy")
+    print("Indiana's diary which translated ancient alphabets.")
+    print("Let me find the right page....")
+
     diary_code = SHEET.worksheet('diary')
     modern_alphabet = list(diary_code.col_values(1))
     ancient_alphabet = list(diary_code.col_values(2))
@@ -127,7 +130,7 @@ def puzzle_room_two():
     pprint(decoder)
     
     while True:
-        print("OAFO EJZSCMW VC F RDWJDR\n")
+        
         decryption = (input("Type your decryption here:\n")).lower()
         if decryption == ("that belongs in a museum"):
             print(f"You've got it.\n")
@@ -135,8 +138,8 @@ def puzzle_room_two():
         else:
             print("Nothing happens. Try again.\n")
             continue
-    second_letter = 'N'
-    print("You go through a huge door marked with an 'N'.\n")
+    second_letter = 'I'
+    print("You go through a huge door marked with an 'I'.\n")
     
     return second_letter
 
@@ -149,16 +152,16 @@ def puzzle_room_three():
     print("You move through to the third puzzle room.\n")
     print("Complete this familiar sequence to collect the next letter and move on.\n")
     while True:
-        print("1 2 3 6 9 8 7 __\n")
+        print("1 1 2 3 5 8 13 21 34 55 __\n")
         next_num = int(input("Type the next number in the sequence here:\n"))
-        if next_num == int(4):
+        if next_num == int(89):
             print(f"You've got it.\n")
             break
         else:
             print("That doesn't seem right to me. Try again.\n")
             continue
-    third_letter = 'P'
-    print("You go through the next door marked with a 'P'.\n")
+    third_letter = 'C'
+    print("You go through the next door marked with an 'C'.\n")
     return third_letter
 
 
@@ -182,7 +185,7 @@ def puzzle_room_four():
     pprint(books)
 
     while True:
-        book = (input("Type the book title here:\n")).lower()
+        book = (input("Type the correct book title here:\n")).lower()
         if book == ("fortune and glory kid"):
             print(f"Of course! The bookshelf slides away and a hidden tunnel is revealed.\n")
             break
@@ -201,7 +204,7 @@ def puzzle_room_five():
     solve an anagram puzzle to move on. Answer inputted is passed
     through a data validation function.
     """
-    print("You arrive at another puzzle room.\n")
+    print("You run through the tunnel and arrive at another puzzle room.\n")
     print("You see a table in front of you with broken tiles all over it.")
     print("On closer inspection the tiles have letters on them.")
     print("Rearrange the tiles to reveal a word and unlock the door.\n")
@@ -215,8 +218,8 @@ def puzzle_room_five():
             print(f"That's the one! The door clicks open.\n")
             break
 
-    fifth_letter = 'H'
-    print("You go through the next door marked with a 'H'.\n")
+    fifth_letter = 'P'
+    print("You go through the next door marked with an 'P'.\n")
     
     return fifth_letter
 
@@ -253,17 +256,43 @@ def puzzle_room_six():
     print("Decode this ancient language to retrieve the next letter and move on.\n")
     while True:
         print(".. - ... / .- / .-.. . .- .--. / --- ..-. / ..-. .- .. - ....\n")
-        decryption = (input("Type your decryption here:\n"))
+        decryption = (input("Type your decryption here:\n")).lower()
         if decryption == ("its a leap of faith"):
             print(f"You've got it.\n")
             break
         else:
             print("That doesn't seem right to me. Try again.\n")
             continue
-    sixth_letter = 'T'
-    print("You go through the next door marked with a 'T' and head off down a long tunnel.\n")
+    sixth_letter = 'N'
+    print("You go through the next door marked with a 'N'.\n")
     
     return sixth_letter
+
+
+def puzzle_room_seven():
+    """
+    Explorer enters seventh puzzle room and has to
+    solve the riddle to move on. I use a sort method to 
+    make sure that whatever order they type in the four 
+    answers, they are sorted into the order that is recognised
+    as the right answer if they have guessed the four words 
+    correctly but may have an alternative order to me. 
+    """
+    print("You move through to the seventh puzzle room.\n")
+    print("Decipher this riddle to retrieve the next letter and move on.\n")
+    while True:
+        print("Can you name four days of the week what begin with the letter 'T'\n")
+        days = (input("Type the fours days here:\n")).sort()
+        if days == ("thursday today tomorrow tuesday"):
+            print(f"You've got it.\n")
+            break
+        else:
+            print("That doesn't seem right to me. Try again.\n")
+            continue
+    seventh_letter = 'T'
+    print("You go through the next door marked with a 'T' and head off down a long tunnel.\n")
+    
+    return seventh_letter
 
 
 def treasure_room():
@@ -304,20 +333,23 @@ def treasure_chest():
     print("embedded in the lid is a crpytex, with seven alphabet dials")
     
     while True:
-        cryptex = (input("Enter seven letters here: \n")).upper()
-        if cryptex == int(345117):
-            print(f"The door opens, and on you go...\n")
+        cryptex = str((input("Enter seven letters here: \n")).upper())
+        if cryptex == str("ARCHIVE"):
+            print("You've got it! A small door opens on the front of")
+            print("the chest to reveal a key hole...\n") 
             break
         else:
-            print("The door doesn't budge. Try again.\n")
+            print("Nothing happens. Are the letters in the right order? \n")
             continue
-    
-    first_letter = 'Y'
-    
-    print(f"But what's the significance of the letter {first_letter} on the door?")
-    print("Best to write it down in the diary just in case.\n")
 
-    return first_letter
+
+def get_treasure():
+    """
+    The key hole is revealed. The explorer wins the treasure 
+    and the game ends.
+    """
+    print("You get out Grandpa Indy's old key and it's a perfect fit.")
+    
 
 
 def clear(): 
@@ -372,35 +404,39 @@ def main():
     explorer_data = game_intro()
     update_diary(explorer_data, 'explorers')
 
-    # puzzle_one_letter = puzzle_room_one()
-    # update_diary(puzzle_one_letter, 'letters')
-    # letter_list = display_collected_letters(puzzle_one_letter)
+    puzzle_one_letter = puzzle_room_one()
+    update_diary(puzzle_one_letter, 'letters')
+    display_collected_letters(puzzle_one_letter)
 
     puzzle_two_letter = puzzle_room_two()
     update_diary(puzzle_two_letter, 'letters')
     display_collected_letters(puzzle_two_letter)
 
-    # puzzle_three_letter = puzzle_room_three()
-    # update_diary(puzzle_three_letter, 'letters')
-    # display_collected_letters(puzzle_three_letter)
+    puzzle_three_letter = puzzle_room_three()
+    update_diary(puzzle_three_letter, 'letters')
+    display_collected_letters(puzzle_three_letter)
 
-    # puzzle_four_letter = puzzle_room_four()
-    # update_diary(puzzle_four_letter, 'letters')
-    # display_collected_letters(puzzle_four_letter)
+    puzzle_four_letter = puzzle_room_four()
+    update_diary(puzzle_four_letter, 'letters')
+    display_collected_letters(puzzle_four_letter)
 
-    # puzzle_five_letter = puzzle_room_five()
-    # update_diary(puzzle_five_letter, 'letters')
-    # display_collected_letters(puzzle_five_letter)
+    puzzle_five_letter = puzzle_room_five()
+    update_diary(puzzle_five_letter, 'letters')
+    display_collected_letters(puzzle_five_letter)
     
-    # puzzle_six_letter = puzzle_room_six()
-    # update_diary(puzzle_six_letter, 'letters')
-    # display_collected_letters(puzzle_six_letter)
-    
-    # final_letter = treasure_room()
-    # update_diary(final_letter, 'letters')
-    # display_collected_letters(final_letter)
+    puzzle_six_letter = puzzle_room_six()
+    update_diary(puzzle_six_letter, 'letters')
+    display_collected_letters(puzzle_six_letter)
 
-    # treasure_chest()
+    puzzle_seven_letter = puzzle_room_seven()
+    update_diary(puzzle_seven_letter, 'letters')
+    display_collected_letters(puzzle_seven_letter)
+    
+    final_letter = treasure_room()
+    update_diary(final_letter, 'letters')
+    display_collected_letters(final_letter)
+
+    treasure_chest()
 
 
 
