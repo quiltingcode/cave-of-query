@@ -283,9 +283,7 @@ def puzzle_room_seven():
     while True:
         print("Can you name four days of the week what begin with the letter 'T'\n")
         days = (input("Type the fours days here:\n"))
-        sorted_days = days.sort()
-        print(sorted_days)
-        if sorted_days == ("thursday", "today", "tomorrow", "tuesday"):
+        if days == ("thursday, today, tomorrow, tuesday"):
             print(f"You've got it.\n")
             break
         else:
@@ -311,8 +309,8 @@ def treasure_room():
     print("4 4 4 4 = N")
     print("5 5 5 5 = ?")
     while True:
-        tile = capitalize((input("What is the missing letter? \n")))
-        if tile == ("Y"):
+        tile = (input("What is the missing letter? \n"))
+        if tile.capitalize() == ("Y"):
             print(f"you stand on the golden disk with a {tile} on it.\n")
             print("The disk sinks deeper into the floor and you hear a rumble.")
             treasure_chest()
@@ -331,14 +329,16 @@ def treasure_chest():
     The treasure chest is revealed. The user must decode the letters
     collected and the key to open the chest
     """
-    print("A treasure chest rises out of the floor the floor but it won't open.")
-    print("embedded in the lid is a crpytex, with seven alphabet dials")
+    print("A treasure chest rises out of the floor but it won't open.")
+    print("Embedded in the lid is a crpytex, with seven alphabet dials")
+    
     
     while True:
         cryptex = str((input("Enter seven letters here: \n")).upper())
-        if cryptex == str("ARCHIVE"):
+        if cryptex == str("PYTHONIC"):
             print("You've got it! A small door opens on the front of")
             print("the chest to reveal a key hole...\n") 
+            win_treasure()
             break
         else:
             print("Nothing happens. Are the letters in the right order? \n")
@@ -356,7 +356,7 @@ def win_treasure():
     print("It looks like it contains some sort of treasure map\n")
     print("Have you had enough treasure hunting for one lifetime")
     print(", or are you ready for more?")
-
+    reset_game()
 
 def clear(): 
     """
@@ -422,29 +422,29 @@ def main():
     explorer_data = game_intro()
     update_diary(explorer_data, 'explorers')
 
-    puzzle_one_letter = puzzle_room_one()
-    update_diary(puzzle_one_letter, 'letters')
-    display_collected_letters(puzzle_one_letter)
+    # puzzle_one_letter = puzzle_room_one()
+    # update_diary(puzzle_one_letter, 'letters')
+    # display_collected_letters(puzzle_one_letter)
 
-    puzzle_two_letter = puzzle_room_two()
-    update_diary(puzzle_two_letter, 'letters')
-    display_collected_letters(puzzle_two_letter)
+    # puzzle_two_letter = puzzle_room_two()
+    # update_diary(puzzle_two_letter, 'letters')
+    # display_collected_letters(puzzle_two_letter)
 
-    puzzle_three_letter = puzzle_room_three()
-    update_diary(puzzle_three_letter, 'letters')
-    display_collected_letters(puzzle_three_letter)
+    # puzzle_three_letter = puzzle_room_three()
+    # update_diary(puzzle_three_letter, 'letters')
+    # display_collected_letters(puzzle_three_letter)
 
-    puzzle_four_letter = puzzle_room_four()
-    update_diary(puzzle_four_letter, 'letters')
-    display_collected_letters(puzzle_four_letter)
+    # puzzle_four_letter = puzzle_room_four()
+    # update_diary(puzzle_four_letter, 'letters')
+    # display_collected_letters(puzzle_four_letter)
 
-    puzzle_five_letter = puzzle_room_five()
-    update_diary(puzzle_five_letter, 'letters')
-    display_collected_letters(puzzle_five_letter)
+    # puzzle_five_letter = puzzle_room_five()
+    # update_diary(puzzle_five_letter, 'letters')
+    # display_collected_letters(puzzle_five_letter)
     
-    puzzle_six_letter = puzzle_room_six()
-    update_diary(puzzle_six_letter, 'letters')
-    display_collected_letters(puzzle_six_letter)
+    # puzzle_six_letter = puzzle_room_six()
+    # update_diary(puzzle_six_letter, 'letters')
+    # display_collected_letters(puzzle_six_letter)
 
     puzzle_seven_letter = puzzle_room_seven()
     update_diary(puzzle_seven_letter, 'letters')
