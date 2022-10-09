@@ -282,8 +282,10 @@ def puzzle_room_seven():
     print("Decipher this riddle to retrieve the next letter and move on.\n")
     while True:
         print("Can you name four days of the week what begin with the letter 'T'\n")
-        days = (input("Type the fours days here:\n")).sort()
-        if days == ("thursday today tomorrow tuesday"):
+        days = (input("Type the fours days here:\n"))
+        sorted_days = days.sort()
+        print(sorted_days)
+        if sorted_days == ("thursday", "today", "tomorrow", "tuesday"):
             print(f"You've got it.\n")
             break
         else:
@@ -343,13 +345,17 @@ def treasure_chest():
             continue
 
 
-def get_treasure():
+def win_treasure():
     """
     The key hole is revealed. The explorer wins the treasure 
     and the game ends.
     """
     print("You get out Grandpa Indy's old key and it's a perfect fit.")
-    
+    print("The treasure chest opens and you look inside")
+    print("Jewels of all shapes and sizes surround an old book.")
+    print("It looks like it contains some sort of treasure map\n")
+    print("Have you had enough treasure hunting for one lifetime")
+    print(", or are you ready for more?")
 
 
 def clear(): 
@@ -386,15 +392,27 @@ def game_over():
         replay = (input("Type Y / N: \n"))
         if replay == ("Y"):
             clear()
+            reset_game()
             main()
             break
         elif replay == ("N"):
             clear()
+            reset_game()
             print("Good luck on your next adventure. Goodbye")
             break
         else:
             print(f"I don't understand what {replay} means. Can you please repeat?\n")
             continue
+
+
+def reset_game():
+    """
+    Reset the figures in the google worksheet, and start the game 
+    again from the beginning. 
+    """
+    clear()
+    letters_worksheet = SHEET.worksheet('letters')
+    delete_column(letters_worksheet)[1]
 
 
 def main():
@@ -437,7 +455,8 @@ def main():
     display_collected_letters(final_letter)
 
     treasure_chest()
-
+    win_treasure()
+    reset_game()
 
 
 main()
