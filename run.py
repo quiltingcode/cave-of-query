@@ -23,8 +23,8 @@ def game_intro():
     name to store in the explorers google sheet page.
     """
     os.system("clear")
-    tprint("The Cave")
-    tprint("of Query")
+    tprint("The Cave", font = "epic")
+    tprint("of Query", font = "epic")
 
 
     while True:
@@ -261,10 +261,10 @@ def puzzle_room_six():
         print(".. - ... / .- / .-.. . .- .--. / --- ..-. / ..-. .- .. - ....\n")
         decryption = (input("Type your decryption here:\n")).lower()
         if decryption == ("its a leap of faith"):
-            print(f"You've got it.\n")
+            print(f"You've got it. The door unlocks.\n")
             break
         else:
-            print("That doesn't seem right to me. Try again.\n")
+            print("Nothing happens. Try again.\n")
             continue
     sixth_letter = 'N'
     print("You go through the next door marked with a 'N'.\n")
@@ -315,16 +315,15 @@ def treasure_room():
         tile = (input("What is the missing letter? \n"))
         if tile.capitalize() == ("Y"):
             print(f"you stand on the golden disk with a {tile} on it.\n")
-            print("The disk sinks deeper into the floor and you hear a rumble.")
-            treasure_chest()
+            print("The disk sinks deeper into the floor and you hear a rumble.\n")
             break
             
         else:
-            print(f"you stand on the golden disk with a {tile} on it.\n")
             game_over()
 
     treasure_letter = tile
-    return  treasure_letter
+    return treasure_letter
+    display_collected_letters(treasure_letter)
 
 
 def treasure_chest():
@@ -335,30 +334,51 @@ def treasure_chest():
     print("A treasure chest rises out of the floor but it won't open.")
     print("Embedded in the lid is a crpytex, with seven alphabet dials")
     
-    
     while True:
-        cryptex = str((input("Enter seven letters here: \n")).upper())
+        cryptex = str((input("Enter eight letters here: \n")).upper())
         if cryptex == str("PYTHONIC"):
             print("You've got it! A small door opens on the front of")
-            print("the chest to reveal a key hole...\n") 
-            win_treasure()
+            print("the chest to reveal a key hole...\n")
             break
         else:
             print("Nothing happens. Are the letters in the right order? \n")
             continue
 
-
-def win_treasure():
-    """
-    The key hole is revealed. The explorer wins the treasure 
-    and the game ends.
-    """
     print("You get out Grandpa Indy's old key and it's a perfect fit.")
-    print("The treasure chest opens and you look inside")
+    print("The treasure chest opens and you look inside...")
     print("Jewels of all shapes and sizes surround an old book.")
     print("It looks like it contains some sort of treasure map\n")
     print("Have you had enough treasure hunting for one lifetime")
     print(", or are you ready for more?")
+
+    while True:
+        replay = (input("Type Y / N: \n"))
+        if replay == ("Y"):
+            clear()
+            reset_game()
+            main()
+            break
+        elif replay == ("N"):
+            clear()
+            reset_game()
+            print("Good luck on your next adventure. Goodbye")
+            break
+        else:
+            print(f"I don't understand what {replay} means. Can you please repeat?\n")
+            continue
+
+
+# def win_treasure():
+#     """
+#     The key hole is revealed. The explorer wins the treasure 
+#     and the game ends.
+#     """
+#     print("You get out Grandpa Indy's old key and it's a perfect fit.")
+#     print("The treasure chest opens and you look inside")
+#     print("Jewels of all shapes and sizes surround an old book.")
+#     print("It looks like it contains some sort of treasure map\n")
+#     print("Have you had enough treasure hunting for one lifetime")
+#     print(", or are you ready for more?")
     
 
 def clear(): 
@@ -389,6 +409,7 @@ def game_over():
     User is asked if they would like to play again or not.
     """
     clear()
+    print(f"you stand on the golden disk, and it falls away down a black hole.\n")
     print("You died a tragic death.")
     print("Would you like to play again?\n")
     while True:
@@ -425,41 +446,40 @@ def main():
     explorer_data = game_intro()
     update_diary(explorer_data, 'explorers')
 
-    puzzle_one_letter = puzzle_room_one()
-    update_diary(puzzle_one_letter, 'letters')
-    display_collected_letters(puzzle_one_letter)
+    # puzzle_one_letter = puzzle_room_one()
+    # update_diary(puzzle_one_letter, 'letters')
+    # display_collected_letters(puzzle_one_letter)
 
-    puzzle_two_letter = puzzle_room_two()
-    update_diary(puzzle_two_letter, 'letters')
-    display_collected_letters(puzzle_two_letter)
+    # puzzle_two_letter = puzzle_room_two()
+    # update_diary(puzzle_two_letter, 'letters')
+    # display_collected_letters(puzzle_two_letter)
 
-    puzzle_three_letter = puzzle_room_three()
-    update_diary(puzzle_three_letter, 'letters')
-    display_collected_letters(puzzle_three_letter)
+    # puzzle_three_letter = puzzle_room_three()
+    # update_diary(puzzle_three_letter, 'letters')
+    # display_collected_letters(puzzle_three_letter)
 
-    puzzle_four_letter = puzzle_room_four()
-    update_diary(puzzle_four_letter, 'letters')
-    display_collected_letters(puzzle_four_letter)
+    # puzzle_four_letter = puzzle_room_four()
+    # update_diary(puzzle_four_letter, 'letters')
+    # display_collected_letters(puzzle_four_letter)
 
-    puzzle_five_letter = puzzle_room_five()
-    update_diary(puzzle_five_letter, 'letters')
-    display_collected_letters(puzzle_five_letter)
+    # puzzle_five_letter = puzzle_room_five()
+    # update_diary(puzzle_five_letter, 'letters')
+    # display_collected_letters(puzzle_five_letter)
     
-    puzzle_six_letter = puzzle_room_six()
-    update_diary(puzzle_six_letter, 'letters')
-    display_collected_letters(puzzle_six_letter)
+    # puzzle_six_letter = puzzle_room_six()
+    # update_diary(puzzle_six_letter, 'letters')
+    # display_collected_letters(puzzle_six_letter)
 
-    puzzle_seven_letter = puzzle_room_seven()
-    update_diary(puzzle_seven_letter, 'letters')
-    display_collected_letters(puzzle_seven_letter)
+    # puzzle_seven_letter = puzzle_room_seven()
+    # update_diary(puzzle_seven_letter, 'letters')
+    # display_collected_letters(puzzle_seven_letter)
     
     final_letter = treasure_room()
     update_diary(final_letter, 'letters')
     display_collected_letters(final_letter)
 
     treasure_chest()
-    win_treasure()
-    reset_game()
+  
 
 
 main()
