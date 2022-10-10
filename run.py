@@ -258,14 +258,19 @@ def puzzle_room_six():
     print("You move through to the sixth puzzle room.\n")
     print("Decode this ancient language to retrieve the next letter and move on.\n")
     
+    print(".. - ... / .- / .-.. . .- .--. / --- ..-. / ..-. .- .. - ....\n")
+    
+    print("Wait a minute, this looks like old Morse Code")
+    print("I think I saw something in the diary like this....")
+    print("Let me find the right page....")
+    
     morse_code = SHEET.worksheet('morse_code')
-    abc_alphabet = list(diary_code.col_values(1))
-    morse_alphabet = list(diary_code.col_values(2))
-    code_dict = {morse_alphabet[i]: abc_alphabet[i] for i in range(len(morse_alphabet))}
+    abc_alphabet = list(morse_code.col_values(1))
+    morse_alphabet = list(morse_code.col_values(2))
+    code_dict = {abc_alphabet[i]: morse_alphabet[i] for i in range(len(abc_alphabet))}
     pprint(code_dict)
     
     while True:
-        print(".. - ... / .- / .-.. . .- .--. / --- ..-. / ..-. .- .. - ....\n")
         decryption = (input("Type your decryption here:\n")).lower()
         if decryption == ("its a leap of faith"):
             print(f"You've got it. The door unlocks.\n")
@@ -432,9 +437,17 @@ def reset_game():
     again from the beginning. 
     """
     clear()
+    clear_collected_letters()
+
+
+def clear_collected_letters():
+    """
+    Whenever a new game is started, all the data in 
+    the worksheet containing the collected puzzle letters
+    is deleted. 
+    """
     clear_worksheet = SHEET.worksheet('letters')
     clear_worksheet.clear()
-
 
 def main():
     """
@@ -442,6 +455,8 @@ def main():
     """
     explorer_data = game_intro()
     update_diary(explorer_data, 'explorers')
+
+    clear_collected_letters()
 
     puzzle_one_letter = puzzle_room_one()
     update_diary(puzzle_one_letter, 'letters')
@@ -474,9 +489,7 @@ def main():
     final_letter = treasure_room()
     update_diary(final_letter, 'letters')
     display_collected_letters(final_letter)
-
     treasure_chest()
   
-
 
 main()
