@@ -352,7 +352,7 @@ def treasure_chest():
     print(", or are you ready for more?")
 
     while True:
-        replay = (input("Type Y / N: \n"))
+        replay = (input("Type Yes (Y) or No (N): \n"))
         if replay == ("Y"):
             clear()
             reset_game()
@@ -367,19 +367,6 @@ def treasure_chest():
             print(f"I don't understand what {replay} means. Can you please repeat?\n")
             continue
 
-
-# def win_treasure():
-#     """
-#     The key hole is revealed. The explorer wins the treasure 
-#     and the game ends.
-#     """
-#     print("You get out Grandpa Indy's old key and it's a perfect fit.")
-#     print("The treasure chest opens and you look inside")
-#     print("Jewels of all shapes and sizes surround an old book.")
-#     print("It looks like it contains some sort of treasure map\n")
-#     print("Have you had enough treasure hunting for one lifetime")
-#     print(", or are you ready for more?")
-    
 
 def clear(): 
     """
@@ -435,8 +422,8 @@ def reset_game():
     again from the beginning. 
     """
     clear()
-    letters_worksheet = SHEET.worksheet('letters')
-    delete_column(letters_worksheet)[1]
+    clear_worksheet = SHEET.worksheet('letters')
+    clear_worksheet.clear()
 
 
 def main():
@@ -446,33 +433,33 @@ def main():
     explorer_data = game_intro()
     update_diary(explorer_data, 'explorers')
 
-    # puzzle_one_letter = puzzle_room_one()
-    # update_diary(puzzle_one_letter, 'letters')
-    # display_collected_letters(puzzle_one_letter)
+    puzzle_one_letter = puzzle_room_one()
+    update_diary(puzzle_one_letter, 'letters')
+    display_collected_letters(puzzle_one_letter)
 
-    # puzzle_two_letter = puzzle_room_two()
-    # update_diary(puzzle_two_letter, 'letters')
-    # display_collected_letters(puzzle_two_letter)
+    puzzle_two_letter = puzzle_room_two()
+    update_diary(puzzle_two_letter, 'letters')
+    display_collected_letters(puzzle_two_letter)
 
-    # puzzle_three_letter = puzzle_room_three()
-    # update_diary(puzzle_three_letter, 'letters')
-    # display_collected_letters(puzzle_three_letter)
+    puzzle_three_letter = puzzle_room_three()
+    update_diary(puzzle_three_letter, 'letters')
+    display_collected_letters(puzzle_three_letter)
 
-    # puzzle_four_letter = puzzle_room_four()
-    # update_diary(puzzle_four_letter, 'letters')
-    # display_collected_letters(puzzle_four_letter)
+    puzzle_four_letter = puzzle_room_four()
+    update_diary(puzzle_four_letter, 'letters')
+    display_collected_letters(puzzle_four_letter)
 
-    # puzzle_five_letter = puzzle_room_five()
-    # update_diary(puzzle_five_letter, 'letters')
-    # display_collected_letters(puzzle_five_letter)
+    puzzle_five_letter = puzzle_room_five()
+    update_diary(puzzle_five_letter, 'letters')
+    display_collected_letters(puzzle_five_letter)
     
-    # puzzle_six_letter = puzzle_room_six()
-    # update_diary(puzzle_six_letter, 'letters')
-    # display_collected_letters(puzzle_six_letter)
+    puzzle_six_letter = puzzle_room_six()
+    update_diary(puzzle_six_letter, 'letters')
+    display_collected_letters(puzzle_six_letter)
 
-    # puzzle_seven_letter = puzzle_room_seven()
-    # update_diary(puzzle_seven_letter, 'letters')
-    # display_collected_letters(puzzle_seven_letter)
+    puzzle_seven_letter = puzzle_room_seven()
+    update_diary(puzzle_seven_letter, 'letters')
+    display_collected_letters(puzzle_seven_letter)
     
     final_letter = treasure_room()
     update_diary(final_letter, 'letters')
