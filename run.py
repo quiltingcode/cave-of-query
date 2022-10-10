@@ -32,7 +32,7 @@ def game_intro():
         if explorer_name.strip() != '':
             print(f"Welcome to the Cave of Query, {explorer_name.capitalize()}.")
             print("In his last will and testament, Indiana Jones left")
-            print("you his famous 'quest' diary and a strange key. Now it is down to")
+            print("you his famous quest diary and a strange key. Now it is down to")
             print(f"you, {explorer_name.capitalize()}, to complete his final quest, the Caves of Query.\n")
             break
         else:
@@ -393,7 +393,10 @@ def display_collected_letters(letter):
         column = letters_worksheet.col_values(ind)
         letters.append(column)
     print(f"Letters Collected: ")
-    pprint(letters_worksheet.get_all_values())
+
+    for new_lst in letters: 
+        no_brackets_lst=(','.join(new_lst))
+        print(no_brackets_lst)
 
 
 def game_over():
