@@ -126,7 +126,7 @@ def puzzle_room_two():
     print("Indiana's diary which translated ancient alphabets.")
     print("Let me find the right page....")
 
-    diary_code = SHEET.worksheet('diary')
+    diary_code = SHEET.worksheet('alphabet')
     modern_alphabet = list(diary_code.col_values(1))
     ancient_alphabet = list(diary_code.col_values(2))
     decoder = {modern_alphabet[i]: ancient_alphabet[i] for i in range(len(modern_alphabet))}
@@ -257,6 +257,13 @@ def puzzle_room_six():
     """
     print("You move through to the sixth puzzle room.\n")
     print("Decode this ancient language to retrieve the next letter and move on.\n")
+    
+    morse_code = SHEET.worksheet('morse_code')
+    abc_alphabet = list(diary_code.col_values(1))
+    morse_alphabet = list(diary_code.col_values(2))
+    code_dict = {morse_alphabet[i]: abc_alphabet[i] for i in range(len(morse_alphabet))}
+    pprint(code_dict)
+    
     while True:
         print(".. - ... / .- / .-.. . .- .--. / --- ..-. / ..-. .- .. - ....\n")
         decryption = (input("Type your decryption here:\n")).lower()
@@ -284,7 +291,7 @@ def puzzle_room_seven():
     print("You move through to the seventh puzzle room.\n")
     print("Decipher this riddle to retrieve the next letter and move on.\n")
     while True:
-        print("Can you name four days of the week what begin with the letter 'T'\n")
+        print("Can you name four days of the week that begin with the letter 'T'\n")
         days = (input("Type the fours days here:\n"))
         if days == ("thursday, today, tomorrow, tuesday"):
             print(f"You've got it.\n")
