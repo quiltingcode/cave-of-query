@@ -2,6 +2,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 from pprint import pprint
 import os
+from art import *
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -22,10 +23,12 @@ def game_intro():
     name to store in the explorers google sheet page.
     """
     os.system("clear")
-    print("Welcome intrepid explorer to the Cave of Query\n")
+    tprint("The Cave")
+    tprint("of Query")
+
 
     while True:
-        explorer_name = input("What is your name? \n")
+        explorer_name = input("What is your name intrepid explorer? \n")
         if explorer_name.strip() != '':
             print(f"Welcome to the Cave of Query, {explorer_name.capitalize()}.")
             print("In his last will and testament, Indiana Jones left")
@@ -356,7 +359,7 @@ def win_treasure():
     print("It looks like it contains some sort of treasure map\n")
     print("Have you had enough treasure hunting for one lifetime")
     print(", or are you ready for more?")
-    reset_game()
+    
 
 def clear(): 
     """
@@ -422,29 +425,29 @@ def main():
     explorer_data = game_intro()
     update_diary(explorer_data, 'explorers')
 
-    # puzzle_one_letter = puzzle_room_one()
-    # update_diary(puzzle_one_letter, 'letters')
-    # display_collected_letters(puzzle_one_letter)
+    puzzle_one_letter = puzzle_room_one()
+    update_diary(puzzle_one_letter, 'letters')
+    display_collected_letters(puzzle_one_letter)
 
-    # puzzle_two_letter = puzzle_room_two()
-    # update_diary(puzzle_two_letter, 'letters')
-    # display_collected_letters(puzzle_two_letter)
+    puzzle_two_letter = puzzle_room_two()
+    update_diary(puzzle_two_letter, 'letters')
+    display_collected_letters(puzzle_two_letter)
 
-    # puzzle_three_letter = puzzle_room_three()
-    # update_diary(puzzle_three_letter, 'letters')
-    # display_collected_letters(puzzle_three_letter)
+    puzzle_three_letter = puzzle_room_three()
+    update_diary(puzzle_three_letter, 'letters')
+    display_collected_letters(puzzle_three_letter)
 
-    # puzzle_four_letter = puzzle_room_four()
-    # update_diary(puzzle_four_letter, 'letters')
-    # display_collected_letters(puzzle_four_letter)
+    puzzle_four_letter = puzzle_room_four()
+    update_diary(puzzle_four_letter, 'letters')
+    display_collected_letters(puzzle_four_letter)
 
-    # puzzle_five_letter = puzzle_room_five()
-    # update_diary(puzzle_five_letter, 'letters')
-    # display_collected_letters(puzzle_five_letter)
+    puzzle_five_letter = puzzle_room_five()
+    update_diary(puzzle_five_letter, 'letters')
+    display_collected_letters(puzzle_five_letter)
     
-    # puzzle_six_letter = puzzle_room_six()
-    # update_diary(puzzle_six_letter, 'letters')
-    # display_collected_letters(puzzle_six_letter)
+    puzzle_six_letter = puzzle_room_six()
+    update_diary(puzzle_six_letter, 'letters')
+    display_collected_letters(puzzle_six_letter)
 
     puzzle_seven_letter = puzzle_room_seven()
     update_diary(puzzle_seven_letter, 'letters')
