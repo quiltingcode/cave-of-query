@@ -3,6 +3,7 @@ from google.oauth2.service_account import Credentials
 from pprint import pprint
 import os
 from art import *
+from tabulate import tabulate
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -23,8 +24,8 @@ def game_intro():
     name to store in the explorers google sheet page.
     """
     os.system("clear")
-    tprint("The Cave", font = "epic")
-    tprint("of Query", font = "epic")
+    tprint("  The  Cave", font = "epic")
+    tprint("  of  Query", font = "epic")
 
 
     while True:
@@ -32,8 +33,9 @@ def game_intro():
         if explorer_name.strip() != '':
             print(f"Welcome to the Cave of Query, {explorer_name.capitalize()}.")
             print("In his last will and testament, Indiana Jones left")
-            print("you his famous quest diary and a strange key. Now it is down to")
-            print(f"you, {explorer_name.capitalize()}, to complete his final quest, the Caves of Query.\n")
+            print("you his famous quest diary and a strange key.")
+            print(f"Now it is down to you, {explorer_name.capitalize()}, to")
+            print("complete his final quest, in the Caves of Query.\n")
             break
         else:
             print(f"That's not a name I know./n")
@@ -118,7 +120,8 @@ def puzzle_room_two():
     solve the substitution cypher to move on.
     """
     print("You move through to the second puzzle room.\n")
-    print("Decode this ancient language on the wall to retrieve the next letter and move on.\n")
+    print("Decode this ancient language on the wall to retrieve the next")
+    print("letter and move on.\n")
     
     print("OAFO EJZSCMW VC F RDWJDR\n")
 
@@ -130,13 +133,16 @@ def puzzle_room_two():
     modern_alphabet = list(diary_code.col_values(1))
     ancient_alphabet = list(diary_code.col_values(2))
     decoder = {modern_alphabet[i]: ancient_alphabet[i] for i in range(len(modern_alphabet))}
-    pprint(decoder)
+    
+    for i in range(13):
+        printable = f'{chr(65+i)} : {decoder[chr(65 + i)]}     ||     {chr(78 + i)} : {decoder[chr(78 + i)]}'
+        print(printable)
     
     while True:
         
         decryption = (input("Type your decryption here:\n")).lower()
         if decryption == ("that belongs in a museum"):
-            print(f"You've got it.\n")
+            print("You've got it.\n")
             break
         else:
             print("Nothing happens. Try again.\n")
@@ -268,12 +274,19 @@ def puzzle_room_six():
     abc_alphabet = list(morse_code.col_values(1))
     morse_alphabet = list(morse_code.col_values(2))
     code_dict = {abc_alphabet[i]: morse_alphabet[i] for i in range(len(abc_alphabet))}
-    pprint(code_dict)
+    
+    for i in range(13):
+        printable = f'{chr(65+i)} : {code_dict[chr(65 + i)]}     ||     {chr(78 + i)} : {code_dict[chr(78 + i)]}'
+        print(printable)
+    
+    
+    
+    # pprint(code_dict)
     
     while True:
         decryption = (input("Type your decryption here:\n")).lower()
         if decryption == ("its a leap of faith"):
-            print(f"You've got it. The door unlocks.\n")
+            print("You've got it. The door unlocks.\n")
             break
         else:
             print("Nothing happens. Try again.\n")
@@ -344,7 +357,7 @@ def treasure_chest():
     collected and the key to open the chest
     """
     print("A treasure chest rises out of the floor but it won't open.")
-    print("Embedded in the lid is a crpytex, with seven alphabet dials")
+    print("Embedded in the lid is a crpytex, with eight alphabet dials")
     
     while True:
         cryptex = str((input("Enter eight letters here: \n")).upper())
@@ -366,6 +379,7 @@ def treasure_chest():
     while True:
         replay = (input("Type Yes (Y) or No (N): \n"))
         if replay == ("Y"):
+            print("Good luck on your next adventure. Goodbye")
             clear()
             reset_game()
             main()
