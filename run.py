@@ -23,10 +23,8 @@ def game_intro():
     name to store in the explorers google sheet page.
     """
     os.system("clear")
-    tprint("  The  Cave", font = "epic")
-    tprint("  of  Query", font = "epic")
-
-
+    tprint("  The  Cave", font="epic")
+    tprint("  of  Query", font="epic")
     while True:
         explorer_name = input("What is your name intrepid explorer? \n")
         if explorer_name.strip() != '':
@@ -37,7 +35,7 @@ def game_intro():
             print("complete his final quest, in the Caves of Query.\n")
             break
         else:
-            print(f"That's not a name I know./n")
+            print("That's not a name I know./n")
             continue
 
     return explorer_name
@@ -62,50 +60,49 @@ def puzzle_room_one():
     print("You enter a large chamber with a locked door ahead.")
     print("Solve the puzzles etched on the table to unlock the door.\n")
     while True:
-        print(f"3(0.5x + 12) = 87")
+        print("3(0.5x + 12) = 87")
 
         answer_one = int(input("What is the value of X? \n"))
         if answer_one == int(34):
-            print(f"You've got it.\n")
+            print("You've got it.\n")
             break
         else:
             print("That doesn't seem right to me. Try again.\n")
             continue
 
     while True:
-        print(f"4x - 12 = 192")
+        print("4x - 12 = 192")
         
         answer_two = int(input("What is the value of X? \n"))
         if answer_two == int(51):
-            print(f"You've got it.\n")
+            print("You've got it.\n")
             break
         else:
             print("That doesn't seem right to me. Try again.\n")
             continue
 
     while True:
-        print(f"85/x + 5x - 19 = 71")
+        print("85/x + 5x - 19 = 71")
         
         answer_three = int(input("What is the value of X? \n"))
         if answer_three == int(17):
-            print(f"You've got it.\n")
+            print("You've got it.\n")
             break
         else:
             print("That doesn't seem right to me. Try again.\n")
             continue
     print("All three puzzles complete but how do I open the door?\n")
-    print("On closer inspection, the door is locked with a 6 digit combination code...") 
+    print("On closer inspection, the door is locked with a 6 digit combination" 
+          + "code...") 
     while True:
         combination_lock = int(input("Enter the 6 digit combination: \n"))
         if combination_lock == int(345117):
-            print(f"The door opens, and on you go...\n")
+            print("The door opens, and on you go...\n")
             break
         else:
             print("The door doesn't budge. Try again.\n")
             continue
-    
     first_letter = 'H'
-    
     print(f"As you pass through, you notice a big {first_letter} on the door.")
     print("But what does it mean?")
     print("Best to write it down in the diary just in case.\n")
@@ -121,24 +118,19 @@ def puzzle_room_two():
     print("You move through to the second puzzle room.\n")
     print("Decode this ancient language on the wall to retrieve the next")
     print("letter and move on.\n")
-    
     print("OAFO EJZSCMW VC F RDWJDR\n")
-
     print("Wait a minute, I think I remember seeing a page in Granpy")
     print("Indiana's diary which translated ancient alphabets.")
     print("Let me find the right page....")
-
     diary_code = SHEET.worksheet('alphabet')
     modern_alphabet = list(diary_code.col_values(1))
     ancient_alphabet = list(diary_code.col_values(2))
-    decoder = {modern_alphabet[i]: ancient_alphabet[i] for i in range(len(modern_alphabet))}
-    
+    decoder = {modern_alphabet[i]: ancient_alphabet[i] for i in 
+               + range(len(modern_alphabet))}
     for i in range(13):
         printable = f'{chr(65+i)} : {decoder[chr(65 + i)]}     ||     {chr(78 + i)} : {decoder[chr(78 + i)]}'
         print(printable)
-    
     while True:
-        
         decryption = (input("Type your decryption here:\n")).lower()
         if decryption == ("that belongs in a museum"):
             print("You've got it.\n")
@@ -148,7 +140,6 @@ def puzzle_room_two():
             continue
     second_letter = 'I'
     print("You go through a huge door marked with an 'I'.\n")
-    
     return second_letter
 
 
@@ -158,12 +149,13 @@ def puzzle_room_three():
     complete the sequence to move on.
     """
     print("You move through to the third puzzle room.\n")
-    print("Complete this familiar sequence to collect the next letter and move on.\n")
+    print("Complete this familiar sequence to collect the next" 
+          + "letter and move on.\n")
     while True:
         print("1 1 2 3 5 8 13 21 34 55 __\n")
         next_num = int(input("Type the next number in the sequence here:\n"))
         if next_num == int(89):
-            print(f"You've got it.\n")
+            print("You've got it.\n")
             break
         else:
             print("That doesn't seem right to me. Try again.\n")
@@ -180,29 +172,26 @@ def puzzle_room_four():
     """
     print("You move through to the fourth puzzle room.\n")
     print("You enter a library with books shelves covering all the walls.")
-    print("One book contains a button to open the hidden doorway, but which one...")
+    print("One book contains a button to open the hidden"
+          + "doorway, but which one...")
     print("Which book would Grandpa Indiana have chosen?\n")
     print("You start scanning the titles...\n")
-
     library = SHEET.worksheet('library_books')
     books = []
     for ind in range(1,2):
         column = library.col_values(ind)
         books.append(column)
-
     pprint(books)
-
     while True:
         book = (input("Type the correct book title here:\n")).lower()
         if book == ("fortune and glory kid"):
-            print(f"Of course! The bookshelf slides away and a hidden tunnel is revealed.\n")
+            print("Of course! The bookshelf slides away and a hidden tunnel is revealed.\n")
             break
         else:
             print("Nothing happens. Try again.\n")
             continue
     fourth_letter = 'O'
-    print(f"You go through the tunnel and notice 'O's all over the walls.\n")
-    
+    print("You go through the tunnel and notice 'O's all over the walls.\n")
     return fourth_letter
 
 
@@ -218,17 +207,14 @@ def puzzle_room_five():
     print("Rearrange the tiles to reveal a word and unlock the door.\n")
     print("The letters you can see are:\n")
     print(" P I V S J T C A R A ")
-
     while True:
         anagram = input("Type the correct word here: \n")
         anagram_answer = str(anagram)
         if validate_data(anagram_answer):
-            print(f"That's the one! The door clicks open.\n")
+            print("That's the one! The door clicks open.\n")
             break
-
     fifth_letter = 'P'
     print("You go through the next door marked with an 'P'.\n")
-    
     return fifth_letter
 
 
@@ -238,7 +224,6 @@ def validate_data(values):
     Raises ValueError if string values are not entered,
     or if there aren't exactly 10 characters entered.
     """
-    
     try:
         [str(value) for value in values]
         if len(values) != 10:
@@ -246,12 +231,10 @@ def validate_data(values):
                 f"Exactly 10 letters are required, you provided {len(values)}"
             )
     except ValueError as e:
-        print(f"That won't work: {e}, please try again.\n")
-        
+        print(f"That won't work: {e}, please try again.\n")    
     else:
         if str(values.lower()) == "javascript":
             return True
-
     return False
 
 
@@ -261,23 +244,19 @@ def puzzle_room_six():
     solve the morse code word to move on.
     """
     print("You move through to the sixth puzzle room.\n")
-    print("Decode this ancient language to retrieve the next letter and move on.\n")
-    
+    print("Decode this ancient language to retrieve the next letter"
+          + "and move on.\n")
     print(".. - ... / .- / .-.. . .- .--. / --- ..-. / ..-. .- .. - ....\n")
-    
     print("Wait a minute, this looks like old Morse Code")
     print("I think I saw something in the diary like this....")
-    print("Let me find the right page....")
-    
+    print("Let me find the right page....")  
     morse_code = SHEET.worksheet('morse_code')
     abc_alphabet = list(morse_code.col_values(1))
     morse_alphabet = list(morse_code.col_values(2))
     code_dict = {abc_alphabet[i]: morse_alphabet[i] for i in range(len(abc_alphabet))}
-    
     for i in range(13):
         printable = f'{chr(65+i)} : {code_dict[chr(65 + i)]}     ||     {chr(78 + i)} : {code_dict[chr(78 + i)]}'
         print(printable)
-    
     while True:
         decryption = (input("Type your decryption here:\n")).lower()
         if decryption == ("its a leap of faith"):
@@ -288,7 +267,6 @@ def puzzle_room_six():
             continue
     sixth_letter = 'N'
     print("You go through the next door marked with a 'N'.\n")
-    
     return sixth_letter
 
 
@@ -313,8 +291,8 @@ def puzzle_room_seven():
             print("That doesn't seem right to me. Try again.\n")
             continue
     seventh_letter = 'T'
-    print("You go through the next door marked with a 'T' and head off down a long tunnel.\n")
-    
+    print("You go through the next door marked with a 'T' and"
+          + "head off down a long tunnel.\n")
     return seventh_letter
 
 
@@ -323,7 +301,8 @@ def treasure_room():
     Explorer reaches the treasure room and has to solve a puzzle
     to access the treasure chest
     """
-    print("The tunnel widens and opens out into a great chamber with golden disks set into the floor.")
+    print("The tunnel widens and opens out into a great chamber"
+          + "with golden disks set into the floor.")
     print("Each disk has a letter engraved on it.")
     print("On the wall ahead, you can see another puzzle: \n")
     print("1 1 1 1 = R")
@@ -336,11 +315,9 @@ def treasure_room():
         if tile.capitalize() == ("Y"):
             print(f"you stand on the golden disk with a {tile} on it.\n")
             print("The disk sinks deeper into the floor and you hear a rumble.\n")
-            break
-            
+            break     
         else:
             game_over()
-
     treasure_letter = tile
     return treasure_letter
     display_collected_letters(treasure_letter)
@@ -353,7 +330,6 @@ def treasure_chest():
     """
     print("A treasure chest rises out of the floor but it won't open.")
     print("Embedded in the lid is a crpytex, with eight alphabet dials")
-    
     while True:
         cryptex = str((input("Enter eight letters here: \n")).upper())
         if cryptex == str("PYTHONIC"):
@@ -363,14 +339,12 @@ def treasure_chest():
         else:
             print("Nothing happens. Are the letters in the right order? \n")
             continue
-
     print("You get out Grandpa Indy's old key and it's a perfect fit.")
     print("The treasure chest opens and you look inside...")
     print("Jewels of all shapes and sizes surround an old book.")
     print("It looks like it contains some sort of treasure map\n")
     print("Have you had enough treasure hunting for one lifetime")
     print(", or are you ready for more?")
-
     while True:
         replay = (input("Type Yes (Y) or No (N): \n"))
         if replay == ("Y"):
@@ -389,7 +363,7 @@ def treasure_chest():
             continue
 
 
-def clear(): 
+def clear():
     """
     Clears all the previous text output in the user terminal 
     """
@@ -406,10 +380,9 @@ def display_collected_letters(letter):
     for ind in range(1, 2):
         column = letters_worksheet.col_values(ind)
         letters.append(column)
-    print(f"Letters Collected: ")
-
+    print("Letters Collected: ")
     for new_lst in letters: 
-        no_brackets_lst=(','.join(new_lst))
+        no_brackets_lst = (','.join(new_lst))
         print(no_brackets_lst)
 
 
@@ -420,7 +393,7 @@ def game_over():
     User is asked if they would like to play again or not.
     """
     clear()
-    print(f"you stand on the golden disk, and it falls away down a black hole.\n")
+    print("you stand on the golden disk, and it falls away down a black hole.\n")
     print("You died a tragic death.")
     print("Would you like to play again?\n")
     while True:
@@ -453,10 +426,11 @@ def clear_collected_letters():
     """
     Whenever a new game is started, all the data in 
     the worksheet containing the collected puzzle letters
-    is deleted. 
+    is deleted.
     """
     clear_worksheet = SHEET.worksheet('letters')
     clear_worksheet.clear()
+
 
 def main():
     """
