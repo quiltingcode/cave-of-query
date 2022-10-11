@@ -3,7 +3,6 @@ from google.oauth2.service_account import Credentials
 from pprint import pprint
 import os
 from art import *
-from tabulate import tabulate
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -279,10 +278,6 @@ def puzzle_room_six():
         printable = f'{chr(65+i)} : {code_dict[chr(65 + i)]}     ||     {chr(78 + i)} : {code_dict[chr(78 + i)]}'
         print(printable)
     
-    
-    
-    # pprint(code_dict)
-    
     while True:
         decryption = (input("Type your decryption here:\n")).lower()
         if decryption == ("its a leap of faith"):
@@ -312,7 +307,7 @@ def puzzle_room_seven():
         print("Can you name four days of the week that begin with the letter 'T'\n")
         days = (input("Type the fours days here:\n"))
         if days == ("thursday, today, tomorrow, tuesday"):
-            print(f"You've got it.\n")
+            print("You've got it.\n")
             break
         else:
             print("That doesn't seem right to me. Try again.\n")
