@@ -28,7 +28,8 @@ def game_intro():
     while True:
         explorer_name = input("What is your name intrepid explorer? \n")
         if explorer_name.strip() != '':
-            print(f"Welcome to the Cave of Query, {explorer_name.capitalize()}.")
+            print(f"Welcome to the Cave of Query,"
+                  + "{explorer_name.capitalize()}.")
             print("In his last will and testament, Indiana Jones left")
             print("you his famous quest diary and a strange key.")
             print(f"Now it is down to you, {explorer_name.capitalize()}, to")
@@ -43,10 +44,12 @@ def game_intro():
 
 def update_diary(data, worksheet):
     """
-    Update worksheet specified in the parameter, add a new row with the 
+    Update worksheet specified in the parameter, add a new row with the
     data provided.
-    Update explorer worksheet to record players, and use their name throughout the game
-    Update the letters worksheet after each puzzle when a letter clue is collected.
+    Update explorer worksheet to record players, and use their name
+    throughout the game.
+    Update the letters worksheet after each puzzle when a letter clue
+    is collected.
     """
     diary_worksheet = SHEET.worksheet(worksheet)
     diary_worksheet.append_row([data])
@@ -61,7 +64,6 @@ def puzzle_room_one():
     print("Solve the puzzles etched on the table to unlock the door.\n")
     while True:
         print("3(0.5x + 12) = 87")
-
         answer_one = int(input("What is the value of X? \n"))
         if answer_one == int(34):
             print("You've got it.\n")
@@ -69,10 +71,8 @@ def puzzle_room_one():
         else:
             print("That doesn't seem right to me. Try again.\n")
             continue
-
     while True:
-        print("4x - 12 = 192")
-        
+        print("4x - 12 = 192") 
         answer_two = int(input("What is the value of X? \n"))
         if answer_two == int(51):
             print("You've got it.\n")
@@ -80,10 +80,8 @@ def puzzle_room_one():
         else:
             print("That doesn't seem right to me. Try again.\n")
             continue
-
     while True:
-        print("85/x + 5x - 19 = 71")
-        
+        print("85/x + 5x - 19 = 71")   
         answer_three = int(input("What is the value of X? \n"))
         if answer_three == int(17):
             print("You've got it.\n")
@@ -106,7 +104,6 @@ def puzzle_room_one():
     print(f"As you pass through, you notice a big {first_letter} on the door.")
     print("But what does it mean?")
     print("Best to write it down in the diary just in case.\n")
-
     return first_letter
 
 
@@ -125,8 +122,7 @@ def puzzle_room_two():
     diary_code = SHEET.worksheet('alphabet')
     modern_alphabet = list(diary_code.col_values(1))
     ancient_alphabet = list(diary_code.col_values(2))
-    decoder = {modern_alphabet[i]: ancient_alphabet[i] for i in 
-               + range(len(modern_alphabet))}
+    decoder = {modern_alphabet[i]: ancient_alphabet[i] for i in + range(len(modern_alphabet))}
     for i in range(13):
         printable = f'{chr(65+i)} : {decoder[chr(65 + i)]}     ||     {chr(78 + i)} : {decoder[chr(78 + i)]}'
         print(printable)
@@ -178,14 +174,15 @@ def puzzle_room_four():
     print("You start scanning the titles...\n")
     library = SHEET.worksheet('library_books')
     books = []
-    for ind in range(1,2):
+    for ind in range(1, 2):
         column = library.col_values(ind)
         books.append(column)
     pprint(books)
     while True:
         book = (input("Type the correct book title here:\n")).lower()
         if book == ("fortune and glory kid"):
-            print("Of course! The bookshelf slides away and a hidden tunnel is revealed.\n")
+            print("Of course! The bookshelf slides away and a hidden"
+                  + "tunnel is revealed.\n")
             break
         else:
             print("Nothing happens. Try again.\n")
@@ -249,7 +246,7 @@ def puzzle_room_six():
     print(".. - ... / .- / .-.. . .- .--. / --- ..-. / ..-. .- .. - ....\n")
     print("Wait a minute, this looks like old Morse Code")
     print("I think I saw something in the diary like this....")
-    print("Let me find the right page....")  
+    print("Let me find the right page....") 
     morse_code = SHEET.worksheet('morse_code')
     abc_alphabet = list(morse_code.col_values(1))
     morse_alphabet = list(morse_code.col_values(2))
@@ -282,7 +279,8 @@ def puzzle_room_seven():
     print("You move through to the seventh puzzle room.\n")
     print("Decipher this riddle to retrieve the next letter and move on.\n")
     while True:
-        print("Can you name four days of the week that begin with the letter 'T'\n")
+        print("Can you name four days of the week that begin with the"
+              + "letter 'T'\n")
         days = (input("Type the fours days here:\n"))
         if days == ("thursday, today, tomorrow, tuesday"):
             print("You've got it.\n")
@@ -314,8 +312,9 @@ def treasure_room():
         tile = (input("What is the missing letter? \n"))
         if tile.capitalize() == ("Y"):
             print(f"you stand on the golden disk with a {tile} on it.\n")
-            print("The disk sinks deeper into the floor and you hear a rumble.\n")
-            break     
+            print("The disk sinks deeper into the floor and you hear"
+                  + "a rumble.\n")
+            break    
         else:
             game_over()
     treasure_letter = tile
@@ -359,7 +358,8 @@ def treasure_chest():
             print("Good luck on your next adventure. Goodbye")
             break
         else:
-            print(f"I don't understand what {replay} means. Can you please repeat?\n")
+            print(f"I don't understand what {replay} means. Can you"
+                  + "please repeat?\n")
             continue
 
 
