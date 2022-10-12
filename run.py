@@ -128,11 +128,13 @@ def puzzle_room_one():
             break
         else:
             print(f"That's the wrong answer.Try again")
-
+    
+    
+    print("All three puzzles complete but how do I open the door?\n")
+    print("On closer inspection, the door is locked with a 6 digit "
+          + "combination code...")   
     while True:
-        print("All three puzzles complete but how do I open the door?\n")
-        print("On closer inspection, the door is locked with a 6 digit combination" 
-              + "code...") 
+        
         try:
             combination_lock = int(input("Enter the 6 digit combination: \n"))
         except ValueError:
@@ -142,7 +144,7 @@ def puzzle_room_one():
             print("The door opens, and on you go...\n")
             break
         else:
-            print("The door doesn't budge. What about using the"
+            print("The door doesn't budge. What about using the "
                   + "answers from the three number puzzles joined together.\n")
             continue
     first_letter = 'H'
@@ -225,14 +227,9 @@ def puzzle_room_two():
     print("Wait a minute, I think I remember seeing a page in Granpy")
     print("Indiana's diary which translated ancient alphabets.")
     print("Let me find the right page....")
-    # diary_code = SHEET.worksheet('alphabet')
-    # modern_alphabet = list(diary_code.col_values(1))
-    # ancient_alphabet = list(diary_code.col_values(2))
-    # decoder = {modern_alphabet[i]: ancient_alphabet[i] for i in range(len(modern_alphabet))}
     for i in range(13):
-        printable = f'{chr(65+i)} : {puzzle_two_dict[chr(65 + i)]}   ||   {chr(78 + i)} : {puzzle_two_dict[chr(78 + i)]}'
-        print(printable)
-    
+        decoder = f'{chr(65+i)} : {puzzle_two_dict[chr(65 + i)]}   ||   {chr(78 + i)} : {puzzle_two_dict[chr(78 + i)]}'
+        print(decoder)
     while True:
         decryption = (input("Type your decryption here:\n")).lower()
         if decryption == ("that belongs in a museum"):
@@ -572,12 +569,12 @@ def display_collected_letters(letter):
     collected and displayed as the game goes along.
     """
     letters_worksheet = SHEET.worksheet('letters')
-    letters = []
-    for ind in range(1, 2):
-        column = letters_worksheet.col_values(ind)
-        letters.append(column)
+    letters_collected = []
+    # for ind in range(1, 2):
+    #     column = letters_worksheet.col_values(ind)
+    letters_collected.append(letter)
     print("Letters Collected: ")
-    for new_lst in letters: 
+    for new_lst in letters_collected: 
         no_brackets_lst = (','.join(new_lst))
         print(no_brackets_lst)
 
@@ -620,7 +617,7 @@ def reset_game():
 
 def clear_collected_letters():
     """
-    Whenever a new game is started, all the data in 
+    Whenever a new game is started, all the data in
     the worksheet containing the collected puzzle letters
     is deleted.
     """
@@ -637,38 +634,30 @@ def main():
 
     clear_collected_letters()
 
-    # puzzle_one_letter = puzzle_room_one()
-    # update_diary(puzzle_one_letter, 'letters')
-    # display_collected_letters(puzzle_one_letter)
-
-    # puzzle_two_letter = puzzle_room_two()
-    # update_diary(puzzle_two_letter, 'letters')
-    # display_collected_letters(puzzle_two_letter)
-
-    # puzzle_three_letter = puzzle_room_three()
-    # update_diary(puzzle_three_letter, 'letters')
-    # display_collected_letters(puzzle_three_letter)
-
-    # puzzle_four_letter = puzzle_room_four()
-    # update_diary(puzzle_four_letter, 'letters')
-    # display_collected_letters(puzzle_four_letter)
-
-    # puzzle_five_letter = puzzle_room_five()
-    # update_diary(puzzle_five_letter, 'letters')
-    # display_collected_letters(puzzle_five_letter)
-    
+    puzzle_one_letter = puzzle_room_one()
+    update_diary(puzzle_one_letter, 'letters')
+    display_collected_letters(puzzle_one_letter)
+    puzzle_two_letter = puzzle_room_two()
+    update_diary(puzzle_two_letter, 'letters')
+    display_collected_letters(puzzle_two_letter)
+    puzzle_three_letter = puzzle_room_three()
+    update_diary(puzzle_three_letter, 'letters')
+    display_collected_letters(puzzle_three_letter)
+    puzzle_four_letter = puzzle_room_four()
+    update_diary(puzzle_four_letter, 'letters')
+    display_collected_letters(puzzle_four_letter)
+    puzzle_five_letter = puzzle_room_five()
+    update_diary(puzzle_five_letter, 'letters')
     puzzle_six_letter = puzzle_room_six()
     update_diary(puzzle_six_letter, 'letters')
     display_collected_letters(puzzle_six_letter)
-
     puzzle_seven_letter = puzzle_room_seven()
     update_diary(puzzle_seven_letter, 'letters')
     display_collected_letters(puzzle_seven_letter)
-    
     final_letter = treasure_room()
     update_diary(final_letter, 'letters')
     display_collected_letters(final_letter)
     treasure_chest()
-  
+
 
 main()
