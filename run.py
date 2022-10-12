@@ -293,11 +293,47 @@ def puzzle_room_three():
 def puzzle_room_four():
     """
     Explorer enters fourth puzzle room and has to
-    choose the correct library book to move on.
+    type the correct library book title to move on.
+    List of books printed to user.
+    Validation against numbers, special characters, and blank
+    entries
     """
+    book_list = [
+                'The Hobbit',
+                'Don Quixote',
+                'Treasure Island',
+                'Moby Dick',
+                'The Castle',
+                "Gulliver's Travels",
+                'Great Expectations',
+                "The Pilgrim's Process",
+                'One Hundred Years of Solitude',
+                'The Count of Monte Cristo',
+                'The Scarlet Letter',
+                'A Tale of Two Cities',
+                'Brave New World',
+                'Fortune and Glory Kid',
+                'War and Peace',
+                'The Secret Garden',
+                'The Last of the Mohicans',
+                'The Call of the Wild',
+                'Ulysses',
+                'The Trial',
+                'The Stranger',
+                'A Farewell to Arms',
+                'The Jungle',
+                'Persuasion',
+                'Utopia',
+                'A Wrinkle in Time',
+                'On the Road',
+                'The Good Earth',
+                'The Alchemist',
+                'The Last Battle',
+                ]
+    hidden_button_book = 'Fortune and Glory Kid'
     print("You move through to the fourth puzzle room.\n")
     print("You enter a library with books shelves covering all the walls.")
-    print("One book contains a button to open the hidden"
+    print("One book contains a button to open the hidden "
           + "doorway, but which one...")
     print("Which book would Grandpa Indiana have chosen?\n")
     print("You start scanning the titles...\n")
@@ -307,6 +343,8 @@ def puzzle_room_four():
         column = library.col_values(ind)
         books.append(column)
     pprint(books)
+    # for i in range(1, len(book_list), 2):
+    #     print(f'{book_list[i]}     {book_list[i+1]}')
     while True:
         book = (input("Type the correct book title here:\n")).lower()
         if book == ("fortune and glory kid"):
@@ -327,6 +365,7 @@ def puzzle_room_five():
     solve an anagram puzzle to move on. Answer inputted is passed
     through a data validation function.
     """
+    anagram_key = "javascript"
     print("You run through the tunnel and arrive at another puzzle room.\n")
     print("You see a table in front of you with broken tiles all over it.")
     print("On closer inspection the tiles have letters on them.")
@@ -335,17 +374,18 @@ def puzzle_room_five():
     print(" P I V S J T C A R A ")
     while True:
         anagram = input("Type the correct word here: \n")
-        user_guess = str(anagram)
-        answer = "javascript"     
-        if user_guess.isalpha() and user_guess.lower() == key:
-            print("That's the one! The door clicks open.\n")
-            break
-        if user_guess.isalpha() and user_guess.lower() != "museum":
+        try:
+            user_guess = str(anagram)
+        except ValueError:
+            print("Those characters aren't valid. Only use"
+                  + "a combination of the 10 letters provided")
+            continue
+        if user_guess.isalpha() and user_guess.lower() != anagram_key:
             print("Thats not right")
             continue
-        elif not answer.isalpha():
-            print("The answer must be letters not numbers or characters")
-            continue
+        if user_guess.lower() == anagram_key:
+            print("That's the one! The door clicks open.\n")
+            break
     fifth_letter = 'P'
     print("You go through the next door marked with an 'P'.\n")
     return fifth_letter
@@ -584,9 +624,9 @@ def main():
     # update_diary(puzzle_two_letter, 'letters')
     # display_collected_letters(puzzle_two_letter)
 
-    puzzle_three_letter = puzzle_room_three()
-    update_diary(puzzle_three_letter, 'letters')
-    display_collected_letters(puzzle_three_letter)
+    # puzzle_three_letter = puzzle_room_three()
+    # update_diary(puzzle_three_letter, 'letters')
+    # display_collected_letters(puzzle_three_letter)
 
     puzzle_four_letter = puzzle_room_four()
     update_diary(puzzle_four_letter, 'letters')
