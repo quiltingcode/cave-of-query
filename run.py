@@ -78,6 +78,10 @@ def puzzle_room_one():
     """
     Explorer enters first puzzle room and has to
     solve an algebraic equation to move on.
+    Validation on user input:
+    Check input is not a float
+    Check input is not an alpha or special character
+    Check input is not blank
     """
     key_one = 34
     key_two = 51
@@ -183,6 +187,34 @@ def puzzle_room_two():
     Explorer enters second puzzle room and has to
     solve the substitution cypher to move on.
     """
+    puzzle_two_dict = {
+                        'A': 'F',
+                        'B': 'E',
+                        'C': 'N',
+                        'D': 'U',
+                        'E': 'J',
+                        'F': 'Y',
+                        'G': 'M',
+                        'H': 'A',
+                        'I': 'V',
+                        'J': 'P',
+                        'K': 'H',
+                        'L': 'Z',
+                        'M': 'R',
+                        'N': 'C',
+                        'O': 'S',
+                        'P': 'K',
+                        'Q': 'G',
+                        'R': 'T',
+                        'S': 'W',
+                        'T': 'O',
+                        'U': 'D',
+                        'V': 'X',
+                        'W': 'I',
+                        'X': 'B',
+                        'Y': 'L',
+                        'Z': 'Q'
+    }
     print("You move through to the second puzzle room.\n")
     print("Decode this ancient language on the wall to retrieve the next")
     print("letter and move on.\n")
@@ -190,13 +222,12 @@ def puzzle_room_two():
     print("Wait a minute, I think I remember seeing a page in Granpy")
     print("Indiana's diary which translated ancient alphabets.")
     print("Let me find the right page....")
-    diary_code = SHEET.worksheet('alphabet')
-    modern_alphabet = list(diary_code.col_values(1))
-    ancient_alphabet = list(diary_code.col_values(2))
-    decoder = {modern_alphabet[i]: ancient_alphabet[i] for i in range(len(modern_alphabet))}
-    
+    # diary_code = SHEET.worksheet('alphabet')
+    # modern_alphabet = list(diary_code.col_values(1))
+    # ancient_alphabet = list(diary_code.col_values(2))
+    # decoder = {modern_alphabet[i]: ancient_alphabet[i] for i in range(len(modern_alphabet))}
     for i in range(13):
-        printable = f'{chr(65+i)} : {decoder[chr(65 + i)]}   ||   {chr(78 + i)} : {decoder[chr(78 + i)]}'
+        printable = f'{chr(65+i)} : {puzzle_two_dict[chr(65 + i)]}   ||   {chr(78 + i)} : {puzzle_two_dict[chr(78 + i)]}'
         print(printable)
     
     while True:
@@ -205,7 +236,8 @@ def puzzle_room_two():
             print("You've got it.\n")
             break
         else:
-            print("Nothing happens. Try again.\n")
+            print("Nothing happens. Use the ancient dictionary decoder"
+                  + "table in your diary to help decipher the letters\n")
             continue
     second_letter = 'I'
     print("You go through a huge door marked with an 'I'.\n")
@@ -532,21 +564,21 @@ def main():
 
     clear_collected_letters()
 
-    puzzle_one_letter = puzzle_room_one()
-    update_diary(puzzle_one_letter, 'letters')
-    display_collected_letters(puzzle_one_letter)
+    # puzzle_one_letter = puzzle_room_one()
+    # update_diary(puzzle_one_letter, 'letters')
+    # display_collected_letters(puzzle_one_letter)
 
-    # puzzle_two_letter = puzzle_room_two()
-    # update_diary(puzzle_two_letter, 'letters')
-    # display_collected_letters(puzzle_two_letter)
+    puzzle_two_letter = puzzle_room_two()
+    update_diary(puzzle_two_letter, 'letters')
+    display_collected_letters(puzzle_two_letter)
 
-    # puzzle_three_letter = puzzle_room_three()
-    # update_diary(puzzle_three_letter, 'letters')
-    # display_collected_letters(puzzle_three_letter)
+    puzzle_three_letter = puzzle_room_three()
+    update_diary(puzzle_three_letter, 'letters')
+    display_collected_letters(puzzle_three_letter)
 
-    # puzzle_four_letter = puzzle_room_four()
-    # update_diary(puzzle_four_letter, 'letters')
-    # display_collected_letters(puzzle_four_letter)
+    puzzle_four_letter = puzzle_room_four()
+    update_diary(puzzle_four_letter, 'letters')
+    display_collected_letters(puzzle_four_letter)
 
     puzzle_five_letter = puzzle_room_five()
     update_diary(puzzle_five_letter, 'letters')
