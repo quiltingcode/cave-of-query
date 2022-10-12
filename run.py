@@ -16,6 +16,26 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('indiana-diary')
 
 
+class Error(Exception):
+    """This is base class for other exceptions"""
+    pass
+
+
+class NumbersOnlyError(Error):
+    """Exception due to Value is too small"""
+    pass
+
+
+class WholeNumbersOnlyError(Error):
+    """Exception due to Value is too small"""
+    pass
+
+
+class WrongAnswerError(Error):
+    """Exception due to Value is too small"""
+    pass
+
+
 def game_intro():
     """
     Introduction to the game, giving the user a brief
@@ -27,9 +47,8 @@ def game_intro():
     tprint("  of  Query", font="epic")
     while True:
         explorer_name = input("What is your name intrepid explorer? \n")
-        if explorer_name.strip() != '':
-            print(f"Welcome to the Cave of Query,"
-                  + "{explorer_name.capitalize()}.")
+        if explorer_name.isalpha():
+            print(f"Welcome to the Cave of Query, {explorer_name.capitalize()}.")
             print("In his last will and testament, Indiana Jones left")
             print("you his famous quest diary and a strange key.")
             print(f"Now it is down to you, {explorer_name.capitalize()}, to")
@@ -60,17 +79,22 @@ def puzzle_room_one():
     Explorer enters first puzzle room and has to
     solve an algebraic equation to move on.
     """
+    key_one = 34
+    key_two = 51
+    key_three = 17
     print("You enter a large chamber with a locked door ahead.")
     print("Solve the puzzles etched on the table to unlock the door.\n")
     while True:
         print("3(0.5x + 12) = 87")
-        answer_one = int(input("What is the value of X? \n"))
-        if answer_one == int(34):
-            print("You've got it.\n")
-            break
-        else:
-            print("That doesn't seem right to me. Try again.\n")
+        try:
+            user_answer_one = int(input("What is the value of X? \n"))
+            validate_whole_number(key_one, user_answer_one)
             continue
+        except ValueError:
+            print(f'{user_answer_one} is not a number')
+            continue
+        else:
+            print("You've got it!")
     while True:
         print("4x - 12 = 192") 
         answer_two = int(input("What is the value of X? \n"))
@@ -97,14 +121,47 @@ def puzzle_room_one():
         if combination_lock == int(345117):
             print("The door opens, and on you go...\n")
             break
+        elif combination_lock == isalpha():
+            print("Only numbers needed for this answer")
         else:
-            print("The door doesn't budge. Try again.\n")
+            print("The door doesn't budge. What about using the"
+                  + "answers from the three number puzzles put together.\n")
             continue
     first_letter = 'H'
     print(f"As you pass through, you notice a big {first_letter} on the door.")
     print("But what does it mean?")
     print("Best to write it down in the diary just in case.\n")
     return first_letter
+
+
+def validate_whole_number(answer, input):
+    """
+    Validation on user input
+    Check input is not a float
+    Check input is not an alpha or special character
+    Check input is not blank
+    """
+    try:  
+        if type(input) != int:
+            raise WholeNumbersOnlyError(
+                f"Whole numbers required. You wrote {input}"
+            )
+        elif type(input) == int and input != 34:
+            raise WrongAnswerError(
+                f"But it is an integer."
+            )
+        elif type(input) == int and input == 34:
+            print("correct") 
+            return True
+    except NumbersOnlyError as e:
+        print(f"Invalid data: {e}, try again\n")
+        return False
+    except WholeNumbersOnlyError as e:
+        print(f"Invalid data: {e}, try again\n")
+        return False
+    except WrongAnswerError as e:
+        print(f"Wrong answer: {e}, try again\n")
+        return False
 
 
 def puzzle_room_two():
@@ -122,10 +179,12 @@ def puzzle_room_two():
     diary_code = SHEET.worksheet('alphabet')
     modern_alphabet = list(diary_code.col_values(1))
     ancient_alphabet = list(diary_code.col_values(2))
-    decoder = {modern_alphabet[i]: ancient_alphabet[i] for i in + range(len(modern_alphabet))}
+    decoder = {modern_alphabet[i]: ancient_alphabet[i] for i in range(len(modern_alphabet))}
+    
     for i in range(13):
-        printable = f'{chr(65+i)} : {decoder[chr(65 + i)]}     ||     {chr(78 + i)} : {decoder[chr(78 + i)]}'
+        printable = f'{chr(65+i)} : {decoder[chr(65 + i)]}   ||   {chr(78 + i)} : {decoder[chr(78 + i)]}'
         print(printable)
+    
     while True:
         decryption = (input("Type your decryption here:\n")).lower()
         if decryption == ("that belongs in a museum"):
@@ -137,6 +196,18 @@ def puzzle_room_two():
     second_letter = 'I'
     print("You go through a huge door marked with an 'I'.\n")
     return second_letter
+
+
+def long_string_validation(alpha_string):
+    """
+    Validate if sentence entered is only alpha characters
+    """
+    if answer.isalpha() and answer.lower() == "museum":
+        print("Correct")
+    elif answer.isalpha() and answer.lower() != "museum":
+        print("Thats not right")
+    elif not answer.isalpha():
+        print("The answer must be letters not numbers or characters")
 
 
 def puzzle_room_three():
@@ -206,33 +277,39 @@ def puzzle_room_five():
     print(" P I V S J T C A R A ")
     while True:
         anagram = input("Type the correct word here: \n")
-        anagram_answer = str(anagram)
-        if validate_data(anagram_answer):
+        user_guess = str(anagram)
+        answer = "javascript"     
+        if user_guess.isalpha() and user_guess.lower() == key:
             print("That's the one! The door clicks open.\n")
             break
+        if user_guess.isalpha() and user_guess.lower() != "museum":
+            print("Thats not right")
+            continue
+        elif not answer.isalpha():
+            print("The answer must be letters not numbers or characters")
+            continue
     fifth_letter = 'P'
     print("You go through the next door marked with an 'P'.\n")
     return fifth_letter
 
 
-def validate_data(values):
+def validate_data(answer, input):
     """
     Inside the try, converts all string values into lowercase.
     Raises ValueError if string values are not entered,
     or if there aren't exactly 10 characters entered.
     """
-    try:
-        [str(value) for value in values]
-        if len(values) != 10:
-            raise ValueError(
-                f"Exactly 10 letters are required, you provided {len(values)}"
-            )
-    except ValueError as e:
-        print(f"That won't work: {e}, please try again.\n")    
+           
+    if input.isalpha() == True and input.lower() != answer:
+        print("Thats not right")
+        return False
+    elif answer.isalpha() == False:
+        print("The answer doesn't contain numbers or special characters")
+        return False
+    elif input.isalpha() == True and input.lower() == answer:
+        return True 
     else:
-        if str(values.lower()) == "javascript":
-            return True
-    return False
+        return False
 
 
 def puzzle_room_six():
@@ -445,17 +522,17 @@ def main():
     update_diary(puzzle_one_letter, 'letters')
     display_collected_letters(puzzle_one_letter)
 
-    puzzle_two_letter = puzzle_room_two()
-    update_diary(puzzle_two_letter, 'letters')
-    display_collected_letters(puzzle_two_letter)
+    # puzzle_two_letter = puzzle_room_two()
+    # update_diary(puzzle_two_letter, 'letters')
+    # display_collected_letters(puzzle_two_letter)
 
-    puzzle_three_letter = puzzle_room_three()
-    update_diary(puzzle_three_letter, 'letters')
-    display_collected_letters(puzzle_three_letter)
+    # puzzle_three_letter = puzzle_room_three()
+    # update_diary(puzzle_three_letter, 'letters')
+    # display_collected_letters(puzzle_three_letter)
 
-    puzzle_four_letter = puzzle_room_four()
-    update_diary(puzzle_four_letter, 'letters')
-    display_collected_letters(puzzle_four_letter)
+    # puzzle_four_letter = puzzle_room_four()
+    # update_diary(puzzle_four_letter, 'letters')
+    # display_collected_letters(puzzle_four_letter)
 
     puzzle_five_letter = puzzle_room_five()
     update_diary(puzzle_five_letter, 'letters')
