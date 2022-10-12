@@ -82,50 +82,64 @@ def puzzle_room_one():
     key_one = 34
     key_two = 51
     key_three = 17
+    key_four = 345117
     print("You enter a large chamber with a locked door ahead.")
     print("Solve the puzzles etched on the table to unlock the door.\n")
     while True:
         print("3(0.5x + 12) = 87")
         try:
             user_answer_one = int(input("What is the value of X? \n"))
-            validate_whole_number(key_one, user_answer_one)
-            continue
         except ValueError:
-            print(f'{user_answer_one} is not a number')
+            print(f"That's not a number")
             continue
-        else:
+    
+        if (user_answer_one) == key_one:
             print("You've got it!")
-    while True:
-        print("4x - 12 = 192") 
-        answer_two = int(input("What is the value of X? \n"))
-        if answer_two == int(51):
-            print("You've got it.\n")
             break
         else:
-            print("That doesn't seem right to me. Try again.\n")
+            print(f"That's the wrong answer.Try again")
+    while True:
+        print("4x - 12 = 192")
+        try:
+            user_answer_two = int(input("What is the value of X? \n"))
+        except ValueError:
+            print(f"That's not a number")
             continue
+    
+        if (user_answer_two) == key_two:
+            print("You've got it!")
+            break
+        else:
+            print(f"That's the wrong answer.Try again")
     while True:
         print("85/x + 5x - 19 = 71")   
-        answer_three = int(input("What is the value of X? \n"))
-        if answer_three == int(17):
-            print("You've got it.\n")
+        try:
+            user_answer_three = int(input("What is the value of X? \n"))
+        except ValueError:
+            print(f"That's not a number")
+            continue
+    
+        if (user_answer_three) == key_three:
+            print("You've got it!")
             break
         else:
-            print("That doesn't seem right to me. Try again.\n")
-            continue
-    print("All three puzzles complete but how do I open the door?\n")
-    print("On closer inspection, the door is locked with a 6 digit combination" 
-          + "code...") 
+            print(f"That's the wrong answer.Try again")
+
     while True:
-        combination_lock = int(input("Enter the 6 digit combination: \n"))
-        if combination_lock == int(345117):
+        print("All three puzzles complete but how do I open the door?\n")
+        print("On closer inspection, the door is locked with a 6 digit combination" 
+              + "code...") 
+        try:
+            combination_lock = int(input("Enter the 6 digit combination: \n"))
+        except ValueError:
+            print(f"That's not a number. It has to be 6 digits with no spaces")
+            continue
+        if combination_lock == key_four:
             print("The door opens, and on you go...\n")
             break
-        elif combination_lock == isalpha():
-            print("Only numbers needed for this answer")
         else:
             print("The door doesn't budge. What about using the"
-                  + "answers from the three number puzzles put together.\n")
+                  + "answers from the three number puzzles joined together.\n")
             continue
     first_letter = 'H'
     print(f"As you pass through, you notice a big {first_letter} on the door.")
@@ -134,34 +148,34 @@ def puzzle_room_one():
     return first_letter
 
 
-def validate_whole_number(answer, input):
-    """
-    Validation on user input
-    Check input is not a float
-    Check input is not an alpha or special character
-    Check input is not blank
-    """
-    try:  
-        if type(input) != int:
-            raise WholeNumbersOnlyError(
-                f"Whole numbers required. You wrote {input}"
-            )
-        elif type(input) == int and input != 34:
-            raise WrongAnswerError(
-                f"But it is an integer."
-            )
-        elif type(input) == int and input == 34:
-            print("correct") 
-            return True
-    except NumbersOnlyError as e:
-        print(f"Invalid data: {e}, try again\n")
-        return False
-    except WholeNumbersOnlyError as e:
-        print(f"Invalid data: {e}, try again\n")
-        return False
-    except WrongAnswerError as e:
-        print(f"Wrong answer: {e}, try again\n")
-        return False
+# def validate_whole_number(answer, input):
+#     """
+#     Validation on user input
+#     Check input is not a float
+#     Check input is not an alpha or special character
+#     Check input is not blank
+#     """
+#     try:  
+#         if type(input) != int:
+#             raise WholeNumbersOnlyError(
+#                 f"Whole numbers required. You wrote {input}"
+#             )
+#         elif type(input) == int and input != answer:
+#             raise WrongAnswerError(
+#                 f"But it is an integer."
+#             )
+#         elif type(input) == int and input == answer:
+#             print("correct") 
+#             return True
+#     except NumbersOnlyError as e:
+#         print(f"Invalid data: {e}, try again\n")
+#         return False
+#     except WholeNumbersOnlyError as e:
+#         print(f"Invalid data: {e}, try again\n")
+#         return False
+#     except WrongAnswerError as e:
+#         print(f"Wrong answer: {e}, try again\n")
+#         return False
 
 
 def puzzle_room_two():
