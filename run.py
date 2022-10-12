@@ -16,24 +16,24 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('indiana-diary')
 
 
-class Error(Exception):
-    """This is base class for other exceptions"""
-    pass
+# class Error(Exception):
+#     """This is base class for other exceptions"""
+#     pass
 
 
-class NumbersOnlyError(Error):
-    """Exception due to Value is too small"""
-    pass
+# class NumbersOnlyError(Error):
+#     """Exception due to Value is too small"""
+#     pass
 
 
-class WholeNumbersOnlyError(Error):
-    """Exception due to Value is too small"""
-    pass
+# class WholeNumbersOnlyError(Error):
+#     """Exception due to Value is too small"""
+#     pass
 
 
-class WrongAnswerError(Error):
-    """Exception due to Value is too small"""
-    pass
+# class WrongAnswerError(Error):
+#     """Exception due to Value is too small"""
+#     pass
 
 
 def game_intro():
@@ -186,6 +186,9 @@ def puzzle_room_two():
     """
     Explorer enters second puzzle room and has to
     solve the substitution cypher to move on.
+    Dictionary Decoder provided to user.
+    Validation against numbers, special characters, and blank
+    entries
     """
     puzzle_two_dict = {
                         'A': 'F',
@@ -244,30 +247,39 @@ def puzzle_room_two():
     return second_letter
 
 
-def long_string_validation(alpha_string):
-    """
-    Validate if sentence entered is only alpha characters
-    """
-    if answer.isalpha() and answer.lower() == "museum":
-        print("Correct")
-    elif answer.isalpha() and answer.lower() != "museum":
-        print("Thats not right")
-    elif not answer.isalpha():
-        print("The answer must be letters not numbers or characters")
+# def long_string_validation(alpha_string):
+#     """
+#     Validate if sentence entered is only alpha characters
+#     """
+#     if answer.isalpha() and answer.lower() == "museum":
+#         print("Correct")
+#     elif answer.isalpha() and answer.lower() != "museum":
+#         print("Thats not right")
+#     elif not answer.isalpha():
+#         print("The answer must be letters not numbers or characters")
 
 
 def puzzle_room_three():
     """
     Explorer enters third puzzle room and has to
     complete the sequence to move on.
+    Validation on user input:
+    Check input is not a float
+    Check input is not an alpha or special character
+    Check input is not blank
     """
+    sequence_answer = 89
     print("You move through to the third puzzle room.\n")
-    print("Complete this familiar sequence to collect the next" 
+    print("Complete this familiar sequence to collect the next "
           + "letter and move on.\n")
     while True:
         print("1 1 2 3 5 8 13 21 34 55 __\n")
-        next_num = int(input("Type the next number in the sequence here:\n"))
-        if next_num == int(89):
+        try:
+            next_num = int(input("Type the next number in the sequence here:\n"))
+        except ValueError:
+            print(f"That's not a number")
+            continue
+        if next_num == sequence_answer:
             print("You've got it.\n")
             break
         else:
@@ -568,9 +580,9 @@ def main():
     # update_diary(puzzle_one_letter, 'letters')
     # display_collected_letters(puzzle_one_letter)
 
-    puzzle_two_letter = puzzle_room_two()
-    update_diary(puzzle_two_letter, 'letters')
-    display_collected_letters(puzzle_two_letter)
+    # puzzle_two_letter = puzzle_room_two()
+    # update_diary(puzzle_two_letter, 'letters')
+    # display_collected_letters(puzzle_two_letter)
 
     puzzle_three_letter = puzzle_room_three()
     update_diary(puzzle_three_letter, 'letters')
