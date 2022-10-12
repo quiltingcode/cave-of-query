@@ -330,7 +330,7 @@ def puzzle_room_four():
                 'The Alchemist',
                 'The Last Battle',
                 ]
-    hidden_button_book = 'Fortune and Glory Kid'
+    hidden_button_book = 'fortune and glory kid'
     print("You move through to the fourth puzzle room.\n")
     print("You enter a library with books shelves covering all the walls.")
     print("One book contains a button to open the hidden "
@@ -347,7 +347,7 @@ def puzzle_room_four():
     #     print(f'{book_list[i]}     {book_list[i+1]}')
     while True:
         book = (input("Type the correct book title here:\n")).lower()
-        if book == ("fortune and glory kid"):
+        if book == hidden_button_book:
             print("Of course! The bookshelf slides away and a hidden"
                   + "tunnel is revealed.\n")
             break
@@ -371,21 +371,18 @@ def puzzle_room_five():
     print("On closer inspection the tiles have letters on them.")
     print("Rearrange the tiles to reveal a word and unlock the door.\n")
     print("The letters you can see are:\n")
+    anagram_key = "javascript"
     print(" P I V S J T C A R A ")
     while True:
-        anagram = input("Type the correct word here: \n")
-        try:
-            user_guess = str(anagram)
-        except ValueError:
+        anagram = (input("Type the correct book title here:\n")).lower()
+        if anagram == anagram_key:
+            print("Of course! The bookshelf slides away and a hidden"
+                  + "tunnel is revealed.\n")
+            break
+        else:
             print("Those characters aren't valid. Only use"
                   + "a combination of the 10 letters provided")
             continue
-        if user_guess.isalpha() and user_guess.lower() != anagram_key:
-            print("Thats not right")
-            continue
-        if user_guess.lower() == anagram_key:
-            print("That's the one! The door clicks open.\n")
-            break
     fifth_letter = 'P'
     print("You go through the next door marked with an 'P'.\n")
     return fifth_letter
