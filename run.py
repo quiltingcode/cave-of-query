@@ -362,8 +362,9 @@ def puzzle_room_four():
 def puzzle_room_five():
     """
     Explorer enters fifth puzzle room and has to
-    solve an anagram puzzle to move on. Answer inputted is passed
-    through a data validation function.
+    solve an anagram puzzle to move on. 
+    Validation against numbers, special characters, and blank
+    entries
     """
     anagram_key = "javascript"
     print("You run through the tunnel and arrive at another puzzle room.\n")
@@ -374,10 +375,9 @@ def puzzle_room_five():
     anagram_key = "javascript"
     print(" P I V S J T C A R A ")
     while True:
-        anagram = (input("Type the correct book title here:\n")).lower()
+        anagram = (input("Type the correct word here:\n")).lower()
         if anagram == anagram_key:
-            print("Of course! The bookshelf slides away and a hidden"
-                  + "tunnel is revealed.\n")
+            print(f"That's the one! The door clicks open.\n")
             break
         else:
             print("Those characters aren't valid. Only use"
@@ -412,19 +412,43 @@ def puzzle_room_six():
     Explorer enters sixth puzzle room and has to
     solve the morse code word to move on.
     """
+    morse_code_dict = {
+                    'A': '.-  ',
+                    'B': '-...',
+                    'C': '-.-.',
+                    'D': '-.. ',
+                    'E': '.   ',
+                    'F': '..-.',
+                    'G': '--. ',
+                    'H': '....',
+                    'I': '..  ',
+                    'J': '.---',
+                    'K': '-.- ',
+                    'L': '.-..',
+                    'M': '--  ',
+                    'N': '-.  ',
+                    'O': '--- ',
+                    'P': '.--.',
+                    'Q': '--.-',
+                    'R': '.-. ',
+                    'S': '... ',
+                    'T': '-   ',
+                    'U': '..- ',
+                    'V': '...-',
+                    'W': '.-- ',
+                    'X': '-..-',
+                    'Y': '-.--',
+                    'Z': '--..'
+                    }
     print("You move through to the sixth puzzle room.\n")
     print("Decode this ancient language to retrieve the next letter"
           + "and move on.\n")
     print(".. - ... / .- / .-.. . .- .--. / --- ..-. / ..-. .- .. - ....\n")
     print("Wait a minute, this looks like old Morse Code")
     print("I think I saw something in the diary like this....")
-    print("Let me find the right page....") 
-    morse_code = SHEET.worksheet('morse_code')
-    abc_alphabet = list(morse_code.col_values(1))
-    morse_alphabet = list(morse_code.col_values(2))
-    code_dict = {abc_alphabet[i]: morse_alphabet[i] for i in range(len(abc_alphabet))}
+    print("Let me find the right page....")
     for i in range(13):
-        printable = f'{chr(65+i)} : {code_dict[chr(65 + i)]}     ||     {chr(78 + i)} : {code_dict[chr(78 + i)]}'
+        printable = f'{chr(65+i)} : {morse_code_dict[chr(65 + i)]}     ||     {chr(78 + i)} : {morse_code_dict[chr(78 + i)]}'
         print(printable)
     while True:
         decryption = (input("Type your decryption here:\n")).lower()
@@ -625,13 +649,13 @@ def main():
     # update_diary(puzzle_three_letter, 'letters')
     # display_collected_letters(puzzle_three_letter)
 
-    puzzle_four_letter = puzzle_room_four()
-    update_diary(puzzle_four_letter, 'letters')
-    display_collected_letters(puzzle_four_letter)
+    # puzzle_four_letter = puzzle_room_four()
+    # update_diary(puzzle_four_letter, 'letters')
+    # display_collected_letters(puzzle_four_letter)
 
-    puzzle_five_letter = puzzle_room_five()
-    update_diary(puzzle_five_letter, 'letters')
-    display_collected_letters(puzzle_five_letter)
+    # puzzle_five_letter = puzzle_room_five()
+    # update_diary(puzzle_five_letter, 'letters')
+    # display_collected_letters(puzzle_five_letter)
     
     puzzle_six_letter = puzzle_room_six()
     update_diary(puzzle_six_letter, 'letters')
