@@ -279,7 +279,11 @@ def puzzle_room_four():
                 'The Good Earth',
                 'The Alchemist',
                 'The Last Battle',
+                ''
+                ''
+                ''
                 ]
+    columns = 3
     hidden_button_book = 'fortune and glory kid'
     print("PUZZLE ROOM FOUR")
     print("----------------\n")
@@ -288,14 +292,8 @@ def puzzle_room_four():
           + "doorway, but which one...")
     print("Which book would Grandpa Indiana have chosen?\n")
     print("You start scanning the titles...\n")
-    library = SHEET.worksheet('library_books')
-    books = []
-    for ind in range(1, 2):
-        column = library.col_values(ind)
-        books.append(column)
-    pprint(books)
-    # for i in range(1, len(book_list), 2):
-    #     print(f'{book_list[i]}     {book_list[i+1]}')
+    for first, second, third in zip(book_list[::columns], book_list[1::columns], book_list[2::columns]):
+        print(f'{first: <25}   {second: <25}   {third}')  
     while True:
         book = (input("Type the correct book title here:\n")).lower()
         if book == hidden_button_book:
@@ -465,7 +463,7 @@ def treasure_room():
             print(f"you stand on the golden disk with a {disk_picked} on it.\n")
             print("The disk sinks deeper into the floor and you hear"
                   + " a rumble.\n")
-            break  
+            break
         else:
             print("Those characters aren't valid. You only need "
                   + "to choose one letter here.\n")
@@ -494,7 +492,7 @@ def treasure_chest():
             break
         else:
             print("Nothing happens. Are the letters in the right order?")
-            print("Maybe they form a word...\n ") 
+            print("Maybe they form a word...\n ")
             continue
 
 
@@ -522,8 +520,7 @@ def win_treasure():
     print("Jewels of all shapes and sizes surround an old book.")
     print("It looks like it contains some sort of treasure map\n")
     print("Have you had enough treasure hunting for one lifetime")
-    print(", or are you ready for more?")
-        
+    print(", or are you ready for more?")  
     while True:
         replay = (input("Type Enough (E) or More (M): \n").upper())
         if replay == ("M"):
@@ -559,42 +556,15 @@ def display_collected_letters(letter):
     """
     letters_collected.append(letter)
     print("Letters Collected: ")
-    for new_lst in letters_collected: 
+    for new_lst in letters_collected:
         no_brackets_lst = (','.join(new_lst))
         print(no_brackets_lst)
-
-
-# def game_over():
-#     """
-#     If user makes a wrong choice in the treasure room, they die 
-#     and the game over function is called.
-#     User is asked if they would like to play again or not.
-#     """
-#     clear()
-#     print("you stand on the golden disk, and it falls away down a black hole.\n")
-#     print("You died a tragic death.")
-#     print("Would you like to play again?\n")
-#     while True:
-#         replay = (input("Type Y / N: \n"))
-#         if replay == ("Y"):
-#             clear()
-#             reset_game()
-#             main()
-#             break
-#         elif replay == ("N"):
-#             clear()
-#             reset_game()
-#             print("Good luck on your next adventure. Goodbye")
-#             break
-#         else:
-#             print(f"I don't understand what {replay} means. Can you please repeat?\n")
-#             continue
 
 
 def reset_game():
     """
     Reset the figures in the google worksheet, and start the game 
-    again from the beginning. 
+    again from the beginning.
     """
     clear()
     clear_collected_game_data()
