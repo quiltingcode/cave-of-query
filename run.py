@@ -73,8 +73,9 @@ def puzzle_room_one():
     print("⣿⠟⠁⠀                         ⠀⠀⠀⠀⠀⠀⣿")
     print("⣿⠀⠀⠀⠀                         ⠀⠀⠀⡴⠞⣿")
     print("⣿⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⣤⣤⣤⣤⣤⣤⣿")
-    print("You enter a large chamber with a locked door ahead.")
-    print("Solve the puzzles etched on the table to unlock the door.\n")
+    print("You enter the cave and arrive at a large chamber with a locked"
+          + " door ahead.")
+    print("Solve the puzzles etched on the wall to unlock the door.\n")
     while True:
         print("3(0.5x + 12) = 87")
         try:
@@ -416,19 +417,21 @@ def puzzle_room_seven():
     as the right answer if they have guessed the four words 
     correctly but may have an alternative order to me. 
     """
+    riddle_key = {'thursday', 'today', 'tomorrow', 'tuesday'}
     print("PUZZLE ROOM SEVEN")
     print("-----------------\n")
     print("Decipher this riddle to retrieve the next letter and move on.\n")
     while True:
         print("Can you name four days of the week that begin with the"
               + " letter 'T'\n")
-        days = (input("Type the four days here:\n"))
-        if days == ("thursday, today, tomorrow, tuesday"):
+        days = set(input("Type the four days here:\n").split())
+        if riddle_key == days:
+
             print("You've got it.\n")
             break
         else:
             print("That doesn't seem right to me. Try again.\n")
-            continue
+            continue 
     seventh_letter = 'T'
     clear()
     print("You've got it.\n")
@@ -469,6 +472,10 @@ def treasure_room():
             continue
     treasure_letter = correct_disk
     return treasure_letter
+    clear()
+    print(f"you stand on the golden disk with a {disk_picked} on it.\n")
+    print("The disk sinks deeper into the floor and you hear"
+          + " a rumble.\n")
     display_collected_letters(treasure_letter)
 
 
@@ -521,7 +528,7 @@ def win_treasure():
         replay = (input("Type Enough (E) or More (M): \n").upper())
         if replay == ("M"):
             clear()
-            print(f"Good luck with that next treasure map then, {explorer[0]}")
+            print(f"Good luck with that next treasure map then, {explorer}")
             print("You are a born explorer!")
             reset_game()
             main()
@@ -530,7 +537,7 @@ def win_treasure():
             clear()
             reset_game()
             print("Safer back in the classroom huh?!")
-            print(f"Goodbye then, {explorer[0]}")
+            print(f"Goodbye then, {explorer}")
             break
         else:
             print(f"I don't understand what {replay} means. Can you"
@@ -590,7 +597,7 @@ def reset_game():
     again from the beginning. 
     """
     clear()
-    clear_collected_letters()
+    clear_collected_game_data()
 
 
 def clear_collected_game_data():
@@ -623,8 +630,8 @@ def main():
     display_collected_letters(puzzle_six_letter)
     puzzle_seven_letter = puzzle_room_seven()
     display_collected_letters(puzzle_seven_letter)
-    final_letter = treasure_room()
-    display_collected_letters(final_letter)
+    puzzle_eight_letter = treasure_room()
+    display_collected_letters(puzzle_eight_letter)
     treasure_chest()
     win_treasure()
 
