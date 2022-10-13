@@ -1,20 +1,19 @@
-# **_Disney Sidekicks_**
+# **_The Cave of Query_**
 
-Disney Sidekicks is an interactive quiz website where users can test their Disney knowledge to the max. This is not just the usual quiz about the Disney main characters, but focuses solely on pets and sidekicks who have a supporting role and often get forgotten.  In many cases, these characters have an important role to play in the story and even have some of the best scripts and comic moments of all.  For example In 1992's Aladdin, who could have imagined such strength of character from of a carpet, which couldn't even talk! This is the magic of Disney. 
+The Cave of Query is an interactive text-based adventure game filled with brain teasers and Indiana Jones trivia. 
+
+It is built using Python and runs through the Code institute mock terminal on Heroku.
 
 
-Welcome to <a href="https://quiltingcode.github.io/disneysidekicks/" target="_blank" rel="noopener">Disney Sidekicks</a>
+Welcome to <a href="https://cave-of-query.herokuapp.com/" target="_blank" rel="noopener">The Cave of Query</a>
 
-![Disney Sidekicks responsive design](assets/readmeimages/mockup2.PNG)
+![Disney Sidekicks responsive design](assets/images/screen-mockup.png)
 
 # Contents
 
 * [**User Experience UX**](<#user-experience-ux>)
-    * [Wireframes](<#wireframes>)
-    * [Site Structure](<#site-structure>)
-    * [Design Choices](<#design-choices>)
-      * [Typography](<#typography>)
-      * [Colour Scheme](<#colour-scheme>)
+    * [Game Design](<#game-design>)
+    * [Flowchart](<#flowchart>)
 * [**Current Features**](<#current-features>)
     * [Home Page](<#home-page>)
     * [Rules Page](<#rules-page>)
@@ -32,67 +31,32 @@ Welcome to <a href="https://quiltingcode.github.io/disneysidekicks/" target="_bl
 
 # User Experience (UX)
 
-## Wireframes
+## Game Design
 
 The wireframes for the Disney Sidekicks project were produced in Balsamiq.  There are frames for a desktop device and for a mobile device.  
 
-## Desktop Device Wireframes 
 
-![Homepage wireframe image](assets/readmeimages/homepage-desktop.PNG)
-![Questions Page wireframe image](assets/readmeimages/questions-desktop.PNG)
-![End of Quiz Page wireframe image](assets/readmeimages/finish-desktop.PNG)
-
-## Mobile Device Wireframes
-
-![Homepage wireframe image](assets/readmeimages/homepage-mobile.PNG)
-![Questions Page wireframe image](assets/readmeimages/questions-mobile.PNG)
-![End of Quiz Page wireframe image](assets/readmeimages/finish-mobile.PNG)
-
-I designed this quiz with a mobile design in mind initially, as I wanted to make sure the quiz was visible on a smaller screen.  However, I also created wireframes for a larger version of the quiz for desktop devices. The quiz has been created within one single html page, but through the use of Javascript, there are three main views of this page depending on which button is selected. Therefore, I have created wireframes for these three main views; the initial home page, the look of the quiz itself, and the final end of quiz page. 
+ 
 
 
 [Back to top](<#contents>)
 
-## Site Structure
+## Flowchart
 
-The Disney Sidekicks quiz has been created within a single HTML page. The homepage is the initial default loading page with two buttons available to the user. 'Start' or 'Rules'. The 'Rules' button shows the rules on screen, and the 'Start' button starts the quiz. You can move through each page of the quiz via a 'Next' button and then once the quiz has finished, the user is taken to a Summary page where they are told their score, and given two more button options; 'Home', which takes them back to the homepage, or 'Play Again' which takes them back to the start of a new quiz.
-
-[Back to top](<#contents>)
-
-## Design Choices
-
- * ### Typography
-
-The fonts I chose were ‘Amatic SC’ for the h1 main heading and the buttons, and ‘Kalam’ for the body text and questions.  If these fonts are not available, they revert to cursive and sans-serif.  I chose the ‘Amatic SC’ font primarily as I wanted something fun and playful to reflect the theme of the quiz. This also automatically captilises all the letters which is good for the buttons and makes the main header stand out. The 'Kalam' body font nicely compliments the header font in it's fun 'handwriting' style whilst remaining clearly legible for users to read the quiz questions and answers.
-
- * ### Colour Scheme
-
-Initially, I wanted to use same colour palette as those which are used for the original Disney Magic Kingdom logo; found [here](https://www.schemecolor.com/disney-color.php) These are:
-
-![magic Kingdom Colour Palette](assets/readmeimages/magickingdomcolors.PNG)
-
-However, having styled these into the backgruond, the colours appeared to me quite dated. So I continued my research further into more modern Disney colour palettes. I soon came across a Disney colour palette [website](https://www.sitepoint.com/15-color-schemes-from-disney-heroes-and-villains/) which suggested various colour palettes depending on the style of the Disney film, whether it was based on princesses, or animals, or villains etc. 
-
-![Colour Palette image](assets/readmeimages/topography.PNG)
-
-From this 'princess' colour scheme, I chose to style the background and game area container with a combination of the #a4def9 and the #c59fc9 tones, which looked nice, and to me represented a combination of a classic 'Cinderella' tone with a more modern background 'Rapunzel' tone. 
-
-When I took a step back and looked at these through the [Am I Responsive](https://ui.dev/amiresponsive) Mockup website, I still thought it looked a bit plain. 
-
-![Princess tones responsive design](assets/readmeimages/mockup1.PNG)
-
-In the end, I kept the 'Cinderella' blue and changed the background for a Disney image from the 2009 film 'Up' that worked on various screen sizes. I had to change the colour of the header to white so that you could still see it clearly through the coloured baloons. 
+The Disney Sidekicks quiz has been created within a single HTML page. The homepage is the initial default loading page with two buttons available to the user. 
 
 [Back to top](<#contents>)
+
+
 
 # Current Features
 
   
 ## Home Page
 
-At the top of the website is the main title and an introduction to the quiz. The game logo is displayed here, and I've also used the same image for the site's Favicon in the browser. This image shows the most famous of all the Disney characters, Mickey Mouse, and his  trusty sidekick, Pluto.  Underneath the quiz introduction, there are two buttons to choose from. A 'Rules' button and a 'Start Quiz' button. If the user clicks the 'Rules' button, the quiz introduction text is replaced by a set of rules, and only the 'Start Quiz' button remains.  If the user clicks the 'Start Button', the quiz introduction and the two buttons disappear, and are replaced with the Quiz Page.
+At the top of the website is the main title and an introduction to the quiz. The game logo is displayed here, 
 
-![Homepage image](assets/readmeimages/homepage.PNG)
+![Homepage image](assets/images/title-page.png)
 
 [Back to top](<#contents>)
 
