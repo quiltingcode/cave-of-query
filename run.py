@@ -15,6 +15,9 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('indiana-diary')
 
+letters_collected = []
+explorer = []
+
 
 def game_intro():
     """
@@ -39,19 +42,7 @@ def game_intro():
             continue
 
     return explorer_name
-
-
-def update_diary(data, worksheet):
-    """
-    Update worksheet specified in the parameter, add a new row with the
-    data provided.
-    Update explorer worksheet to record players, and use their name
-    throughout the game.
-    Update the letters worksheet after each puzzle when a letter clue
-    is collected.
-    """
-    diary_worksheet = SHEET.worksheet(worksheet)
-    diary_worksheet.append_row([data])
+    explorer.append(explorer_name)
 
 
 def puzzle_room_one():
@@ -63,7 +54,6 @@ def puzzle_room_one():
     Check input is not an alpha or special character
     Check input is not blank
     """
-    clear()
     key_one = 34
     key_two = 51
     key_three = 17
@@ -303,7 +293,9 @@ def puzzle_room_four():
                   + "tunnel is revealed.\n")
             break
         else:
-            print("Nothing happens. Try again.\n")
+            print("That's just a normal book. Try again.\n")
+            print("What was that phrase Grandpa Indiana always")
+            print("used to say to me when i was a kid...\n")
             continue
     fourth_letter = 'O'
     print("You go through the tunnel and notice 'O's all over the walls.\n")
@@ -337,25 +329,6 @@ def puzzle_room_five():
     fifth_letter = 'P'
     print("You go through the next door marked with an 'P'.\n")
     return fifth_letter
-
-
-# def validate_data(answer, input):
-#     """
-#     Inside the try, converts all string values into lowercase.
-#     Raises ValueError if string values are not entered,
-#     or if there aren't exactly 10 characters entered.
-#     """
-           
-#     if input.isalpha() == True and input.lower() != answer:
-#         print("Thats not right")
-#         return False
-#     elif answer.isalpha() == False:
-#         print("The answer doesn't contain numbers or special characters")
-#         return False
-#     elif input.isalpha() == True and input.lower() == answer:
-#         return True 
-#     else:
-#         return False
 
 
 def puzzle_room_six():
@@ -451,8 +424,8 @@ def treasure_room():
     entries.
     """
     correct_disk = "Y"
-    print("The tunnel widens and opens out into a great chamber"
-          + "with golden disks set into the floor.")
+    print("The tunnel widens and opens out into a great chamber")
+    print("with golden disks set into the floor.")
     print("Each disk has a letter engraved on it.")
     print("On the wall ahead, you can see another puzzle: \n")
     print("1 1 1 1 = R")
@@ -465,8 +438,8 @@ def treasure_room():
         if disk_picked.capitalize() == correct_disk:
             print(f"you stand on the golden disk with a {disk_picked} on it.\n")
             print("The disk sinks deeper into the floor and you hear"
-                  + "a rumble.\n")
-            break    
+                  + " a rumble.\n")
+            break  
         else:
             print("Those characters aren't valid. You only need "
                   + "to choose one letter here.\n")
@@ -482,7 +455,7 @@ def treasure_chest():
     collected to open the chest.
     """
     print("A treasure chest rises out of the floor but it won't open.")
-    print("Embedded in the lid is a crpytex, with eight alphabet dials")
+    print("Embedded in the lid is a crpytex, with eight alphabet dials.\n")
     while True:
         cryptex = str((input("Enter your collected letters here: \n")).upper())
         if cryptex == str("PYTHONIC"):
@@ -490,9 +463,12 @@ def treasure_chest():
             print("the chest to reveal a key hole...\n")
             break
         else:
-            print("Nothing happens. Are the letters in the right order?"
-                  + "Maybe they form a word...\n ")
+            print("Nothing happens. Are the letters in the right order?")
+            print("Maybe they form a word...\n ") 
             continue
+
+def win_treasure():
+
     print("        ⣤⣤⣤⣤⣤⣤⣤⣤⣤")
     print("        ⣿⣿⣿⣿⣿⣿⣿⣿⣿")
     print("       ⠀⣿⣿⣿⣿⠉⠉⠉⠉⠉")
@@ -514,11 +490,12 @@ def treasure_chest():
     print("It looks like it contains some sort of treasure map\n")
     print("Have you had enough treasure hunting for one lifetime")
     print(", or are you ready for more?")
+        
     while True:
         replay = (input("Type Enough (E) or More (M): \n").upper())
         if replay == ("M"):
-            print("Good luck on your next adventure. Goodbye")
             clear()
+            print("Good luck with that next treasure map. Goodbye")
             reset_game()
             main()
             break
@@ -545,7 +522,6 @@ def display_collected_letters(letter):
     After solving each puzzle, the explorer receives a letter. These
     are collected and the user display updated after each game.
     """
-    letters_collected = []
     letters_collected.append(letter)
     print("Letters Collected: ")
     for new_lst in letters_collected: 
@@ -595,8 +571,7 @@ def clear_collected_letters():
     the worksheet containing the collected puzzle letters
     is deleted.
     """
-    clear_worksheet = SHEET.worksheet('letters')
-    clear_worksheet.clear()
+    letters_collected.clear()
 
 
 def main():
@@ -604,34 +579,35 @@ def main():
     Run all program functions
     """
     explorer_data = game_intro()
-    update_diary(explorer_data, 'explorers')
+    # update_diary(explorer_data, 'explorers')
 
     clear_collected_letters()
 
-    # puzzle_one_letter = puzzle_room_one()
+    puzzle_one_letter = puzzle_room_one()
     # update_diary(puzzle_one_letter, 'letters')
-    # display_collected_letters(puzzle_one_letter)
-    # puzzle_two_letter = puzzle_room_two()
+    display_collected_letters(puzzle_one_letter)
+    puzzle_two_letter = puzzle_room_two()
     # update_diary(puzzle_two_letter, 'letters')
-    # display_collected_letters(puzzle_two_letter)
-    # puzzle_three_letter = puzzle_room_three()
+    display_collected_letters(puzzle_two_letter)
+    puzzle_three_letter = puzzle_room_three()
     # update_diary(puzzle_three_letter, 'letters')
-    # display_collected_letters(puzzle_three_letter)
-    # puzzle_four_letter = puzzle_room_four()
+    display_collected_letters(puzzle_three_letter)
+    puzzle_four_letter = puzzle_room_four()
     # update_diary(puzzle_four_letter, 'letters')
-    # display_collected_letters(puzzle_four_letter)
-    # puzzle_five_letter = puzzle_room_five()
+    display_collected_letters(puzzle_four_letter)
+    puzzle_five_letter = puzzle_room_five()
+    display_collected_letters(puzzle_five_letter)
     # update_diary(puzzle_five_letter, 'letters')
-    # puzzle_six_letter = puzzle_room_six()
+    puzzle_six_letter = puzzle_room_six()
     # update_diary(puzzle_six_letter, 'letters')
-    # display_collected_letters(puzzle_six_letter)
-    # puzzle_seven_letter = puzzle_room_seven()
+    display_collected_letters(puzzle_six_letter)
+    puzzle_seven_letter = puzzle_room_seven()
     # update_diary(puzzle_seven_letter, 'letters')
-    # display_collected_letters(puzzle_seven_letter)
+    display_collected_letters(puzzle_seven_letter)
     final_letter = treasure_room()
-    update_diary(final_letter, 'letters')
+    # update_diary(final_letter, 'letters')
     display_collected_letters(final_letter)
     treasure_chest()
-
+    win_treasure()
 
 main()
