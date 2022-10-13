@@ -31,6 +31,7 @@ def game_intro():
     while True:
         explorer_name = input("What is your name intrepid explorer? \n")
         if explorer_name.isalpha():
+            clear()
             print(f"Welcome to the Cave of Query, {explorer_name.capitalize()}.")
             print("In his last will and testament, Indiana Jones left")
             print("you his famous quest diary and a strange key.")

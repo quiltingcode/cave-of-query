@@ -15,10 +15,10 @@ Welcome to <a href="https://cave-of-query.herokuapp.com/" target="_blank" rel="n
     * [Game Design](<#game-design>)
     * [Flowchart](<#flowchart>)
 * [**Current Features**](<#current-features>)
-    * [Home Page](<#home-page>)
-    * [Rules Page](<#rules-page>)
-    * [Quiz Page](<#quiz-page>)
-    * [End Page](<#end-page>)
+    * [Title Page](<#title-page>)
+    * [Game Introduction](<#game-introduction>)
+    * [Puzzle Rooms](<#puzzle-rooms>)
+    * [End of Game Page](<#end-of-game-page>)
 * [**Future Features**](<#future-features>)
 * [**Technologies Used**](<#technologies-used>)
 * [**Testing**](<#testing>)
@@ -36,8 +36,6 @@ Welcome to <a href="https://cave-of-query.herokuapp.com/" target="_blank" rel="n
 The wireframes for the Disney Sidekicks project were produced in Balsamiq.  There are frames for a desktop device and for a mobile device.  
 
 
- 
-
 
 [Back to top](<#contents>)
 
@@ -52,7 +50,7 @@ The Disney Sidekicks quiz has been created within a single HTML page. The homepa
 # Current Features
 
   
-## Home Page
+## Title Page
 
 At the top of the website is the main title and an introduction to the quiz. The game logo is displayed here, 
 
@@ -60,52 +58,26 @@ At the top of the website is the main title and an introduction to the quiz. The
 
 [Back to top](<#contents>)
 
-## Rules Page
+## Game Introduction
 
 If the user is unsure of how to play a quiz game, at the bottom of the Home Page they can select the 'Rules' button which will show them a set of simple instructions. Under the rules there is a button to start the game.  
 
-![Rules Page image](assets/readmeimages/rules.PNG)
+![Rules Page image](assets/images/game-intro.png)
 
 [Back to top](<#contents>)
 
-## Quiz Page
+## Puzzle Rooms
 
 Once the user has selected the 'Start Quiz' button from either the Home page or Rules Page, the introduction, rules, logo and buttons disappear. The quiz area then becomes visible to the user and the game can begin. 
 
-At the top of the quiz area, the user is told which question they are on out of a total of 12 questions. Each time the quiz is played, a new random selection of questions will be drawn from the questions array.
 
-At the moment, there is a total of 30 questions in the questions array, of which 12 are randomly selected each time the game is played. 
-
-Next, an image is displayed which changes according to the particular question drawn. Under the image, the user can read the quiz question and three possible answers displayed in clickable buttons. Finally the user can see their score throughout the quiz. 
-
-Once an answer has been selected, depending on which button is pressed, various things may or may not occur. If the user selects the correct answer, the selected answer button will turn green to indicate to the user that it's correct, the score will go up by 10 points, and a 'Next' button will appear to move on to the next question. If however the user selects an incorrect answer, the selected button will turn red, the correct answer will turn green to show which button the user should have chosen, the score does not change, and the 'Next' button will appear to move on to the next question. 
-
-
-![Quiz Page Image](assets/readmeimages/quizpage.PNG)
-
-![Correct Answer Image](assets/readmeimages/correctanswer.PNG)
-
-![Incorrect Answer Image](assets/readmeimages/incorrectanswer.PNG)
-
-Having finished building the quiz game, I decided that I could create an additional timer element to make the game more fun.  The user is given 15 seconds to answer each question, and the countdown begins as soon as the question is displayed. If an answer button is clicked within the 15 second limit, the timer stops and the user is given feedback on their response as normal. If the timer runs out and no answer has been selected, the correct answer and two incorrect answers are highlighted, no points are awarded, and the next button is displayed to continue on to the next question.
-
-A countdown stopwatch icon is displayed in 'Aladdin' red to stand out to the user and show them that a countdown has begun, and I set the font-weight of the numbers to bold to draw the eye.
-
-![Timeout Image](assets/readmeimages/timeout.PNG)
 
 [Back to top](<#contents>)
 
-## End Page
+## End of Game Page
 
 Once 12 questions have been answered, when the user clicks the 'End' button the quiz is finished, the questions disappear and they are replaced by a summary of how well the user did. If they score more than 80 points, they will see an image of a very happy Sidekick and a message congratulating them on their score.
 
-![End Page High Score Image](assets/readmeimages/highscore-endpage.PNG)
-
-if the player gets 80 points or lower, they will see an image of Aladdin's magic carpet looking very sad and receive a message of comiseration.
-
-![End Page Low Score Image](assets/readmeimages/lowscore-endpage.PNG)
-
-In both cases, the user has two button options for how to continue from this screen. They can select 'Play Again' which will reset the quiz, select a new set of questions, set their score back to zero and present them with a new question. Or they can select 'Home' which will take them back to the Home Page.
 
 
 [Back to top](<#contents>)
@@ -129,34 +101,45 @@ In the future, I would like to add more features to the Disney Sidekicks Quiz. T
 
 I used the following technologies to create this website:
 
-* HTML5 – Content and structure
-* CSS - Styling
-* Javascript - Game functions
-* Balsamiq – Wireframe designs
+* Python – Content and structure
 * Gitpod – Website deployment
-* Github – Website hosting
+* Github – Website code repository
+* Heroku - Hosting platform for the game
+* Diagrams.net - Create the game layout and flowchart
 
 
 [Back to top](<#contents>)
 
 # Testing
 
-Please click [**_here_**](TESTING.md) to read more information about testing Disney Sidekicks
+Please click [**_here_**](TESTING.md) to read more information about testing The Cave of Query
 
 [Back to top](<#contents>)
 
 # Deployment
 
 ### **To deploy the project**
-The site was deployed to GitHub pages. The steps to deploy a site are as follows:
-  1. In the GitHub repository, navigate to the **Settings** tab.
-  2. Once in Settings, navigate to the **Pages** tab down the side menu.
-  3. Under **Source**, select the branch to **master**, then click **save**.
-  4. Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate a successful deployment.
+The game was deployed via an online platform called as Heroku, used to improve user experience when viewing a program written in code such as Python. The deployment process is as follows:
 
-![Deploy image](assets/readmeimages/deploypage.PNG)
+1. Create new Heroku app from Heroku dashboard
+2. Choose an app name that is available.
+3. Choose the region where you are working from (Europe)
+4. Select the create app button
+5. Select 'Settings' from the main menu
+6. Scroll to 'Config Vars' section and select 'Reveal Config Vars'
+7. In the 'Key' field input 'PORT' in the 'Value' field input '8000'
+8. Press 'Add' to add the value just entered
+9. Repeat this process to create a key called 'CREDS' and paste the values in from the CREDS.Json file in Gitpod to hide sensetive data from the user.
+10. Scroll down to 'Add buildpack' and select it
+11. Select 'Python' and save changes
+12. Select 'Add buildpack' again and do the same with 'NodeJs'
+13. Link the App to your matching GitHub repository 
+13. Select Automatic deploy
 
-  The live link to the Github repository can be found here - https://quiltingcode.github.io/disneysidekicks/
+![Deploy image](assets/images/deploy-githubconnect.png)
+![Deploy image](assets/images/deployment.png)
+
+  The live link to the Github repository can be found here - https://cave-of-query.herokuapp.com/
 
 ### **To fork the repository using GitHub**
 A copy of the GitHub Repository can be made by forking the GitHub account. This copy can be viewed and changes can be made to the copy without affecting the original repository. Take the following steps to fork the repository:
