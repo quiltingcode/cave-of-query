@@ -135,7 +135,6 @@ def puzzle_room_one():
     first_letter = 'H'
     print(f"As you pass through, you notice a big {first_letter} on the door.")
     print("But what does it mean?")
-    print("Best to write it down in the diary just in case.\n")
     return first_letter
 
 
@@ -148,16 +147,17 @@ def continue_or_quit():
     show_collected_letters()
     while True:
         print("Do you want to continue or do you give up?\n")
-        replay = (input("Type Continue (C) or Quit (Q): \n").upper())
-        if replay == ("C"):
+        replay = (input("Type Continue (C) or Quit (Q): \n").lower())
+        if replay == ("c"):
             clear()
-            print(f"Let's keep going then!")
+            print(f"Let's keep going then!\n")
             break
-        elif replay == ("Q"):
+        elif replay == ("q"):
             clear()
             reset_game()
             print("Safer back in the classroom huh?!")
             print(f"Goodbye then.")
+            main()
             break
         else:
             print(f"I don't understand what {replay} means. Can you"
@@ -199,7 +199,8 @@ def puzzle_room_two():
                         'W': 'I',
                         'X': 'B',
                         'Y': 'L',
-                        'Z': 'Q'
+                        'Z': 'Q',
+                        '1': '1'
     }
     print("\n")
     print("PUZZLE ROOM TWO")
@@ -223,7 +224,6 @@ def puzzle_room_two():
                   + " in your diary to help decipher the letters\n")
             continue
     second_letter = 'I'
-    print("You've got it.\n")
     print("You go through a huge door marked with an 'I'.\n")
     return second_letter
 
@@ -247,16 +247,16 @@ def puzzle_room_three():
         try:
             next_num = int(input("Type the next number in the sequence here:\n"))
         except ValueError:
-            print(f"That's not a number")
+            print(f"That's not a number.\n")
             continue
         if next_num == sequence_answer:
             print("You've got it.\n")
             break
         else:
             print("That doesn't seem right to me. Try again.\n")
+            print("HINT:Try adding the numbers together..\n ")
             continue
     third_letter = 'C'
-    print("You've got it.\n")
     print("You go through the next door marked with as 'C'.\n")
     return third_letter
 
@@ -298,11 +298,7 @@ def puzzle_room_four():
                 'On the Road',
                 'The Good Earth',
                 'The Alchemist',
-                'The Last Battle',
-                ''
-                ''
-                ''
-                ]
+                'The Last Battle']
     columns = 3
     hidden_button_book = 'fortune and glory kid'
     print("PUZZLE ROOM FOUR")
@@ -313,20 +309,25 @@ def puzzle_room_four():
     print("Which book would Grandpa Indiana have chosen?\n")
     print("You start scanning the titles...\n")
     for first, second, third in zip(book_list[::columns], book_list[1::columns], book_list[2::columns]):
-        print(f'{first: <25}   {second: <25}   {third}')  
+        print(f'{first: <25}  {second: <25}  {third}')
     while True:
         print("\n")
         book = (input("Type the correct book title here:\n")).lower()
+        try:
+            book in book_list == True
+        except ValueError:
+            print(f"That's not one of the library books.\n")
+            continue
         if book == hidden_button_book:
-            print("Of course!")
+            print("Of course!\n")
             break
         else:
-            print("That's just a normal book. Try again.\n")
-            print("What was that phrase Grandpa Indiana always")
+            print("No hidden buttons there. Try again.\n")
+            print("HINT: What was that phrase Grandpa Indiana always")
             print("used to say to me when I was a kid...\n")
             continue
     fourth_letter = 'O'
-    print("Of course! The bookshelf slides away and a hidden "
+    print("There's a hidden button! The bookshelf slides away and a "
           + "tunnel is revealed.\n")
     print("You go through the tunnel and notice 'O's all over the walls.\n")
     return fourth_letter
@@ -357,9 +358,10 @@ def puzzle_room_five():
         else:
             print("Only use a combination of the ten letters"
                   + " provided")
+            print("HINT: It's a language...")
             continue
     fifth_letter = 'P'
-    print(f"That's the one! The door clicks open.\n")
+    print(f"The door clicks open.")
     print("You go through the next door marked with a 'P'.\n")
     return fifth_letter
 
@@ -403,7 +405,8 @@ def puzzle_room_six():
     print("---------------\n")
     print("Decode this ancient language to retrieve the next letter"
           + " and move on.\n")
-    print(".. - ... / .- / .-.. . .- .--. / --- ..-. / ..-. .- .. - ....\n")
+    print(".. - ... (space) .- (space) .-.. . .- .--. (space) --- ..-. "
+          + "(space) ..-. .- .. - ....\n")
     print("Wait a minute, this looks like old Morse Code.")
     print("I think I saw something in the diary like this.")
     print("Let me find the right page....")
@@ -413,13 +416,13 @@ def puzzle_room_six():
     while True:
         decryption = (input("Type your decryption here:\n")).lower()
         if decryption == ("its a leap of faith"):
-            print("You've got it.\n")
+            print("You've got it.")
             break
         else:
             print("Nothing happens. Try again.\n")
             continue
     sixth_letter = 'N'
-    print("You've got it. The door unlocks.\n")
+    print("The door unlocks.")
     print("You go through the next door marked with a 'N'.\n")
     return sixth_letter
 
@@ -447,7 +450,7 @@ def puzzle_room_seven():
             break
         else:
             print("That doesn't seem right to me. Try again.\n")
-            print("Just type the four words with spaces between them.\n")
+            print("HINT: Just type the four words with spaces between them.\n")
             continue 
     seventh_letter = 'T'
     print("You've got it.\n")
@@ -489,10 +492,10 @@ def treasure_room():
     treasure_letter = correct_disk
     return treasure_letter
     clear()
-    print(f"you stand on the golden disk with a {disk_picked} on it.\n")
+    print(f"you stand on the golden disk with a {disk_picked.capitalize()} on it.\n")
     print("The disk sinks deeper into the floor and you hear"
           + " a rumble.\n")
-    display_collected_letters(treasure_letter)
+    
 
 
 def treasure_chest():
@@ -510,7 +513,7 @@ def treasure_chest():
             break
         else:
             print("Nothing happens. Are the letters in the right order?")
-            print("Maybe they form a word...\n ")
+            print("HINT: Maybe they form a word...a language perhaps.\n ")
             continue
 
 
@@ -615,7 +618,7 @@ def main():
     add_collected_letters(puzzle_one_letter)
     continue_or_quit()
     puzzle_two_letter = puzzle_room_two()
-    add_collected_letters(letter)(puzzle_two_letter)
+    add_collected_letters(puzzle_two_letter)
     continue_or_quit()
     puzzle_three_letter = puzzle_room_three()
     add_collected_letters(puzzle_three_letter)
@@ -634,6 +637,7 @@ def main():
     continue_or_quit()
     puzzle_eight_letter = treasure_room()
     add_collected_letters(puzzle_eight_letter)
+    continue_or_quit()
     treasure_chest()
     win_treasure()
 
