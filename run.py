@@ -216,12 +216,18 @@ def puzzle_room_two():
         print(decoder)
     while True:
         decryption = (input("Type your decryption here:\n")).lower()
-        if decryption == ("that belongs in a museum"):
-            print("You've got it.\n")
-            break
-        else:
-            print("Nothing happens. Use the ancient dictionary decoder"
-                  + " in your diary to help decipher the letters\n")
+        try:
+            if decryption.isalpha():
+                continue
+            elif decryption == ("that belongs in a museum"):
+                print("You've got it.\n")
+                break
+            else:
+                print("Nothing happens. Use the ancient dictionary decoder"
+                      + " in your diary to help decipher the letters\n")
+                continue
+        except ValueError:
+            print(f"Please enter characters A-Z only.\n")
             continue
     second_letter = 'I'
     print("You go through a huge door marked with an 'I'.\n")
@@ -445,7 +451,6 @@ def puzzle_room_seven():
               + " letter 'T'\n")
         days = set(input("Type the four days here:\n").split())
         if riddle_key == days:
-
             print("You've got it.\n")
             break
         else:
@@ -453,7 +458,6 @@ def puzzle_room_seven():
             print("HINT: Just type the four words with spaces between them.\n")
             continue 
     seventh_letter = 'T'
-    print("You've got it.\n")
     print("You go through the next door marked with a 'T' and"
           + " head off down a long tunnel.\n")
     return seventh_letter
@@ -481,21 +485,18 @@ def treasure_room():
     while True:
         disk_picked = (input("What is the missing letter? \n"))    
         if disk_picked.capitalize() == correct_disk:
-            print(f"you stand on the golden disk with a {disk_picked} on it.\n")
-            print("The disk sinks deeper into the floor and you hear"
-                  + " a rumble.\n")
+            print(f"you stand on the golden disk with a {correct_disk} on"
+                  + " it.\n")
+            print("Something is happening...")   
             break
         else:
-            print("Those characters aren't valid. You only need "
-                  + "to choose one letter here.\n")
+            print("You only need to choose one letter here")
+            print("HINT: Add the numbers together and think about answer...")     
             continue
     treasure_letter = correct_disk
     return treasure_letter
-    clear()
-    print(f"you stand on the golden disk with a {disk_picked.capitalize()} on it.\n")
-    print("The disk sinks deeper into the floor and you hear"
-          + " a rumble.\n")
-    
+    print(f"The {correct_disk} disk sinks deeper into the floor and you hear"
+          + " a rumbling noise")
 
 
 def treasure_chest():
