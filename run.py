@@ -39,7 +39,7 @@ def game_intro():
             print("complete his final quest, in the Caves of Query.\n")
             break
         else:
-            print("That's not a name I know./n")
+            print("That's not a name I know.")
             continue
 
     return explorer_name
@@ -69,7 +69,7 @@ def puzzle_room_one():
     print("⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                 ⠀⠀⣿")
     print("⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀                        ⠀⣿")
     print("⣿⠟⠁⠀                         ⠀⠀⠀⠀⠀⠀⣿")
-    print("⣿⠀⠀⠀⠀                         ⠀⠀⠀   ⣿")
+    print("⣿⠀⠀⠀⠀                               ⣿")
     print("⣿⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⣤⣤⣤⣤⣿")
     print("You enter the cave and arrive at a large chamber with a locked"
           + " door ahead.")
@@ -86,7 +86,7 @@ def puzzle_room_one():
             print("You've got it!")
             break
         else:
-            print(f"That's not right. Try again")
+            print(f"That's not right. Try again.\n")
     while True:
         print("4x - 12 = 192")
         try:
@@ -133,11 +133,36 @@ def puzzle_room_one():
                   + "answers from the three number puzzles joined together.\n")
             continue
     first_letter = 'H'
-    print("The door opens, and on you go...\n")
     print(f"As you pass through, you notice a big {first_letter} on the door.")
     print("But what does it mean?")
     print("Best to write it down in the diary just in case.\n")
     return first_letter
+
+
+def continue_or_quit():
+    """
+    Function to give user option to continue to 
+    next puzzle or end the game early.
+    """
+    print("Let's make a note of that letter in the diary.\n")
+    show_collected_letters()
+    while True:
+        print("Do you want to continue or do you give up?\n")
+        replay = (input("Type Continue (C) or Quit (Q): \n").upper())
+        if replay == ("C"):
+            clear()
+            print(f"Let's keep going then!")
+            break
+        elif replay == ("Q"):
+            clear()
+            reset_game()
+            print("Safer back in the classroom huh?!")
+            print(f"Goodbye then.")
+            break
+        else:
+            print(f"I don't understand what {replay} means. Can you"
+                  + "please repeat?\n")
+            continue
 
 
 def puzzle_room_two():
@@ -195,7 +220,7 @@ def puzzle_room_two():
             break
         else:
             print("Nothing happens. Use the ancient dictionary decoder"
-                  + "table in your diary to help decipher the letters\n")
+                  + " in your diary to help decipher the letters\n")
             continue
     second_letter = 'I'
     print("You've got it.\n")
@@ -491,8 +516,6 @@ def treasure_chest():
 
 def win_treasure():
     clear()
-    print("You've got it! A small door opens on the front of")
-    print("the chest to reveal a key hole...\n")
     print("        ⣤⣤⣤⣤⣤⣤⣤⣤⣤")
     print("        ⣿⣿⣿⣿⣿⣿⣿⣿⣿")
     print("       ⠀⣿⣿⣿⣿⠉⠉⠉⠉⠉")
@@ -508,6 +531,8 @@ def win_treasure():
     print("⠸⣿⣿⣿⣷⣄⣀⣀⣠⣾⣿⣿⣿⠇")
     print("  ⠘⠿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠃")
     print("   ⠀⠈⠉⠛⠛⠛⠛⠉⠁")
+    print("You've got it! A small door opens on the front of")
+    print("the chest to reveal a key hole...\n")
     print("You get out Grandpa Indy's old key and it's a perfect fit.")
     print("The treasure chest opens and you look inside...")
     print("Jewels of all shapes and sizes surround an old book.")
@@ -542,12 +567,19 @@ def clear():
     os.system("clear")
 
 
-def display_collected_letters(letter):
+def add_collected_letters(letter):
     """
     After solving each puzzle, the explorer receives a letter. These
     are collected and the user display updated after each game.
     """
     letters_collected.append(letter)
+
+
+def show_collected_letters():
+    """
+    After solving each puzzle, the explorer receives a letter. These
+    are collected and the user display updated after each game.
+    """
     print("Letters Collected: ")
     for new_lst in letters_collected:
         no_brackets_lst = (','.join(new_lst))
@@ -580,21 +612,28 @@ def main():
     explorer_data = game_intro()
     clear_collected_game_data()
     puzzle_one_letter = puzzle_room_one()
-    display_collected_letters(puzzle_one_letter)
+    add_collected_letters(puzzle_one_letter)
+    continue_or_quit()
     puzzle_two_letter = puzzle_room_two()
-    display_collected_letters(puzzle_two_letter)
+    add_collected_letters(letter)(puzzle_two_letter)
+    continue_or_quit()
     puzzle_three_letter = puzzle_room_three()
-    display_collected_letters(puzzle_three_letter)
+    add_collected_letters(puzzle_three_letter)
+    continue_or_quit()
     puzzle_four_letter = puzzle_room_four()
-    display_collected_letters(puzzle_four_letter)
+    add_collected_letters(puzzle_four_letter)
+    continue_or_quit()
     puzzle_five_letter = puzzle_room_five()
-    display_collected_letters(puzzle_five_letter)
+    add_collected_letters(puzzle_five_letter)
+    continue_or_quit()
     puzzle_six_letter = puzzle_room_six()
-    display_collected_letters(puzzle_six_letter)
+    add_collected_letters(puzzle_six_letter)
+    continue_or_quit()
     puzzle_seven_letter = puzzle_room_seven()
-    display_collected_letters(puzzle_seven_letter)
+    add_collected_letters(puzzle_seven_letter)
+    continue_or_quit()
     puzzle_eight_letter = treasure_room()
-    display_collected_letters(puzzle_eight_letter)
+    add_collected_letters(puzzle_eight_letter)
     treasure_chest()
     win_treasure()
 

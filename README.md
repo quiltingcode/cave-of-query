@@ -33,15 +33,18 @@ Welcome to <a href="https://cave-of-query.herokuapp.com/" target="_blank" rel="n
 
 ## Game Design
 
-The wireframes for the Disney Sidekicks project were produced in Balsamiq.  There are frames for a desktop device and for a mobile device.  
+Initially, I had the idea that I wanted to create a text-based adventure game based around the famous character of Indiana Jones with a treasure-hunting theme. This would be mixed with the recently fashionable 'escape room' games where players have to solve puzzles or brain teasers in order to move forward in the game. 
 
+I sketched out a basic cave system to base my coding on, so that I could better visualize the path the user would take through the game. 
+
+![Cave Map](assets/images/cave-map.png)
 
 
 [Back to top](<#contents>)
 
 ## Flowchart
 
-The Disney Sidekicks quiz has been created within a single HTML page. The homepage is the initial default loading page with two buttons available to the user. 
+The Cave of Query flowchart was designed using the free flowchart website [Diagrams.Net](https://www.diagrams.net/)
 
 [Back to top](<#contents>)
 
@@ -52,7 +55,7 @@ The Disney Sidekicks quiz has been created within a single HTML page. The homepa
   
 ## Title Page
 
-At the top of the website is the main title and an introduction to the quiz. The game logo is displayed here, 
+Across the main home page screen, when you run the program, you are introduced to the game title 'The Cave of Query' and you are asked to enter your name, which starts the game. 
 
 ![Homepage image](assets/images/title-page.png)
 
