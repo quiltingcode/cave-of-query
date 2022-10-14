@@ -82,7 +82,7 @@ def puzzle_room_one():
         try:
             user_answer_one = int(input("What is the value of X? \n"))
         except ValueError:
-            print(f"That's not a number")
+            print(f"That's not a number\n")
             continue
     
         if (user_answer_one) == key_one:
@@ -95,7 +95,7 @@ def puzzle_room_one():
         try:
             user_answer_two = int(input("What is the value of X? \n"))
         except ValueError:
-            print(f"That's not a number")
+            print(f"That's not a number\n")
             continue
     
         if (user_answer_two) == key_two:
@@ -108,7 +108,7 @@ def puzzle_room_one():
         try:
             user_answer_three = int(input("What is the value of X? \n"))
         except ValueError:
-            print(f"That's not a number")
+            print(f"That's not a number\n")
             continue
     
         if (user_answer_three) == key_three:
@@ -136,7 +136,6 @@ def puzzle_room_one():
                   + "answers from the three number puzzles joined together.\n")
             continue
     first_letter = 'H'
-    clear()
     print("The door opens, and on you go...\n")
     print(f"As you pass through, you notice a big {first_letter} on the door.")
     print("But what does it mean?")
@@ -180,12 +179,13 @@ def puzzle_room_two():
                         'Y': 'L',
                         'Z': 'Q'
     }
+    print("\n")
     print("PUZZLE ROOM TWO")
     print("---------------\n")
     print("Decode this ancient language on the wall to retrieve the next")
     print("letter and move on.\n")
     print("OAFO EJZSCMW VC F RDWJDR\n")
-    print("Wait a minute, I think I remember seeing a page in Granpy")
+    print("Wait a minute, I think I remember seeing a page in Grandpa")
     print("Indiana's diary which translated ancient alphabets.")
     print("Let me find the right page....")
     for i in range(13):
@@ -201,7 +201,6 @@ def puzzle_room_two():
                   + "table in your diary to help decipher the letters\n")
             continue
     second_letter = 'I'
-    clear()
     print("You've got it.\n")
     print("You go through a huge door marked with an 'I'.\n")
     return second_letter
@@ -235,7 +234,6 @@ def puzzle_room_three():
             print("That doesn't seem right to me. Try again.\n")
             continue
     third_letter = 'C'
-    clear()
     print("You've got it.\n")
     print("You go through the next door marked with as 'C'.\n")
     return third_letter
@@ -258,7 +256,6 @@ def puzzle_room_four():
                 "Gulliver's Travels",
                 'Great Expectations',
                 "The Pilgrim's Process",
-                'One Hundred Years of Solitude',
                 'The Count of Monte Cristo',
                 'The Scarlet Letter',
                 'A Tale of Two Cities',
@@ -296,6 +293,7 @@ def puzzle_room_four():
     for first, second, third in zip(book_list[::columns], book_list[1::columns], book_list[2::columns]):
         print(f'{first: <25}   {second: <25}   {third}')  
     while True:
+        print("\n")
         book = (input("Type the correct book title here:\n")).lower()
         if book == hidden_button_book:
             print("Of course!")
@@ -306,7 +304,6 @@ def puzzle_room_four():
             print("used to say to me when I was a kid...\n")
             continue
     fourth_letter = 'O'
-    clear()
     print("Of course! The bookshelf slides away and a hidden "
           + "tunnel is revealed.\n")
     print("You go through the tunnel and notice 'O's all over the walls.\n")
@@ -340,7 +337,6 @@ def puzzle_room_five():
                   + " provided")
             continue
     fifth_letter = 'P'
-    clear()
     print(f"That's the one! The door clicks open.\n")
     print("You go through the next door marked with a 'P'.\n")
     return fifth_letter
@@ -401,7 +397,6 @@ def puzzle_room_six():
             print("Nothing happens. Try again.\n")
             continue
     sixth_letter = 'N'
-    clear()
     print("You've got it. The door unlocks.\n")
     print("You go through the next door marked with a 'N'.\n")
     return sixth_letter
@@ -430,9 +425,9 @@ def puzzle_room_seven():
             break
         else:
             print("That doesn't seem right to me. Try again.\n")
+            print("Just type the four words with spaces between them.\n")
             continue 
     seventh_letter = 'T'
-    clear()
     print("You've got it.\n")
     print("You go through the next door marked with a 'T' and"
           + " head off down a long tunnel.\n")
@@ -526,7 +521,7 @@ def win_treasure():
         replay = (input("Type Enough (E) or More (M): \n").upper())
         if replay == ("M"):
             clear()
-            print(f"Good luck with that next treasure map then, {explorer}")
+            print(f"Good luck with that next treasure map then!")
             print("You are a born explorer!")
             reset_game()
             main()
@@ -535,7 +530,7 @@ def win_treasure():
             clear()
             reset_game()
             print("Safer back in the classroom huh?!")
-            print(f"Goodbye then, {explorer}")
+            print(f"Goodbye then.")
             break
         else:
             print(f"I don't understand what {replay} means. Can you"
