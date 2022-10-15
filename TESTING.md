@@ -46,20 +46,19 @@ In the remaining puzzles where a letter string is required, I wanted to use the 
 
 6. On testing the game in the Heroku app, I wasn't happy with the print out within the confines of the small container window. The user was losing a lot of valuable information as they played if they didn't keep scrolling up to check what was printed above but not seen. I created a new function to ask the user whether they wanted to continue or quit the game which would appear at the end of each puzzle room. In this way, the screen would scroll down to display to the end of this small function, but the user could then still see the valuable 'letters collected' information which is really important for winning the final puzzle. 
 
-
-
-
 ### Unresolved
 
 1. I wanted to add a clear() function between each puzzle, as the Heroku platform game container is very small, and sometimes (especially in puzzles 2 and 6 where decoder dictionaries are displayed) there is a lot of text to display on the screen all at once. Firstly, the clear function doesn't actually clear all the previous elements of the game, only what is visible in the screen at the time. Secondly, it clears the screen so fast that sometimes, the user loses valuable information before they even had time to read it, when the clear() was set at the end of a puzzle room. So I removed this function as it made for a bad user experience, although I still wasn't entirely happy with the output display in the Heroku app. 
 
 ## Additional Testing
 
-
-
 ## Peer Review
 
 In addition to the above tests, I asked my peers to play this quiz and their overall response was very positive. 
+
+1. They suggested I add a few hints along the way if the user inputs an incorrect answer, so this was implemented.
+
+2. They suggested that in puzzle 6, the morse code sentence is written out with forward slashes between each word to mark out each separate word. It appeared confusing, and users tried to input the answer with forward slashes between each word which didn't pass validation. I therefore removed the forward slashes and replaced them with the word '(space)'. 
  
 
 Please click [**_here_**](README.md) to return to the Cave of Query README file.
