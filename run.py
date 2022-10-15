@@ -1,19 +1,7 @@
-import gspread
-from google.oauth2.service_account import Credentials
 from pprint import pprint
 import os
 from art import *
 
-SCOPE = [
-    "https://www.googleapis.com/auth/spreadsheets",
-    "https://www.googleapis.com/auth/drive.file",
-    "https://www.googleapis.com/auth/drive"
-    ]
-
-CREDS = Credentials.from_service_account_file('creds.json')
-SCOPED_CREDS = CREDS.with_scopes(SCOPE)
-GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open('indiana-diary')
 
 letters_collected = []
 explorer = []
@@ -22,7 +10,7 @@ explorer = []
 def game_intro():
     """
     Introduction to the game, giving the user a brief
-    description to set the scene, and ask for their 
+    description to set the scene, and ask for their
     name to store in the explorers google sheet page.
     """
     os.system("clear")
@@ -32,7 +20,7 @@ def game_intro():
         explorer_name = input("What is your name intrepid explorer? \n")
         if explorer_name.isalpha():
             clear()
-            print(f"Welcome to the Cave of Query, {explorer_name.capitalize()}.")
+            print("Welcome to the Cave of Query, {explorer_name.capitalize()}.")
             print("In his last will and testament, Indiana Jones left")
             print("you his famous quest diary and a strange key.")
             print(f"Now it is down to you, {explorer_name.capitalize()}, to")
@@ -81,7 +69,6 @@ def puzzle_room_one():
         except ValueError:
             print(f"That's not a number\n")
             continue
-    
         if (user_answer_one) == key_one:
             print("You've got it!")
             break
@@ -94,7 +81,6 @@ def puzzle_room_one():
         except ValueError:
             print(f"That's not a number\n")
             continue
-    
         if (user_answer_two) == key_two:
             print("You've got it!")
             break
@@ -136,7 +122,7 @@ def puzzle_room_one():
 
 def continue_or_quit():
     """
-    Function to give user option to continue to 
+    Function to give user option to continue to
     next puzzle or end the game early.
     """
     print("Let's make a note of that letter in the diary.\n")
@@ -211,7 +197,6 @@ def puzzle_room_two():
         print(decoder)
     while True:
         decryption = (input("Type your decryption here:\n")).lower()
-    
         if decryption == ("that belongs in a museum"):
             print("You've got it.\n")
             break
@@ -326,7 +311,7 @@ def puzzle_room_four():
 def puzzle_room_five():
     """
     Explorer enters fifth puzzle room and has to
-    solve an anagram puzzle to move on. 
+    solve an anagram puzzle to move on.
     Validation against numbers, special characters, and blank
     entries
     """
