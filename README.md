@@ -39,6 +39,8 @@ I sketched out a basic cave system to base my coding on, so that I could better 
 
 ![Cave Map](assets/images/cave-map.png)
 
+Originally, I set up a Google Spreadsheet in the background to collect the explorer and letter data, and to pull the diary data as and when needed to help solve the puzzles. However, although being dynamic content, my mentor pointed out that this data could all be stored and displayed inside the run.py file, so in the end, I removed the link to the Google Sheets, and kept the data inside the GitPod run.py file. 
+
 
 [Back to top](<#contents>)
 
@@ -108,21 +110,18 @@ Once eight puzzles have been completed, and all the collected letters re-arrange
 
 I used [Ascii Art](https://emojicombos.com/key) to print a picture of a key and the user wins the game and is rewarded with the treasure. Amongst the treasure, they also find another treasure map, and they have the option to continue their new found treasure hunting skills, or quit while they are ahead. If they choose to quit, the game ends. If they choose to continue the treasure hunt, the user is taken back to the Home Page to begin the game again. With future developement, this option would take them to a new adventure with alternative brain teasers to complete, using the newly acquired treasure map. 
 
-
-
 [Back to top](<#contents>)
 
 ## Future Features 
 
-In the future, I would like to add more features to the Disney Sidekicks Quiz. These could include:
+In the future, I would like to add more features to the Cave of Query game. These could include:
 
-* Music-related questions with audio elements
-* Add more questions to the questions array as new Disney films are released. 
-* Eventually I could expand on my theme of Disney quizzes, and offer a list of categories for the player to choose from on the home page. For example:
-  * Disney Villains
-  * Disney Princesses
-  * Disney Theme Tunes
-  * Disney quotes
+* Difficulty levels
+* More puzzle rooms
+* The option to choose various doors after each puzzle, similar to in my original map design, see [Game Design](<#game-design>).
+* ADditional levels, to make use of the treasure map found at the end of the Game, as described previously.
+
+One day, when I'm an expert Full Stack Software Developer, I would love to be able to add graphics, music, characters, etc. to this game, and make it more than just text-based if my abilities in the future will allow me. 
 
 
 [Back to top](<#contents>)
@@ -173,10 +172,10 @@ The game was deployed via an online platform called as Heroku, used to improve u
 
 ### **To fork the repository using GitHub**
 A copy of the GitHub Repository can be made by forking the GitHub account. This copy can be viewed and changes can be made to the copy without affecting the original repository. Take the following steps to fork the repository:
-1. Log in to **GitHub** and locate the [repository](https://github.com/quiltingcode/disneysidekicks).
+1. Log in to **GitHub** and locate the [repository](https://github.com/quiltingcode/cave-of-query).
 2. On the right hand side of the page inline with the repository name is a button called **'Fork'**, click on the button to create a copy of the original repository in your GitHub Account.
 
-![GitHub fork image](assets/readmeimages/fork.PNG)
+![GitHub fork image](assets/images/cave-fork.png)
 
 ### **To create a local clone of this project**
 The method from cloning a project from GitHub is below:
@@ -184,7 +183,7 @@ The method from cloning a project from GitHub is below:
 1. Under the repository’s name, click on the **code** tab.
 2. In the **Clone with HTTPS** section, click on the clipboard icon to copy the given URL.
 
-![Cloning image](assets/readmeimages/clone.PNG)
+![Cloning image](assets/images/cave-clone.png)
 
 3. In your IDE of choice, open **Git Bash**.
 4. Change the current working directory to the location where you want the cloned directory to be made.
@@ -196,35 +195,24 @@ The method from cloning a project from GitHub is below:
 # Credits
 ### Content
 
-* The colour scheme was researched from the following websites:
-    * https://www.sitepoint.com/15-color-schemes-from-disney-heroes-and-villains/
-    * https://www.schemecolor.com/disney-color.php
-* Tutorials on how to create a quiz game with javascript were found on Youtube. One by [Web Dev Simplified](https://www.youtube.com/watch?v=riDzcEQbX6k) and another by [Brian Design](https://www.youtube.com/watch?v=f4fB9Xg2JEY)
-* I also watched another tutorial by [Web Dev Simplified](https://www.youtube.com/watch?v=rIO5326FgPE) explaining the CSS Box Model, to help create the various game containers.
-* Information for how to Hide and Show Divs was taken from [W3Schools](W3schools.com/howto/howto_js_toggle_hide_show.asp)
-* [Balsamiq](https://balsamiq.com/wireframes/) was used to create the wireframes.
-* The Favicon in the browser was created in https://favicon.io/
-* The fonts were taken from [Google Fonts](https://fonts.google.com/)
-* I used two different websites for help learning how to shuffle the questions array each time a game was started. I used [Geeks for Geeks](https://www.geeksforgeeks.org/shuffle-or-randomize-a-list-in-java/) and [Sebhastian.com](https://sebhastian.com/shuffle-array-javascript/#:~:text=A%20JavaScript%20array%20elements%20can,using%20the%20sort()%20method.&text=The%20JavaScript%20Array%20sort(),value%20returned%20by%20that%20function.)
-* The quiz questions were created with the aid of [Bustle.com](https://www.bustle.com/entertainment/91807-35-disney-sidekicks-ranked-from-meeko-flit-to-the-seven-dwarves)
-* I used a YouTube tutorial by [The Coding Train](https://www.youtube.com/watch?v=MLtAMg9_Svw) to learn how to add a countdown timer element to the page.
-* Information for how to start a countdown timer from a button click was found at [W3Schools](https://www.w3schools.com/jsref/met_element_addeventlistener.asp) 
-* Information for how to restore spliced items from an array was found at [Stack Overflow](https://stackoverflow.com/questions/58220174/bring-all-items-back-in-an-array-after-using-splice-to-remove-them)
+* I researched how to begin creating a text-based adventure game through [www.makeuseof.com](https://www.makeuseof.com/python-text-adventure-game-create/)
+* I got brain teaser puzzle ideas from [teambuilding.com](https://teambuilding.com/blog/escape-room-puzzles)
+* I found the Morse Code dictionary at [morsedecoder.com](https://morsedecoder.com/)
+* I researched Indiana Jones trivia at [thoughtcatalog.com](https://thoughtcatalog.com/oliver-miller/2013/03/50-quotes-from-the-indiana-jones-movies-in-order-of-awesomeness/)
+* I researched classic books at [oclc.org](https://www.oclc.org/en/worldcat/library100/top500.html)
+* I learnt how to print lists into multiple columns and prevent empty user input through the [Bobby Hadz Blog](https://bobbyhadz.com/blog/python-print-list-in-columns)
+* I learnt how to print lists  in a user friendly format through [pythonpool.com](https://www.pythonpool.com/remove-brackets-from-list-python/)
+* I learnt how to compare two lists to validate multiple word user input using this article from [Stack Overflow](https://stackoverflow.com/questions/8866652/determine-if-2-lists-have-the-same-elements-regardless-of-order)
  
-
 ### Media
-* The images used in this website were sourced from:
-  * imgbin.com
-  * pngwing.com
-* The background image was sourced from https://fondosmil.com/disney
-* The question images were compressed using [TinyPNG](https://tinypng.com/)
-* The stopwatch icon is from [Font Awesome](https://fontawesome.com/v5/icons/stopwatch?s=regular&f=classic)
-* I used [remove.bg](https://www.remove.bg/upload) to remove the background on to the two magic carpet images used in the End Page.
+
+* The ascii art images used in this game were sourced from [emojicombos.com](https://emojicombos.com/)
+ 
 
 [Back to top](<#contents>)
 
 # Acknowledgements
-The site was completed as a Portfolio Project 2 piece for the Full Stack Software Developer (e-Commerce) Diploma at the [Code Institute](https://codeinstitute.net/). As such I would like to thank my mentor [Precious Ijege](https://www.linkedin.com/in/precious-ijege-908a00168/), the Slack community, and all at the Code Institute for their help and support. I love Disney, and it was a joy to be able to create a quiz dedicated to something I'm really passionate about.
+The site was completed as a Portfolio Project 3 piece for the Full Stack Software Developer (e-Commerce) Diploma at the [Code Institute](https://codeinstitute.net/). As such I would like to thank my mentor [Precious Ijege](https://www.linkedin.com/in/precious-ijege-908a00168/) for his continuous support in both this project and throughout the course, the Slack community, and all at the Code Institute for their help and support. I love Indiana Jones and the first thing I remember wanting to be when I was little was an archaeologist (basically a treasure hunter!) and so it was a joy to be able to create a game dedicated to something I love to dream about doing.
 
 Kelly Hutchison 2022.
 
