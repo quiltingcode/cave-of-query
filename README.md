@@ -7,7 +7,7 @@ It is built using Python and runs through the Code institute mock terminal on He
 
 Welcome to <a href="https://cave-of-query.herokuapp.com/" target="_blank" rel="noopener">The Cave of Query</a>
 
-![Disney Sidekicks responsive design](assets/images/screen-mockup.png)
+![Responsive design](assets/images/screen-mockup.png)
 
 # Contents
 
@@ -46,8 +46,19 @@ I sketched out a basic cave system to base my coding on, so that I could better 
 
 The Cave of Query flowchart was designed using the free flowchart website [Diagrams.Net](https://www.diagrams.net/)
 
-[Back to top](<#contents>)
+The user enters the game by inputting their name. This input is validated to make sure that at least one alpha character is entered, and then it is stored in a Name variable and the user enters the Cave.
 
+The Cave of Query consists of seven puzzle rooms and a treasure room. The user has to work their way through each of the puzzles to reach the treasure. This is the 'escape room' concept but turned on it's head as the user is trying to get in, not out. 
+
+Each puzzle room contains a different brain teaser for the user to solve. if they input the correct answer, they win a letter which is stored in a variable and they are given the option to move forward to the next room or give up.
+
+If they give up, the game ends and resets back to the Home Page. If they continue on through each puzzle room, they will reach the treasure chest. In order to open the chest and gain access to the treasure, they have to use all the letters they have collected along the way which form a word.
+
+At the end of the game, they can choose to play again, or not.
+
+![Cave Flowchart](assets/images/cave-flowchart.drawio.png)
+
+[Back to top](<#contents>)
 
 
 # Current Features
@@ -63,7 +74,11 @@ Across the main home page screen, when you run the program, you are introduced t
 
 ## Game Introduction
 
-If the user is unsure of how to play a quiz game, at the bottom of the Home Page they can select the 'Rules' button which will show them a set of simple instructions. Under the rules there is a button to start the game.  
+Once the user has entered their name, they enter the cave and they are given an introduction to the user story. The player is the grandchild of the infamous Indiana Jones. In his last will and testament, he leaves you an old key and his diary, where he used to write all his treasure-hunting information. In the diary, you find information about the Caves of Query, a quest Indiana never managed to complete. 
+
+In his stead, you decide to travel to the Caves of Query and try your luck, after all you have the Jones' explorer genes. You have brought the diary and the key with you. 
+
+I used [Ascii Art](https://emojicombos.com/cave-entrance-dot-art) to print an image of a cave in this introduction section. I didn't want to bog the user down with a whole page of introduction text to get them into the spirit of the game, but at the same time, I wanted to give them something to let them visualise going into the game area. A text-based game like this relys a lot on the user's imagination so at least this gives them a little prompt. 
 
 ![Rules Page image](assets/images/game-intro.png)
 
@@ -71,7 +86,13 @@ If the user is unsure of how to play a quiz game, at the bottom of the Home Page
 
 ## Puzzle Rooms
 
-Once the user has selected the 'Start Quiz' button from either the Home page or Rules Page, the introduction, rules, logo and buttons disappear. The quiz area then becomes visible to the user and the game can begin. 
+Each puzzle room contains a different type of puzzle. These range from maths puzzles, to anagrams, to deciphering strange languages. If the user types in the wrong answer, I have tried to give them a hint to steer them in the right direction towards the correct answer. 
+
+The validation makes the input not case sensetive, so if they type the correct word in either upper or lower case, it will still pass as correct. 
+
+A lot of the puzzles contain Indiana Jones trivia. Both the two language decipher puzzles are Indiana quotes, and also the library book challenge is one of Indiana's most famous quotes as well. 
+
+The letters collected throughout the game spell: 'Pythonic'. This is both a play on the language I have been using throughout this project to build the game but also Indiana Jones' greatest fear; snakes!
 
 
 
