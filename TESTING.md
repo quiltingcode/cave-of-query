@@ -4,26 +4,16 @@
 
 ## Code Validation
 
-The Disney Sidekicks site has been passed through the [W3C html Validator](https://validator.w3.org/), the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) and the [JS Hint Validator](https://jshint.com/).
+The Cave of Query site has been passed through the internal PEP8 validation tests which I installed into GitPod. The method I used to do this was as per the Slack Article written by kevin_ci on the 28th September 2022 in #announcements, since the PEP8online website no longer works:
 
-## W3C html Validation Results
+1. Run the command 'pip3 install pycodestyle'
+2. Press Ctrl+Shift+P
+3. Type 'linter' into the search field
+4. Select 'Python: Select Linter
+5. Select 'pycodestyle' from the list
+6. Select the 3 lines menu in the top left hand corner. Select 'View' and then 'Problems'. 
+6. PEP8 errors are now displayed in a list as well as being underlined in red in the central editor window. 
 
-* Index.html - 1 error. Details can be found in the [Bugs](<#known-bugs>) section. The issue was easily fixed and after a retest, no more errors were returned.
-
-![W3C html home page validation results](assets/readmeimages/w3validator-pass.PNG)
-
-
-## W3C CSS Validation Results
-
-* Style.css – No errors were found.
-
-![CSS validation test pass results](assets/readmeimages/w3c-css-validator-pass.PNG)
-
-## JS Hint Validation Results
-
-* Script.js - 2 warnings, 1 undefined variable and 1 unused variable found.  Details can be found in the [Bugs](<#known-bugs>) section. The issues were fixed and after further testing, no more errors were returned.
-
-![JSHint validation test pass results](assets/readmeimages/jshint-pass.PNG)
 
 ## Responsiveness Test
 

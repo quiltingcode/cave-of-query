@@ -215,14 +215,14 @@ def puzzle_room_two():
         print(decoder)
     while True:
         decryption = (input("Type your decryption here:\n")).lower()
-        try:
-            if decryption == ("that belongs in a museum"):
-                print("You've got it.\n")
-                break
-            else:
-                print("Nothing happens. Use the ancient dictionary decoder"
-                      + " in your diary to help decipher the letters\n")
-                continue
+    
+        if decryption == ("that belongs in a museum"):
+            print("You've got it.\n")
+            break
+        else:
+            print("Nothing happens. Use the ancient dictionary decoder"
+                  + " in your diary to help decipher the letters\n")
+            continue
     second_letter = 'I'
     print("You go through a huge door marked with an 'I'.\n")
     return second_letter
