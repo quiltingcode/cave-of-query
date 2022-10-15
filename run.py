@@ -101,25 +101,21 @@ def puzzle_room_one():
         else:
             print(f"That's the wrong answer.Try again")
     while True:
-        print("85/x + 5x - 19 = 71")   
+        print("85/x + 5x - 19 = 71")
         try:
             user_answer_three = int(input("What is the value of X? \n"))
         except ValueError:
             print(f"That's not a number\n")
             continue
-    
         if (user_answer_three) == key_three:
             print("You've got it!")
             break
         else:
             print(f"That's the wrong answer.Try again")
-    
-    
     print("All three puzzles complete but how do I open the door?\n")
     print("On closer inspection, the door is locked with a 6 digit "
-          + "combination code...")   
+          + "combination code...")
     while True:
-        
         try:
             combination_lock = int(input("Enter the 6 digit combination: \n"))
         except ValueError:
@@ -221,7 +217,7 @@ def puzzle_room_two():
             break
         else:
             print("Nothing happens. Use the ancient dictionary decoder"
-                  + " in your diary to help decipher the letters\n")
+                  + " in your diary to help decipher the letters.\n")
             continue
     second_letter = 'I'
     print("You go through a huge door marked with an 'I'.\n")
@@ -254,7 +250,7 @@ def puzzle_room_three():
             break
         else:
             print("That doesn't seem right to me. Try again.\n")
-            print("HINT:Try adding the numbers together..\n ")
+            print("HINT: Try adding the numbers together..\n ")
             continue
     third_letter = 'C'
     print("You go through the next door marked with as 'C'.\n")
@@ -311,13 +307,7 @@ def puzzle_room_four():
     for first, second, third in zip(book_list[::columns], book_list[1::columns], book_list[2::columns]):
         print(f'{first: <25}  {second: <25}  {third}')
     while True:
-        print("\n")
         book = (input("Type the correct book title here:\n")).lower()
-        try:
-            book in book_list == True
-        except ValueError:
-            print(f"That's not one of the library books.\n")
-            continue
         if book == hidden_button_book:
             print("Of course!\n")
             break
@@ -419,11 +409,12 @@ def puzzle_room_six():
             print("You've got it.")
             break
         else:
-            print("Nothing happens. Try again.\n")
+            print("Nothing happens. Use the mrose code decoder"
+                  + " in your diary to help decipher the letters.\n")
             continue
     sixth_letter = 'N'
     print("The door unlocks.")
-    print("You go through the next door marked with a 'N'.\n")
+    print("You go through the next door marked with an 'N'.\n")
     return sixth_letter
 
 
@@ -449,7 +440,7 @@ def puzzle_room_seven():
         else:
             print("That doesn't seem right to me. Try again.\n")
             print("HINT: Just type the four words with spaces between them.\n")
-            continue 
+            continue
     seventh_letter = 'T'
     print("You go through the next door marked with a 'T' and"
           + " head off down a long tunnel.\n")
@@ -476,15 +467,16 @@ def treasure_room():
     print("4 4 4 4 = N")
     print("5 5 5 5 = ?")
     while True:
-        disk_picked = (input("What is the missing letter? \n"))    
+        disk_picked = (input("What is the missing letter? \n"))
         if disk_picked.capitalize() == correct_disk:
             print(f"you stand on the golden disk with a {correct_disk} on"
                   + " it.\n")
-            print("Something is happening...")   
+            print("Something is happening...wait! What's that?")
             break
         else:
             print("You only need to choose one letter here")
-            print("HINT: Add the numbers together and think about answer...")     
+            print("HINT: You have to add the four numbers together"
+                  + " each time...")
             continue
     treasure_letter = correct_disk
     return treasure_letter
@@ -534,9 +526,9 @@ def win_treasure():
     print("You get out Grandpa Indy's old key and it's a perfect fit.")
     print("The treasure chest opens and you look inside...")
     print("Jewels of all shapes and sizes surround an old book.")
-    print("It looks like it contains some sort of treasure map\n")
-    print("Have you had enough treasure hunting for one lifetime")
-    print(", or are you ready for more?")  
+    print("It looks like it contains some sort of treasure map.\n")
+    print("Have you had enough treasure hunting for one lifetime,")
+    print(" or are you ready for more?")
     while True:
         replay = (input("Type Enough (E) or More (M): \n").upper())
         if replay == ("M"):
