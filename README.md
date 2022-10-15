@@ -88,19 +88,25 @@ I used [Ascii Art](https://emojicombos.com/cave-entrance-dot-art) to print an im
 
 Each puzzle room contains a different type of puzzle. These range from maths puzzles, to anagrams, to deciphering strange languages. If the user types in the wrong answer, I have tried to give them a hint to steer them in the right direction towards the correct answer. 
 
-The validation makes the input not case sensetive, so if they type the correct word in either upper or lower case, it will still pass as correct. 
+The validation makes the input not case sensitive, so if they type the correct word in either upper or lower case, it will still pass as correct. 
+
+![Validation and Hints](assets/images/validation-and-hint-edited.png)
 
 A lot of the puzzles contain Indiana Jones trivia. Both the two language decipher puzzles are Indiana quotes, and also the library book challenge is one of Indiana's most famous quotes as well. 
 
 The letters collected throughout the game spell: 'Pythonic'. This is both a play on the language I have been using throughout this project to build the game but also Indiana Jones' greatest fear; snakes!
 
+After each puzzle is correctly answered, the user is awarded a letter. They are then shown all the letters that they have won and collected up to this point and they are give the option to continue or give up. If they continue, the next puzzle room is displayed, otherwise the game is over and the user is taken back to the Home Page.
 
+![Continue or Quit Page](assets/images/collect-letters-continue.png)
 
 [Back to top](<#contents>)
 
 ## End of Game Page
 
-Once 12 questions have been answered, when the user clicks the 'End' button the quiz is finished, the questions disappear and they are replaced by a summary of how well the user did. If they score more than 80 points, they will see an image of a very happy Sidekick and a message congratulating them on their score.
+Once eight puzzles have been completed, and all the collected letters re-arranged and typed correctly into the treasure chest crpytex, the treasure chest key hole is revealed. 
+
+I used [Ascii Art](https://emojicombos.com/key) to print a picture of a key and the user wins the game and is rewarded with the treasure. Amongst the treasure, they also find another treasure map, and they have the option to continue their new found treasure hunting skills, or quit while they are ahead. If they choose to quit, the game ends. If they choose to continue the treasure hunt, the user is taken back to the Home Page to begin the game again. With future developement, this option would take them to a new adventure with alternative brain teasers to complete, using the newly acquired treasure map. 
 
 
 

@@ -202,7 +202,6 @@ def puzzle_room_two():
                         'Z': 'Q',
                         '1': '1'
     }
-    print("\n")
     print("PUZZLE ROOM TWO")
     print("---------------\n")
     print("Decode this ancient language on the wall to retrieve the next")
@@ -217,18 +216,13 @@ def puzzle_room_two():
     while True:
         decryption = (input("Type your decryption here:\n")).lower()
         try:
-            if decryption.isalpha():
-                continue
-            elif decryption == ("that belongs in a museum"):
+            if decryption == ("that belongs in a museum"):
                 print("You've got it.\n")
                 break
             else:
                 print("Nothing happens. Use the ancient dictionary decoder"
                       + " in your diary to help decipher the letters\n")
                 continue
-        except ValueError:
-            print(f"Please enter characters A-Z only.\n")
-            continue
     second_letter = 'I'
     print("You go through a huge door marked with an 'I'.\n")
     return second_letter
@@ -436,11 +430,10 @@ def puzzle_room_six():
 def puzzle_room_seven():
     """
     Explorer enters seventh puzzle room and has to
-    solve the riddle to move on. I use a sort method to 
-    make sure that whatever order they type in the four 
-    answers, they are sorted into the order that is recognised
-    as the right answer if they have guessed the four words 
-    correctly but may have an alternative order to me. 
+    solve the riddle to move on.
+    The user input is converted into a set, so that if they type the four
+    correct answer in a different order, it is still accepted as correct,
+    when compare with the correct answer set.
     """
     riddle_key = {'thursday', 'today', 'tomorrow', 'tuesday'}
     print("PUZZLE ROOM SEVEN")
@@ -507,6 +500,7 @@ def treasure_chest():
     print("An enormous treasure chest rises out of the floor"
           + " but it won't open.")
     print("Embedded in the lid is a crpytex, with eight alphabet dials.\n")
+    show_collected_letters()
     while True:
         cryptex = str((input("Enter your collected letters here: \n")).upper())
         if cryptex == str("PYTHONIC"):
