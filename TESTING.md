@@ -34,6 +34,10 @@ I do not have any Apple devices available to carry out testing on a Safari brows
 
 ![PEP8 Errors](assets/images/pep8errors.png)
 
+I removed all the white spaces and blank lines. I have also checked in slack regarding the 3 warnings relating to 'jupyter - keymap extension is not synced, but not added in gitpod' and there are replies fromm mentors that say this issue is nothing to do with my project and I can ignore it, so I have. 
+
+I was left with 5 errors relating to line too long, and one error 'No newline at end of file'. 
+
 2. User input Validation - Each puzzle room has a separate user input field with a unique correct input required. At first, if the wrong answer was input, an error would occur and the game would break. 
 I added code to convert the input in the number puzzles 1 and 3 to integers. If a number was not entered and this conversion was not possible, I created an exception Value Error to stop the game breaking. 
 In the remaining puzzles where a letter string is required, I wanted to use the validation if input.isalpha() but this doesn't work, as all inputs automatically are converted into strings, so numbers, and special characters pass this validation. In these cases, the game won't break but simply compares any user input with the correct answer and gives an error message back if the two don't match. 

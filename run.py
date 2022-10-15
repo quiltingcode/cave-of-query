@@ -2,6 +2,7 @@ from pprint import pprint
 import os
 from art import *
 
+# Global Variables - Explorer Name and puzzle letters
 
 letters_collected = []
 explorer = []
@@ -20,7 +21,8 @@ def game_intro():
         explorer_name = input("What is your name intrepid explorer? \n")
         if explorer_name.isalpha():
             clear()
-            print("Welcome to the Cave of Query, {explorer_name.capitalize()}.")
+            print(f"Welcome to the Cave of Query, "
+                  f"{explorer_name.capitalize()}.")
             print("In his last will and testament, Indiana Jones left")
             print("you his famous quest diary and a strange key.")
             print(f"Now it is down to you, {explorer_name.capitalize()}, to")
@@ -193,7 +195,8 @@ def puzzle_room_two():
     print("Indiana's diary which translated ancient alphabets.")
     print("Let me find the right page....")
     for i in range(13):
-        decoder = f'{chr(65+i)} : {puzzle_two_dict[chr(65 + i)]}   ||   {chr(78 + i)} : {puzzle_two_dict[chr(78 + i)]}'
+        decoder = (f'{chr(65+i)} : {puzzle_two_dict[chr(65 + i)]}   '
+                   f'||   {chr(78 + i)} : {puzzle_two_dict[chr(78 + i)]}')
         print(decoder)
     while True:
         decryption = (input("Type your decryption here:\n")).lower()
@@ -226,7 +229,8 @@ def puzzle_room_three():
     while True:
         print("1 1 2 3 5 8 13 21 34 55 __\n")
         try:
-            next_num = int(input("Type the next number in the sequence here:\n"))
+            next_num = int(input("Type the next number in the"
+                                 " sequence here:\n"))
         except ValueError:
             print(f"That's not a number.\n")
             continue
@@ -289,7 +293,9 @@ def puzzle_room_four():
           + "doorway, but which one...")
     print("Which book would Grandpa Indiana have chosen?\n")
     print("You start scanning the titles...\n")
-    for first, second, third in zip(book_list[::columns], book_list[1::columns], book_list[2::columns]):
+    for first, second, third in zip(book_list[::columns],
+                                    book_list[1::columns],
+                                    book_list[2::columns]):
         print(f'{first: <25}  {second: <25}  {third}')
     while True:
         book = (input("Type the correct book title here:\n")).lower()
@@ -386,7 +392,8 @@ def puzzle_room_six():
     print("I think I saw something in the diary like this.")
     print("Let me find the right page....")
     for i in range(13):
-        morse_diary = f'{chr(65+i)} : {morse_code_dict[chr(65 + i)]}     ||     {chr(78 + i)} : {morse_code_dict[chr(78 + i)]}'
+        morse_diary = (f'{chr(65+i)} : {morse_code_dict[chr(65 + i)]}     ||  '
+                       f'  {chr(78 + i)} : {morse_code_dict[chr(78 + i)]}')
         print(morse_diary)
     while True:
         decryption = (input("Type your decryption here:\n")).lower()
@@ -563,7 +570,7 @@ def show_collected_letters():
 
 def reset_game():
     """
-    Reset the figures in the google worksheet, and start the game 
+    Reset the figures in the google worksheet, and start the game
     again from the beginning.
     """
     clear()
