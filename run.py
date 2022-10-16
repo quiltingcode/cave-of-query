@@ -156,8 +156,9 @@ def continue_or_quit():
             main()
             break
         else:
-            print(f"I don't understand what {replay} means. Can you"
-                  + "please repeat?\n")
+            print(Fore.RED + f"I don't understand what {replay} "
+                  + "means. Can you please repeat?\n")
+            print(Style.RESET_ALL)
             continue
 
 
@@ -563,7 +564,7 @@ def win_treasure():
             break
         else:
             print(f"I don't understand what {replay} means. Can you"
-                  + "please repeat?\n")
+                  + " please repeat?\n")
             continue
 
 
