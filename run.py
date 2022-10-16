@@ -217,8 +217,8 @@ def puzzle_room_two():
             break
         else:
             print("Nothing happens.")
-            print(Fore.GREEN + "HINT: Use the ancient dictionary decoder"
-                  + " in your diary to help decipher the letters.\n")
+            print(Fore.GREEN + "HINT: Use the ancient dictionary decoder")
+            print(" in your diary to help decipher the letters.\n")
             print(Style.RESET_ALL)
             continue
     second_letter = 'I'
@@ -590,8 +590,8 @@ def show_collected_letters():
     print(Fore.YELLOW + "Letters Collected: ")
     for new_lst in letters_collected:
         no_brackets_lst = (','.join(new_lst))
-        print(Fore.BLUE + no_brackets_lst)
-        print(Style.RESET_ALL)
+        print(Fore.YELLOW + no_brackets_lst)
+    print(Style.RESET_ALL)
 
 
 def reset_game():
