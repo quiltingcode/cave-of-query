@@ -14,6 +14,9 @@ The Cave of Query site has been passed through the internal PEP8 validation test
 6. Select the 3 lines menu in the top left hand corner. Select 'View' and then 'Problems'. 
 6. PEP8 errors are now displayed in a list as well as being underlined in red in the central editor window. 
 
+After resolving all problems in the run.py file, no more errors were produced.
+
+![PEP8 Errors](assets/images/noproblems.png)
 
 ## Browser Compatibility 
 

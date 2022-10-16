@@ -1,6 +1,10 @@
 from pprint import pprint
 import os
 from art import *
+from colorama import init
+from colorama import Fore, Back, Style
+init()
+
 
 # Global Variables - Explorer Name and puzzle letters
 
@@ -29,7 +33,8 @@ def game_intro():
             print("complete his final quest, in the Caves of Query.\n")
             break
         else:
-            print("That's not a name I know.")
+            print(Fore.RED + "That's not a name I know.")
+            print(Style.RESET_ALL)
             continue
 
     return explorer_name
@@ -562,11 +567,11 @@ def show_collected_letters():
     After solving each puzzle, the explorer receives a letter. These
     are collected and the user display updated after each game.
     """
-    print("Letters Collected: ")
+    print(Fore.BLUE + "Letters Collected: ")
     for new_lst in letters_collected:
         no_brackets_lst = (','.join(new_lst))
-        print(no_brackets_lst)
-
+        print(Fore.BLUE + no_brackets_lst)
+        print(Style.RESET_ALL)
 
 def reset_game():
     """
