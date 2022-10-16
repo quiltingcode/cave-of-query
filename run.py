@@ -587,7 +587,7 @@ def show_collected_letters():
     After solving each puzzle, the explorer receives a letter. These
     are collected and the user display updated after each game.
     """
-    print(Fore.BLUE + "Letters Collected: ")
+    print(Fore.YELLOW + "Letters Collected: ")
     for new_lst in letters_collected:
         no_brackets_lst = (','.join(new_lst))
         print(Fore.BLUE + no_brackets_lst)
