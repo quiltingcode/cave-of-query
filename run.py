@@ -563,8 +563,9 @@ def win_treasure():
             print(f"Goodbye then.")
             break
         else:
-            print(f"I don't understand what {replay} means. Can you"
-                  + " please repeat?\n")
+            print(Fore.RED + f"I don't understand what {replay}"
+                  + " means. Can youplease repeat?\n")
+            print(Style.RESET_ALL)
             continue
 
 

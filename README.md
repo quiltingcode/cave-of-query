@@ -88,19 +88,23 @@ I used [Ascii Art](https://emojicombos.com/cave-entrance-dot-art) to print an im
 
 ## Puzzle Rooms
 
-Each puzzle room contains a different type of puzzle. These range from maths puzzles, to anagrams, to deciphering strange languages. If the user types in the wrong answer, I have tried to give them a hint to steer them in the right direction towards the correct answer. 
+Each puzzle room contains a different type of puzzle. These range from maths puzzles, to anagrams, to deciphering strange languages. If the user types in the wrong answer, I have tried to give them a hint to steer them in the right direction towards the correct answer. This is printed in green.
 
 The validation makes the input not case sensitive, so if they type the correct word in either upper or lower case, it will still pass as correct. 
 
-![Validation and Hints](assets/images/validation-and-hint-edited.png)
+The validation is printed in red to stand out to the user.
+
+![Validation and Hints](assets/images/validation-and-hint.png)
 
 A lot of the puzzles contain Indiana Jones trivia. Both the two language decipher puzzles are Indiana quotes, and also the library book challenge is one of Indiana's most famous quotes as well. 
 
 The letters collected throughout the game spell: 'Pythonic'. This is both a play on the language I have been using throughout this project to build the game but also Indiana Jones' greatest fear; snakes!
 
-After each puzzle is correctly answered, the user is awarded a letter. They are then shown all the letters that they have won and collected up to this point and they are give the option to continue or give up. If they continue, the next puzzle room is displayed, otherwise the game is over and the user is taken back to the Home Page.
+After each puzzle is correctly answered, the user is awarded a letter. They are then shown all the letters that they have won and collected up to this point, and these are printed in yellow.
 
-![Continue or Quit Page](assets/images/collect-letters-continue.png)
+At the end of each puzzle they are give the option to continue or give up. If they continue, the next puzzle room is displayed, otherwise the game is over and the user is taken back to the Home Page.
+
+![Continue or Quit Page](assets/images/hint-and-letters.png)
 
 [Back to top](<#contents>)
 
@@ -109,6 +113,8 @@ After each puzzle is correctly answered, the user is awarded a letter. They are 
 Once eight puzzles have been completed, and all the collected letters re-arranged and typed correctly into the treasure chest crpytex, the treasure chest key hole is revealed. 
 
 I used [Ascii Art](https://emojicombos.com/key) to print a picture of a key and the user wins the game and is rewarded with the treasure. Amongst the treasure, they also find another treasure map, and they have the option to continue their new found treasure hunting skills, or quit while they are ahead. If they choose to quit, the game ends. If they choose to continue the treasure hunt, the user is taken back to the Home Page to begin the game again. With future developement, this option would take them to a new adventure with alternative brain teasers to complete, using the newly acquired treasure map. 
+
+![End of Game Page](assets/images/end-game.png)
 
 [Back to top](<#contents>)
 
@@ -119,7 +125,7 @@ In the future, I would like to add more features to the Cave of Query game. Thes
 * Difficulty levels
 * More puzzle rooms
 * The option to choose various doors after each puzzle, similar to in my original map design, see [Game Design](<#game-design>).
-* ADditional levels, to make use of the treasure map found at the end of the Game, as described previously.
+* Additional levels, to make use of the treasure map found at the end of the Game, as described previously.
 
 One day, when I'm an expert Full Stack Software Developer, I would love to be able to add graphics, music, characters, etc. to this game, and make it more than just text-based if my abilities in the future will allow me. 
 
