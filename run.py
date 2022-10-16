@@ -203,7 +203,7 @@ def puzzle_room_two():
     print("---------------\n")
     print("Decode this ancient language on the wall to retrieve the next")
     print("letter and move on.\n")
-    print("OAFO EJZSCMW VC F RDWJDR\n")
+    print("RKHR XBYTCQO WC H GDOBDG\n")
     print("Wait a minute, I think I remember seeing a page in Grandpa")
     print("Indiana's diary which translated ancient alphabets.")
     print("Let me find the right page....")
